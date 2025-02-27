@@ -1,10 +1,8 @@
 package org.example.models
-
 import org.example.models.Personal.Rol
 import java.time.LocalDate
 
 class Jugador (
-
     override val id: Int,
     override val nombre: String,
     override val apellidos: String,
@@ -19,5 +17,4 @@ class Jugador (
     val peso: Double,
     val goles: Int,
     val partidosJugados: Int,
-
-    ): Empleado(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol)
+): Empleado(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol)
