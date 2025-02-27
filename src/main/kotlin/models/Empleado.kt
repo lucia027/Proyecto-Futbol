@@ -1,6 +1,8 @@
 package org.example.models
+
 import org.example.models.Personal.Rol
 import java.time.LocalDate
+
 
 open class Empleado (
     open val id: Int,
