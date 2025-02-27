@@ -1,16 +1,16 @@
 package org.example.models
-
-import java.time.LocalDateTime
+import org.example.models.Personal.Rol
+import java.time.LocalDate
 
 class Jugador (
     override val id: Int,
     override val nombre: String,
     override val apellidos: String,
-    override val fechaNacimiento: LocalDateTime,
-    override val fechaIncorporacion: LocalDateTime,
+    override val fechaNacimiento: LocalDate,
+    override val fechaIncorporacion: LocalDate,
     override val salario: Double,
     override val pais: String,
-    override val rol: String, // Rol
+    override val rol: Rol,
     val posicion: String,
     val dorsal: Int,
     val altura: Double,
