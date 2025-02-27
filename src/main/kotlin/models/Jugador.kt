@@ -18,3 +18,4 @@ class Jugador (
     val goles: Int,
     val partidosJugados: Int,
 ): Empleado(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol)
+
