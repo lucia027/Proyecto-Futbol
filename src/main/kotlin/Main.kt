@@ -1,5 +1,5 @@
 package org.example
 
 fun main() {
-    println("Hello Worldd!")
+    println("Hello World!")
 }
