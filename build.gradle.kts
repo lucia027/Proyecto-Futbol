@@ -19,6 +19,9 @@ dependencies {
     implementation("org.lighthousegames:logging:1.5.0")
     implementation("ch.qos.logback:logback-classic:1.5.12")
 
+    //DOKKA
+    implementation("org.jetbrains.dokka:dokka-gradle-plugin:2.0.0")
+
     // Serializable JSON
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     // Serializable XML
