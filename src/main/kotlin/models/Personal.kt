@@ -20,5 +20,4 @@ open class Personal (
     fun copy(id: Int): Personal{
         return Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais)
     }
-
 }
