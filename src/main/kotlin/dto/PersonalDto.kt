@@ -5,20 +5,25 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 open class PersonalDto(
-
-    @SerialName("idPersonal")
+    @SerialName("id")
     open val id: Int,
-    @SerialName("nombrePersonal")
+    @SerialName("nombre")
     open val nombre: String,
-    @SerialName("apellidosPersonal")
+    @SerialName("apellidos")
     open val apellidos: String,
-    @SerialName("fechaNacimientoPersonal")
+    @SerialName("fecha_nacimiento")
     open val fechaNacimiento: String,
-    @SerialName("fechaIncorporacionPersonal")
+    @SerialName("fecha_incorporacion")
     open val fechaIncorporacion: String,
-    @SerialName("salarioPersonal")
+    @SerialName("salario")
     open val salario: Double,
-    @SerialName("paisPersonal")
+    @SerialName("pais")
     open val pais: String
+) : java.io.Serializable {
 
-): java.io.Serializable
+    override fun toString(): String {
+        return "PersonalDto(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, salario=$salario, pais=$pais)"
+    }
+}
+
+
