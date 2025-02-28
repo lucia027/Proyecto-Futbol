@@ -1,13 +1,24 @@
 package org.example.Dto
 
-class PersonalDto (
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-    val id: Int,
-    val nombre: String,
-    val apellidos: String,
-    val fechaNacimiento: String,
-    val fechaIncorporacion: String,
-    val salario: Double,
-    val pais: String,
+@Serializable
+open class PersonalDto(
 
-)
+    @SerialName("idPersonal")
+    open val id: Int,
+    @SerialName("nombrePersonal")
+    open val nombre: String,
+    @SerialName("apellidosPersonal")
+    open val apellidos: String,
+    @SerialName("fechaNacimientoPersonal")
+    open val fechaNacimiento: String,
+    @SerialName("fechaIncorporacionPersonal")
+    open val fechaIncorporacion: String,
+    @SerialName("salarioPersonal")
+    open val salario: Double,
+    @SerialName("paisPersonal")
+    open val pais: String
+
+): java.io.Serializable
