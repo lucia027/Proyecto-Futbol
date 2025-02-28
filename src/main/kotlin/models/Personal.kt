@@ -12,9 +12,13 @@ open class Personal (
     open val salario: Double,
     open val pais: String
 
-    ){
+    ) {
     companion object{
         val NEW_ID = 1
+    }
+
+    fun copy(id: Int): Personal{
+        return Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais)
     }
 
 }
