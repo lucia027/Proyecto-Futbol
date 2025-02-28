@@ -2,7 +2,6 @@ package org.example.mapper
 
 import org.example.Dto.EntrenadorDto
 import org.example.models.Entrenador
-import org.example.models.Entrenador.Especializacion
 import java.time.LocalDate
 
 
