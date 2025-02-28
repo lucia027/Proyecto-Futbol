@@ -23,8 +23,8 @@ fun EntrenadorDto.toModel(): Entrenador {
         id = this.id,
         nombre = this.nombre,
         apellidos = this.apellidos,
-        fechaNacimiento = LocalDate.parse(this.fechaNacimiento),
-        fechaIncorporacion = LocalDate.parse(this.fechaIncorporacion),
+        fechaNacimiento = this.fechaNacimiento,
+        fechaIncorporacion = this.fechaIncorporacion,
         salario = this.salario,
         pais = this.pais,
         especializacion = this.especializacion
