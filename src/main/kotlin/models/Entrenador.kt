@@ -2,7 +2,7 @@ package org.example.models
 import java.time.LocalDate
 
 class Entrenador (
-    override val id: Int,
+    override val id: Int = NEW_ID,
     override val nombre: String,
     override val apellidos: String,
     override val fechaNacimiento: LocalDate,
