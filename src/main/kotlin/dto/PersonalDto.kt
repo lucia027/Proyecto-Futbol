@@ -1,8 +1,6 @@
 package org.example.Dto
 
-import org.example.models.Personal
-
-class EmpleadoDto (
+class PersonalDto (
 
     val id: Int,
     val nombre: String,
@@ -11,6 +9,5 @@ class EmpleadoDto (
     val fechaIncorporacion: String,
     val salario: Double,
     val pais: String,
-    val rol: Personal.Rol
 
 )
