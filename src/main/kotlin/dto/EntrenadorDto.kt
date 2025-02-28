@@ -1,10 +1,9 @@
 package org.example.Dto
 
-import org.example.models.Personal
+import org.example.models.Entrenador.Especializacion
 
 class EntrenadorDto (
 
-    val especialidad: String,
     val id: Int,
     val nombre: String,
     val apellidos: String,
@@ -12,6 +11,6 @@ class EntrenadorDto (
     val fechaIncorporacion: String,
     val salario: Double,
     val pais: String,
-    val rol: Personal.Rol
+    val especializacion: Especializacion
 
 )
