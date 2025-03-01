@@ -1,6 +1,7 @@
 package org.example.models
 
 // Clase personal con sus parámetros
+
 open class Personal(
     open val id: Int = NEW_ID,
     open val nombre: String,
