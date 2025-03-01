@@ -17,6 +17,10 @@ class Jugador (
 
 ): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais){
 
+    override fun toString(): String {
+        return("Jugador(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais, posiciom=$posicion, dorsal=$dorsal, altura=$altura, peso=$peso, goles=$goles, partidosJugados=$partidosJugados )")
+    }
+
     // Tipos para el jugador
     enum class Posicion {
         DEFENSA, CENTROCAMPISTA, DELANTERO, PORTERO
