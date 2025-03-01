@@ -1,7 +1,9 @@
 package org.example.storage
 
 import org.example.Dto.PersonalDto
+import org.example.models.Entrenador
 import org.example.models.Personal
+import org.example.storage.storage.EntrenadorStorageJson
 import java.io.File
 
 fun main() {
@@ -15,21 +17,11 @@ fun main() {
 
     println()
 
-    // Ruta del archivo XML
+    val entrenadorJson = EntrenadorStorageJson<Entrenador>().readFromFile(file, "json")
+    entrenadorJson.forEach { println(it) }
+    println()
 
-    // Instanciamos la clase para leer el archivo Xml
 
 
-/*
-    val file = File("data", "personal.xml")
-    val personalXml =
- */
-
-// Prueba CRUD
-
-// Obtención de jugador NO existente
-try {
-
-}
 
 }
