@@ -15,6 +15,10 @@ open class Personal(
         val NEW_ID = 1
     }
 
+    override fun toString(): String{
+        return("Personal(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais)")
+    }
+
     fun copy(id: Int): Personal{
         return Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais)
     }
