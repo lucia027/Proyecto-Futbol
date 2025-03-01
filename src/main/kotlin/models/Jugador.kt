@@ -1,5 +1,8 @@
 package org.example.models
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
 class Jugador (
     override val id: Int = NEW_ID,
     override val nombre: String,
@@ -21,8 +24,11 @@ class Jugador (
         return("Jugador(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais, posiciom=$posicion, dorsal=$dorsal, altura=$altura, peso=$peso, goles=$goles, partidosJugados=$partidosJugados )")
     }
 
-    // Tipos para el jugador
+    @Serializable
     enum class Posicion {
-        DEFENSA, CENTROCAMPISTA, DELANTERO, PORTERO
+        @SerialName("posicion")
+        DEFENSA, CENTROCAMPISTA, DELANTERO, PORTERO,
+        @SerialName("")
+        NINGUNO
     }
 }

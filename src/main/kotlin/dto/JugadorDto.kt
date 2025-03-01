@@ -1,15 +1,17 @@
+/*
 package org.example.Dto
+
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.example.models.Jugador
 
-@Serializable
+//@Serializable
 class JugadorDto(
-    @SerialName("Idjugador")
-    override val id: Int,
+    //@SerialName("idJugador")
+    override val id: Int = 0,
     @SerialName("nombreJugador")
-    override val nombre: String,
+    override val nombre: String = " ",
     @SerialName("apellidosJugador")
     override val apellidos: String,
     @SerialName("fechaNacimientoJugador")
@@ -32,4 +34,6 @@ class JugadorDto(
     val goles: Int,
     @SerialName("partidosJugador")
     val partidosJugados: Int
-) : PersonalDto (id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais), java.io.Serializable
+) : PersonalDto(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais), java.io.Serializable
+
+ */

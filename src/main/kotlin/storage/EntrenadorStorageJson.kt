@@ -1,15 +1,15 @@
 package org.example.storage.storage
 
 import kotlinx.serialization.json.Json
-import org.example.Dto.EntrenadorDto
+// import org.example.Dto.EntrenadorDto
 import org.example.exceptions.exceptions
-import org.example.mapper.toModel
+// import org.example.mapper.toModel
 import org.example.models.Entrenador
 
 import org.example.storage.FunctionStorage
 import java.io.File
 
-class EntrenadorStorageJson<T> : FunctionStorage<Entrenador> {
+/*class EntrenadorStorageJson<T> : FunctionStorage<Entrenador> {
 
     override fun readFromFile(file: File, format: String): List<Entrenador> {
         if (!file.exists() || !file.isFile || !file.canRead()) {
@@ -28,3 +28,5 @@ class EntrenadorStorageJson<T> : FunctionStorage<Entrenador> {
         TODO("Not yet implemented")
     }
 }
+
+ */
