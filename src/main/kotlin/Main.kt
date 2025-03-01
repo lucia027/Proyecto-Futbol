@@ -1,8 +1,7 @@
-package org.example
+package org.example.storage
 
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-import org.example.Storage.PersonalStorageJson
+import org.example.Dto.PersonalDto
+import org.example.models.Personal
 import java.io.File
 
 fun main() {
@@ -10,11 +9,16 @@ fun main() {
     // Ruta del archivo JSON
     val file = File("data", "personal.json")
 
-    // Instanciamos la clase para leer el archivo
+    // Instanciamos la clase para leer el archivo Json
+    val personalJson = PersonalStorageJson<Personal>().readFromFile(file, "json")
+    personalJson.forEach { println(it) }
 
-    val personalJson = PersonalStorageJson().readFromFile(file, "json")
-    personalJson.forEach { println(Json.encodeToString(it)) }
-}
+    println()
+
+    // Ruta del archivo XML
+
+    // Instanciamos la clase para leer el archivo Xml
+
 
 /*
     val file = File("data", "personal.xml")
@@ -25,5 +29,7 @@ fun main() {
 
 // Obtención de jugador NO existente
 try {
+
+}
 
 }
