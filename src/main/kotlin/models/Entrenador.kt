@@ -12,6 +12,10 @@ class Entrenador (
 
 ) : Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais){
 
+    override fun toString(): String{
+        return("Personal(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais, especializacion=$especializacion)")
+    }
+
     // Tipos para el entrenador
     enum class Especializacion {
         ENTRENADOR_PORTEROS, ENTRENADOR_PRINCIPAL, ENTRENADOR_ASISTENTE
