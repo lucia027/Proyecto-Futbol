@@ -1,8 +1,10 @@
 package org.example.Dto
 
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import org.example.models.Entrenador.Especializacion
 
+@Serializable
 class EntrenadorDto (
     @SerialName("idEntrenador")
     override val id: Int,
