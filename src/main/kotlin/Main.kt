@@ -20,4 +20,16 @@ fun main() {
     // Instanciamos la clase para leer el archivo Xml
 
 
+/*
+    val file = File("data", "personal.xml")
+    val personalXml =
+ */
+
+// Prueba CRUD
+
+// Obtención de jugador NO existente
+try {
+
+}
+
 }
