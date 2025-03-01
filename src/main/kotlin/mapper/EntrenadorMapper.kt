@@ -2,7 +2,6 @@ package org.example.mapper
 
 import org.example.Dto.EntrenadorDto
 import org.example.models.Entrenador
-import org.example.models.Entrenador.Especializacion
 import java.time.LocalDate
 
 
@@ -24,8 +23,8 @@ fun EntrenadorDto.toModel(): Entrenador {
         id = this.id,
         nombre = this.nombre,
         apellidos = this.apellidos,
-        fechaNacimiento = LocalDate.parse(this.fechaNacimiento),
-        fechaIncorporacion = LocalDate.parse(this.fechaIncorporacion),
+        fechaNacimiento = this.fechaNacimiento,
+        fechaIncorporacion = this.fechaIncorporacion,
         salario = this.salario,
         pais = this.pais,
         especializacion = this.especializacion
