@@ -1,12 +1,12 @@
 package org.example.cache
 
-interface Cache<k, v> {
-    fun get(key: k): v?
-    fun put(key: k, value: v): v?
-    fun remove(key: k): v?
+interface Cache<K, V> {
+    fun get(key: K): V?
+    fun put(key: K, value: V): V?
+    fun remove(key: K): V?
     fun clear()
     fun size(): Int
-    fun keys(): Set<k>
-    fun values(): Collection<v>
-    fun entries(): Set<Map.Entry<k, v>>
+    fun keys(): Set<K>
+    fun values(): Collection<V>
+    fun entries(): Set<Map.Entry<K, V>>
 }
