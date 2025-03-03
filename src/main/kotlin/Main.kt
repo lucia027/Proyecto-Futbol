@@ -611,7 +611,6 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     val personalList = storage.readFromFile(file)
     personalList.forEach { println(it) }
 
-
     //SOBREESCRIBIR EL JSON
     /*val nuevoJugador = Jugador(
         id = 999L,
@@ -638,10 +637,4 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     val fileXML = File("data", "personal.xml")
     val equipoXML = storage.readFromFile(fileXML)
     equipoXML.forEach { println(it) }
-
-
-
-
-
-
 }
