@@ -4,14 +4,14 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 class Entrenador(
-    override val id: Int = NEW_ID,
-    override val nombre: String,
-    override val apellidos: String,
-    override val fechaNacimiento: String,
-    override val fechaIncorporacion: String,
-    override val salario: Double,
-    override val pais: String,
-    val especialidad: Especializacion = Especializacion.NINGUNO
+    id: Int = NEW_ID,
+    nombre: String,
+    apellidos: String,
+    fechaNacimiento: String,
+    fechaIncorporacion: String,
+    salario: Double,
+    pais: String,
+    val especialidad: String = Especializacion.NINGUNO.toString()
 
 ) : Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais){ //tipo){
 

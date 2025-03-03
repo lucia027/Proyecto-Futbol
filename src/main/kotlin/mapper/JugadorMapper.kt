@@ -1,12 +1,11 @@
-/*package org.example.mapper
+package org.example.mapper
 
 import org.example.Dto.JugadorDto
 import org.example.models.Jugador
-import java.time.LocalDate
 
 fun Jugador.toDto(): JugadorDto {
     return JugadorDto(
-        id = this.id,
+        id = id,
         nombre = this.nombre,
         apellidos = this.apellidos,
         fechaNacimiento = this.fechaNacimiento,
@@ -18,7 +17,7 @@ fun Jugador.toDto(): JugadorDto {
         altura = this.altura,
         peso = this.peso,
         goles = this.goles,
-        partidosJugados = this.partidosJugados
+        partidosJugados = this.partidosJugados,
     )
 }
 
@@ -39,4 +38,3 @@ fun JugadorDto.toModel(): Jugador {
         partidosJugados = this.partidosJugados
     )
 }
- */
