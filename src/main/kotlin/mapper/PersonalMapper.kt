@@ -34,7 +34,7 @@ fun PersonalDto.toEntrenador(): Entrenador {
             salario = this.salario,
             pais = this.pais,
             rol = this.rol,
-            especialidad = this.especialidad
+            especialidad = Entrenador.Especializacion.valueOf(especialidad!!)
         )
     }
 
@@ -65,7 +65,7 @@ fun PersonalDto.toModel(): Personal {
             fechaIncorporacion = this.fecha_incorporacion,
             salario = salario,
             pais = pais,
-            especialidad = Entrenador.Especializacion.valueOf(especialidad!!).toString(),
+            especialidad = Entrenador.Especializacion.valueOf(especialidad!!),
             rol = this.rol
         )
     }
