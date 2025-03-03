@@ -1,7 +1,8 @@
-package org.example.mapper
+/*package org.example.mapper
 
 import org.example.Dto.JugadorDto
 import org.example.models.Jugador
+import org.example.models.Personal
 
 fun Jugador.toDto(): JugadorDto {
     return JugadorDto(
@@ -18,10 +19,11 @@ fun Jugador.toDto(): JugadorDto {
         peso = this.peso,
         goles = this.goles,
         partidosJugados = this.partidosJugados,
+        rol = TODO(),
     )
 }
 
-fun JugadorDto.toModel(): Jugador {
+fun JugadorDto.toModel(): Personal {
     return Jugador(
         id = this.id,
         nombre = this.nombre,
@@ -38,3 +40,5 @@ fun JugadorDto.toModel(): Jugador {
         partidosJugados = this.partidosJugados
     )
 }
+
+ */

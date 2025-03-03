@@ -5,6 +5,10 @@ import org.example.models.Personal
 import org.example.storage.PersonalStorageJson
 import java.io.File
 import org.example.cache.CacheLRU
+import org.example.exceptions.exceptions
+import org.example.repository.PersonalRepository
+import org.example.service.PersonalService
+import org.lighthousegames.logging.logging
 
 
 /*import kotlinx.serialization.encodeToString
@@ -34,6 +38,8 @@ fun generarId(): Int {
     return personalCache.listAll().size + 1
 }
 fun main() {
+
+    val logger = logging()
     /*while (true) {
         println("Menú de Gestión de Personal del Club:")
         println("1. Cargar datos desde fichero según la especificación indicada")
@@ -585,7 +591,7 @@ fun consultaJugadoresPorDecadaNacimientoYPromedioPartidos() {}
 
 fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
 
- */
+
    // Le indicamos la ruta del archivo
     val storage = PersonalStorageJson<Personal>()
     val file = File("data", "personal.json")
@@ -594,8 +600,23 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     val personalList = storage.readFromFile(file, "json")
     personalList.forEach { println(it) }
 
-    println("aaa")
+     */
+
+
+    // LEER EL JSON
+    val storage = PersonalStorageJson()
+    val file = File("data", "personal.json")
+
+    try {
+        val personalList = storage.readFromFile(file)
+        personalList.forEach { println(it) }
+    } catch (e: Exception) {
+        logger.error { "Error al leer el fichero Json" }
+    }
+
+    //SOBREESCRIBIR EL JSON
+
+
+
+
 }
-
-
-
