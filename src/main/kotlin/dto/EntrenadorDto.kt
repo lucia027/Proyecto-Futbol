@@ -1,5 +1,5 @@
 
-package org.example.Dto
+/*package org.example.Dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -22,4 +22,6 @@ class EntrenadorDto (
     val especialidad: String,
 ): PersonalDto(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol)
 
+
+ */
 
