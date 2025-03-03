@@ -1,4 +1,4 @@
-package org.example.mapper
+/*package org.example.mapper
 
 import org.example.Dto.EntrenadorDto
 import org.example.models.Entrenador
@@ -30,3 +30,5 @@ fun EntrenadorDto.toModel(): Entrenador {
         especializacion = this.especializacion
     )
 }
+
+ */
