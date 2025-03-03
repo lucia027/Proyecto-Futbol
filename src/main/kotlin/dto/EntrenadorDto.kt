@@ -16,7 +16,7 @@ class EntrenadorDto(
     val rol: String,
     @SerialName("especialidad")
     val especialidad: Entrenador.Especializacion,
-)
+) : java.io.Serializable
 
 
 

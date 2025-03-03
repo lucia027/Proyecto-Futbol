@@ -611,26 +611,30 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     val personalList = storage.readFromFile(file)
     personalList.forEach { println(it) }
 
+    //SOBREESCRIBIR EL JSON
+    /*val nuevoJugador = Jugador(
+        id = 999L,
+        nombre = "Lucia",
+        apellidos = "Fuertes Cruz",
+        fechaNacimiento = "1987-06-24",
+        fechaIncorporacion = "2021-08-01",
+        salario = 500000.0,
+        pais = "Argentina",
+        rol = "Jugador",
+        posicion = Jugador.Posicion.DELANTERO,
+        dorsal = 10,
+        altura = 1.7,
+        peso = 72.0,
+        goles = 700,
+        partidosJugados = 900
+    )
+    val listaNuevoJugador = personalList + nuevoJugador
+    logger.debug { "Sobreescribiendo archivo Json..." }
+    storage.writeToFile(listaNuevoJugador, file)
+     */
 
-//    //SOBREESCRIBIR EL JSON
-//    val nuevoJugador = Jugador(
-//        id = 999L,
-//        nombre = "Lucia",
-//        apellidos = "Fuertes Cruz",
-//        fechaNacimiento = "1987-06-24",
-//        fechaIncorporacion = "2021-08-01",
-//        salario = 500000.0,
-//        pais = "Argentina",
-//        rol = "Jugador",
-//        posicion = Jugador.Posicion.DELANTERO,
-//        dorsal = 10,
-//        altura = 1.7,
-//        peso = 72.0,
-//        goles = 700,
-//        partidosJugados = 900
-//    )
-//    val listaNuevoJugador = personalList + nuevoJugador
-//    logger.debug { "Sobreescribiendo archivo Json..." }
-//    storage.writeToFile(listaNuevoJugador, file)
-//
+    // LEER EL XML
+    val fileXML = File("data", "personal.xml")
+    val equipoXML = storage.readFromFile(fileXML)
+    equipoXML.forEach { println(it) }
 }
