@@ -1,6 +1,7 @@
 package org.example.storage
 
 import org.example.Dto.PersonalDto
+import org.example.models.Personal
 import java.io.File
 
 interface FunctionStorage <T> {
