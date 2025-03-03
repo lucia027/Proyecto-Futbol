@@ -5,7 +5,7 @@ import org.example.models.Jugador
 
 fun Jugador.toDto(): JugadorDto {
     return JugadorDto(
-        id = this.id,
+        id = id,
         nombre = this.nombre,
         apellidos = this.apellidos,
         fechaNacimiento = this.fechaNacimiento,
@@ -17,7 +17,7 @@ fun Jugador.toDto(): JugadorDto {
         altura = this.altura,
         peso = this.peso,
         goles = this.goles,
-        partidosJugados = this.partidosJugados
+        partidosJugados = this.partidosJugados,
     )
 }
 
