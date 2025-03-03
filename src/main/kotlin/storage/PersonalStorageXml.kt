@@ -3,7 +3,6 @@ package org.example.storage.storage
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import nl.adaptivity.xmlutil.serialization.XML
-import org.example.Dto.PersonalDto
 import org.example.exceptions.exceptions
 import org.example.mapper.toEntrenador
 import org.example.mapper.toJugador
