@@ -1,4 +1,4 @@
-package org.example.repositories
+package repositories/*package org.example.repositories
 
 import org.example.models.Entrenador
 import org.lighthousegames.logging.logging
@@ -41,3 +41,5 @@ class EntrenadorRepositoryImpl : EntrenadorRepository {
         return entrenadores.remove(id)
     }
 }
+
+ */

@@ -586,7 +586,7 @@ fun consultaJugadoresPorDecadaNacimientoYPromedioPartidos() {}
 fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
 
  */
-    // Le indicamos la ruta del archivo
+   // Le indicamos la ruta del archivo
     val storage = PersonalStorageJson<Personal>()
     val file = File("data", "personal.json")
 
@@ -594,6 +594,7 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     val personalList = storage.readFromFile(file, "json")
     personalList.forEach { println(it) }
 
+    println("caca")
 }
 
 
