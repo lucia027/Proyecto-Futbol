@@ -5,14 +5,14 @@ import kotlinx.serialization.Serializable
 
 // Clase personal con sus parámetros
 
-open class Personal(
-    open val id: Int = NEW_ID,
-    open val nombre: String,
-    open val apellidos: String,
-    open val fechaNacimiento: String,
-    open val fechaIncorporacion: String,
-    open val salario: Double,
-    open val pais: String,
+abstract class Personal(
+        val id: Int = NEW_ID,
+        val nombre: String,
+        val apellidos: String,
+        val fechaNacimiento: String,
+        val fechaIncorporacion: String,
+        val salario: Double,
+        val pais: String,
     ) {
 
     companion object{
@@ -23,9 +23,11 @@ open class Personal(
         return("Personal(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais)")
     }
 
-    fun copy(id: Int): Personal{
+    /*fun copy(id: Int): Personal{
         return Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais) // tipo)
     }
+
+     */
 
     @Serializable
     enum class Tipo {

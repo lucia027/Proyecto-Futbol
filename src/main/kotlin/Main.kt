@@ -17,14 +17,14 @@ fun main() {
     //Instanciamos la clase para leer el archivo Json
     val personalJson = PersonalStorageJson<Personal>().readFromFile(file, "json")
 
-    // Ruta del archivo XML
 
-    val file2 : File = File("data", "personal.xml")
+    try {
+        val file2 : File = File("data", "personal.xml")
+        val personalXml = PersonalStorageXml<Personal>().readFromFile(file2, "xml")
 
-    // Instanciamos la clase para leer el xml
-     val personalXml = PersonalStorageXml<Personal>().readFromFile(file2, "xml")
+    } catch (e : Exception) {
+        println(e)
 
-
-
+    }
 
 }
