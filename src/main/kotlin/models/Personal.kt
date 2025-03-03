@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 // Clase personal con sus parámetros
 
+@Serializable
 abstract class Personal(
     val id: Long,
     val nombre: String,

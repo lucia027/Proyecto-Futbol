@@ -1,14 +1,17 @@
 package org.example.storage
 
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import org.example.PersonalDto
 import org.example.models.Personal
 import java.io.File
 import org.example.exceptions.exceptions
+import org.example.mapper.toDto
 import org.example.mapper.toEntrenador
 import org.example.mapper.toJugador
 import org.example.models.Entrenador
+import org.example.models.Jugador
 import org.lighthousegames.logging.logging
 
 
@@ -47,7 +50,21 @@ class PersonalStorageJson : PersonalStorageFile {
             throw exceptions.PersonalStorageException("El fichero json no se puede sobreescribir o no existe en su directorio padre")
         } else {
             val json = Json { ignoreUnknownKeys = true; prettyPrint = true }
+            val listaPersonalDto = personal.map {
+                when (it) {
+                    is Jugador -> { it.toDto() }
+                    is Entrenador -> { it.toDto() }
+                    else -> null
+                    }
+                }.filterNotNull()
+
+            val jsonString = json.encodeToString(listaPersonalDto)
+            file.writeText(jsonString)
+            }
         }
     }
 
-}
+
+
+
+

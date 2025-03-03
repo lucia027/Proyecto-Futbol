@@ -2,11 +2,11 @@ package org.example.Dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.example.PersonalDto
+import org.example.models.Entrenador
 
 @Serializable
-class EntrenadorDto (
-    val id: Int,
+class EntrenadorDto(
+    val id: Long,
     val nombre: String,
     val apellidos: String,
     val fechaNacimiento: String,
@@ -15,8 +15,10 @@ class EntrenadorDto (
     val pais: String,
     val rol: String,
     @SerialName("especialidad")
-    val especialidad: String,
+    val especialidad: Entrenador.Especializacion,
 )
+
+
 
 
 
