@@ -1,20 +1,19 @@
 package org.example.models
 
-import java.time.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 // Clase personal con sus parámetros
 
 abstract class Personal(
-        val id: Int = NEW_ID,
-        val nombre: String,
-        val apellidos: String,
-        val fechaNacimiento: String,
-        val fechaIncorporacion: String,
-        val salario: Double,
-        val pais: String,
-        val rol: String
+    val id: Long,
+    val nombre: String,
+    val apellidos: String,
+    val fechaNacimiento: String,
+    val fechaIncorporacion: String,
+    val salario: Double,
+    val pais: String,
+    val rol: String
     ) {
 
     companion object{

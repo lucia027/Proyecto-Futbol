@@ -1,5 +1,5 @@
 
-package org.example.Dto
+/*package org.example.Dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -31,3 +31,6 @@ class JugadorDto (
     @SerialName("partidos_jugados")
     val partidosJugados: Int
 ): PersonalDto(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol)
+
+
+ */

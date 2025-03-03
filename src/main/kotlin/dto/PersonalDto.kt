@@ -1,24 +1,40 @@
-package org.example.dto
+package org.example
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+
 @Serializable
-abstract class PersonalDto (
+data class PersonalDto(
     @SerialName("id")
-    open val id: Int,
+    var id: Long,
     @SerialName("nombre")
-    open val nombre: String,
+    var nombre: String,
     @SerialName("apellidos")
-    open val apellidos: String,
+    val apellidos: String,
     @SerialName("fecha_nacimiento")
-    open val fechaNacimiento: String,
+    val fecha_nacimiento: String,
     @SerialName("fecha_incorporacion")
-    open val fechaIncorporacion: String,
+    val fecha_incorporacion: String,
     @SerialName("salario")
-    open val salario: Double,
+    val salario: Double,
     @SerialName("pais")
-    open val pais: String,
+    val pais: String,
     @SerialName("rol")
-    open val rol: String
+    val rol: String,
+    @SerialName("especialidad")
+    val especialidad: String?,
+    @SerialName("posicion")
+    val posicion: String?,
+    @SerialName("dorsal")
+    val dorsal: Int?,
+    @SerialName("altura")
+    val altura: Double?,
+    @SerialName("peso")
+    val peso: Double?,
+    @SerialName("goles")
+    val goles: Int?,
+    @SerialName("partidos_jugados")
+    val partidos_jugados: Int?
+
 )
