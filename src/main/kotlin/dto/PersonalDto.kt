@@ -11,30 +11,29 @@ data class PersonalDto(
     @SerialName("nombre")
     var nombre: String,
     @SerialName("apellidos")
-    val apellidos: String,
+    var apellidos: String,
     @SerialName("fecha_nacimiento")
-    val fecha_nacimiento: String,
+    var fecha_nacimiento: String,
     @SerialName("fecha_incorporacion")
-    val fecha_incorporacion: String,
+    var fecha_incorporacion: String,
     @SerialName("salario")
-    val salario: Double,
+    var salario: Double,
     @SerialName("pais")
-    val pais: String,
+    var pais: String,
     @SerialName("rol")
     val rol: String,
     @SerialName("especialidad")
     val especialidad: String?,
     @SerialName("posicion")
-    val posicion: String?,
+    var posicion: String?,
     @SerialName("dorsal")
-    val dorsal: Int?,
+    var dorsal: Int?,
     @SerialName("altura")
-    val altura: Double?,
+    var altura: Double?,
     @SerialName("peso")
-    val peso: Double?,
+    var peso: Double?,
     @SerialName("goles")
-    val goles: Int?,
+    var goles: Int?,
     @SerialName("partidos_jugados")
-    val partidos_jugados: Int?
-
+    var partidos_jugados: Int?
 )

@@ -6,6 +6,7 @@ import org.example.storage.PersonalStorageJson
 import java.io.File
 import org.example.cache.CacheLRU
 import org.example.exceptions.exceptions
+import org.example.models.Jugador
 import org.example.repository.PersonalRepository
 import org.example.service.PersonalService
 import org.lighthousegames.logging.logging
@@ -607,14 +608,32 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     val storage = PersonalStorageJson()
     val file = File("data", "personal.json")
 
-    try {
-        val personalList = storage.readFromFile(file)
-        personalList.forEach { println(it) }
-    } catch (e: Exception) {
-        logger.error { "Error al leer el fichero Json" }
-    }
+    val personalList = storage.readFromFile(file)
+    personalList.forEach { println(it) }
+
 
     //SOBREESCRIBIR EL JSON
+    val nuevoJugador = Jugador(
+        id = 999L,
+        nombre = "Lucia",
+        apellidos = "Fuertes Cruz",
+        fechaNacimiento = "1987-06-24",
+        fechaIncorporacion = "2021-08-01",
+        salario = 500000.0,
+        pais = "Argentina",
+        rol = "Jugador",
+        posicion = Jugador.Posicion.DELANTERO,
+        dorsal = 10,
+        altura = 1.7,
+        peso = 72.0,
+        goles = 700,
+        partidosJugados = 900
+    )
+    val listaNuevoJugador = personalList + nuevoJugador
+    logger.debug { "Sobreescribiendo archivo Json..." }
+    storage.writeToFile(listaNuevoJugador, file)
+
+
 
 
 
