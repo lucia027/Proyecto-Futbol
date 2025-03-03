@@ -1,5 +1,8 @@
 package org.example.models
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
 // Clase personal con sus parámetros
 
 open class Personal(
@@ -9,9 +12,9 @@ open class Personal(
     open val fechaNacimiento: String,
     open val fechaIncorporacion: String,
     open val salario: Double,
-    open val pais: String
-
+    open val pais: String,
     ) {
+
     companion object{
         val NEW_ID = 1
     }
@@ -21,6 +24,14 @@ open class Personal(
     }
 
     fun copy(id: Int): Personal{
-        return Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais)
+        return Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais) // tipo)
+    }
+
+    @Serializable
+    enum class Tipo {
+        @SerialName("tipo")
+        Jugador, Entrenador,
+        @SerialName("")
+        NINGUNO
     }
 }

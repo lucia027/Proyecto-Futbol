@@ -3,7 +3,7 @@ package org.example.models
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-class Jugador (
+class Jugador(
     override val id: Int = NEW_ID,
     override val nombre: String,
     override val apellidos: String,
