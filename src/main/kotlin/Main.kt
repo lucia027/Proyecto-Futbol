@@ -9,6 +9,13 @@ import org.example.models.Entrenador
 import org.example.models.Jugador
 import org.example.models.Personal
 /*import org.example.storage.PersonalStorageJson*/
+import nl.adaptivity.xmlutil.serialization.XML
+import org.example.models.Entrenador
+import org.example.models.Jugador
+import org.example.models.Personal
+import org.example.storage.storage.PersonalStorageXml
+//import org.example.storage.storage.PersonalStorageXml
+// import org.example.storage.storage.EntrenadorStorageJson
 import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 
@@ -42,7 +49,7 @@ fun main() {
     }
 
     // Ruta del archivo JSON
-    val file = File("data", "personal.json")
+     val file = File("data", "personal.json")
 
     // Instanciamos la clase para leer el archivo
 
@@ -207,6 +214,10 @@ fun cargarDatosDesdeXml(fileName: String) {
                     val partidosJugados = element.getElementsByTagName("partidosJugados").item(0).textContent.toInt()
                     val jugador = Jugador(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, posicion, dorsal, altura, peso, goles, partidosJugados)
                     personalCache.put(id, jugador)
+
+    //Instanciamos la clase para leer el archivo Json
+    val personalJson = PersonalStorageJson<Personal>().readFromFile(file, "json")
+
 
                 }
             }
@@ -487,6 +498,13 @@ fun realizarConsultas() {
         else -> println("Opción no válida o inexistente.")
     }
 }
+    val file2 : File = File("data", "personal.xml")
+
+    // Instanciamos la clase para leer el xml
+     val personalXml = PersonalStorageXml<Personal>().readFromFile(file2, "xml")
+
+
+
 
 /*fun consultaListadosPersonal() {
     println("Entrenadores:")
