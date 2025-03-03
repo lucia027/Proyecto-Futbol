@@ -1,4 +1,3 @@
-
 package org.example.Dto
 
 import kotlinx.serialization.SerialName
@@ -18,6 +17,7 @@ class EntrenadorDto(
     @SerialName("especialidad")
     val especialidad: Entrenador.Especializacion,
 )
+
 
 
 

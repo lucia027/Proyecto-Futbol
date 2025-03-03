@@ -5,11 +5,11 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class PersonalDto(
+data class PersonalDto {
     @SerialName("id")
-    var id: Long,
+    var id: Long
     @SerialName("nombre")
-    var nombre: String,
+    var nombre: String
     @SerialName("apellidos")
     var apellidos: String,
     @SerialName("fecha_nacimiento")
@@ -21,9 +21,9 @@ data class PersonalDto(
     @SerialName("pais")
     var pais: String,
     @SerialName("rol")
-    val rol: String,
+    val rol: String
     @SerialName("especialidad")
-    val especialidad: String?,
+    val especialidad: String?
     @SerialName("posicion")
     var posicion: String?,
     @SerialName("dorsal")

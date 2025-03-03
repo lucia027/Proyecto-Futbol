@@ -19,6 +19,5 @@ class JugadorDto(
     val peso: Double,
     val goles: Int,
     val partidosJugados: Int
-
 )
 
