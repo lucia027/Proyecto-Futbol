@@ -3,11 +3,10 @@ package org.example.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.time.LocalDate
 
 class Jugador(
 
-    id: Int = NEW_ID,
+    id: Long,
     nombre: String,
     apellidos: String,
     fechaNacimiento: String,
@@ -15,7 +14,7 @@ class Jugador(
     salario: Double,
     pais: String,
     rol: String,
-    val posicion: String,
+    val posicion: Posicion,
     val dorsal: Int,
     val altura: Double,
     val peso: Double,

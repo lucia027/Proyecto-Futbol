@@ -1,4 +1,4 @@
-package org.example.storage
+/*package org.example.storage
 
 import org.example.Dto.EntrenadorDto
 import org.example.Dto.JugadorDto
@@ -8,7 +8,7 @@ import org.example.models.Personal
 import org.lighthousegames.logging.logging
 import java.io.File
 
-class PersonalStorageCsv : PersonalStorageFile{
+class PersonalStorageCsv : PersonalStorageFile {
 
     private val logger = logging()
     init {
@@ -62,9 +62,7 @@ class PersonalStorageCsv : PersonalStorageFile{
         return lista
     }
 
-
     override fun writeToFile(personal: List<Personal>, file: File) {
-
         logger.debug { "Escribiendo fichero CSV" }
         if (!file.parentFile.exists() || !file.parentFile.isDirectory || !file.name.endsWith(".csv")) {
             logger.error { "El directorio padre del fichero no se encuentra o no existe" }
@@ -73,10 +71,13 @@ class PersonalStorageCsv : PersonalStorageFile{
         file.writeText("id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol")
         personal.forEach {
             when(it){
-                JugadorDto -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
-                EntrenadorDto -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
+                is JugadorDto -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
+                is EntrenadorDto -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
             }
         }
     }
 
+
 }
+
+ */
