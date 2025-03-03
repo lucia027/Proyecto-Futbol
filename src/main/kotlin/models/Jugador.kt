@@ -14,6 +14,7 @@ class Jugador(
     fechaIncorporacion: String,
     salario: Double,
     pais: String,
+    rol: String,
     val posicion: String,
     val dorsal: Int,
     val altura: Double,
@@ -21,7 +22,7 @@ class Jugador(
     val goles: Int,
     val partidosJugados: Int
 
-): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais) {
+): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol) {
 
     override fun toString(): String {
         return ("Jugador(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais, posiciom=$posicion, dorsal=$dorsal, altura=$altura, peso=$peso, goles=$goles, partidosJugados=$partidosJugados )")
