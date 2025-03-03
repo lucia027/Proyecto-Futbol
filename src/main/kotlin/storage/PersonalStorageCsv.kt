@@ -1,14 +1,12 @@
-/*package org.example.storage
+package org.example.storage
 
-import org.example.Dto.EntrenadorDto
-import org.example.Dto.JugadorDto
-import org.example.dto.PersonalDto
+import org.example.PersonalDto
 import org.example.exceptions.exceptions
 import org.example.models.Personal
 import org.lighthousegames.logging.logging
 import java.io.File
 
-class PersonalStorageCsv : PersonalStorageFile {
+class PersonalStorageCsv : PersonalStorage {
 
     private val logger = logging()
     init {
@@ -62,7 +60,7 @@ class PersonalStorageCsv : PersonalStorageFile {
         return lista
     }
 
-    override fun writeToFile(personal: List<Personal>, file: File) {
+    override fun writeToFile(file: File, productos: List<Personal>) {
         logger.debug { "Escribiendo fichero CSV" }
         if (!file.parentFile.exists() || !file.parentFile.isDirectory || !file.name.endsWith(".csv")) {
             logger.error { "El directorio padre del fichero no se encuentra o no existe" }
@@ -74,10 +72,13 @@ class PersonalStorageCsv : PersonalStorageFile {
                 is JugadorDto -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
                 is EntrenadorDto -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
             }
-        }
-    }
-
+        }    }
 
 }
 
- */
+
+
+
+
+
+

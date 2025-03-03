@@ -25,6 +25,18 @@ abstract class Personal(
         return("Personal(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais)")
     }
 
+    abstract fun copy(
+        id: Long = this.id,
+        nombre: String = this.nombre,
+        apellidos: String = this.apellidos,
+        fechaNacimiento: String = this.fechaNacimiento,
+        fechaIncorporacion: String = this.fechaNacimiento,
+        salario: Double = this.salario,
+        pais: String = this.pais,
+        rol: String = this.rol
+    ): Personal
+
+
     @Serializable
     enum class Tipo {
         @SerialName("tipo")
