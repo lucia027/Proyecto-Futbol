@@ -9,4 +9,5 @@ interface Cache<K, V> {
     fun keys(): Set<K>
     fun values(): Collection<V>
     fun entries(): Set<Map.Entry<K, V>>
+    fun listAll(): List<V>
 }
