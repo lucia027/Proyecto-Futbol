@@ -5,36 +5,49 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class PersonalDto(
-    @SerialName("id")
-    var id: Long,
+sealed interface PersonalDto {
+    var id: Long
+
     @SerialName("nombre")
-    var nombre: String,
+    var nombre: String
+
     @SerialName("apellidos")
-    val apellidos: String,
+    val apellidos: String
+
     @SerialName("fecha_nacimiento")
-    val fecha_nacimiento: String,
+    val fecha_nacimiento: String
+
     @SerialName("fecha_incorporacion")
-    val fecha_incorporacion: String,
+    val fecha_incorporacion: String
+
     @SerialName("salario")
-    val salario: Double,
+    val salario: Double
+
     @SerialName("pais")
-    val pais: String,
+    val pais: String
+
     @SerialName("rol")
-    val rol: String,
+    val rol: String
+
     @SerialName("especialidad")
-    val especialidad: String?,
+    val especialidad: String?
+
     @SerialName("posicion")
-    val posicion: String?,
+    val posicion: String?
+
     @SerialName("dorsal")
-    val dorsal: Int?,
+    val dorsal: Int?
+
     @SerialName("altura")
-    val altura: Double?,
+    val altura: Double?
+
     @SerialName("peso")
-    val peso: Double?,
+    val peso: Double?
+
     @SerialName("goles")
-    val goles: Int?,
+    val goles: Int?
+
     @SerialName("partidos_jugados")
     val partidos_jugados: Int?
 
-)
+}
