@@ -1,16 +1,5 @@
 package org.example.models
 
-
-class Entrenador(
-    override val id: Int = NEW_ID,
-    override var nombre: String,
-    override var apellidos: String,
-    override var fechaNacimiento: String,
-    override var fechaIncorporacion: String,
-    override var salario: Double,
-    override var pais: String,
-    var especializacion: Especializacion
-
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -22,7 +11,7 @@ class Entrenador(
     fechaIncorporacion: String,
     salario: Double,
     pais: String,
-    val especialidad: String = Especializacion.NINGUNO
+    val especialidad: String = Especializacion.NINGUNO.toString()
 
 ) : Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais){ //tipo){
 
@@ -37,9 +26,5 @@ class Entrenador(
         ENTRENADOR_ASISTENTE,
         @SerialName("")
         NINGUNO
-    }
-
-    fun copyEntrenador(id: Int): Entrenador{
-        return Entrenador(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, especializacion)
     }
 }

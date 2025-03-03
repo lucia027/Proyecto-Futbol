@@ -1,12 +1,9 @@
 package org.example.models
 
 
-import java.time.LocalDate
-
-class Jugador (
-
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.time.LocalDate
 
 class Jugador(
 
@@ -24,10 +21,10 @@ class Jugador(
     val goles: Int,
     val partidosJugados: Int
 
-): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais){
+): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais) {
 
     override fun toString(): String {
-        return("Jugador(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais, posiciom=$posicion, dorsal=$dorsal, altura=$altura, peso=$peso, goles=$goles, partidosJugados=$partidosJugados )")
+        return ("Jugador(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais, posiciom=$posicion, dorsal=$dorsal, altura=$altura, peso=$peso, goles=$goles, partidosJugados=$partidosJugados )")
     }
 
     @Serializable
@@ -37,3 +34,4 @@ class Jugador(
         @SerialName("")
         NINGUNO
     }
+}
