@@ -1,9 +1,15 @@
 package org.example.models
 
+
+import java.time.LocalDate
+
+class Jugador (
+
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 class Jugador(
+
     id: Int = NEW_ID,
     nombre: String,
     apellidos: String,
@@ -31,4 +37,3 @@ class Jugador(
         @SerialName("")
         NINGUNO
     }
-}

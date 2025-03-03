@@ -1,5 +1,6 @@
 package org.example.models
 
+import java.time.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -22,12 +23,6 @@ abstract class Personal(
     override fun toString(): String{
         return("Personal(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais)")
     }
-
-    /*fun copy(id: Int): Personal{
-        return Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais) // tipo)
-    }
-
-     */
 
     @Serializable
     enum class Tipo {
