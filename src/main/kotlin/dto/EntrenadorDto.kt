@@ -1,29 +1,20 @@
-/*
+
 package org.example.Dto
 
-
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 import org.example.models.Entrenador.Especializacion
+import org.example.models.Personal.Companion.NEW_ID
 
 class EntrenadorDto (
-    //@SerialName("idEntrenador")
-    override val id: Int,
-    @SerialName("nombreEntrenador")
-    override val nombre: String,
-    @SerialName("apellidosEntrenador")
-    override val apellidos: String,
-    @SerialName("fechaNacimientoEntrenador")
-    override val fechaNacimiento: String,
-    @SerialName("fechaIncorporación")
-    override val fechaIncorporacion: String,
-    @SerialName("salarioEntrenador")
-    override val salario: Double,
-    @SerialName("paisEntrenador")
-    override val pais: String,
-    @Serializable
-    @SerialName("especializacionEntrenador")
-    val especializacion: Especializacion
+    val id: Int,
+    val nombre: String,
+    val apellidos: String,
+    val fechaNacimiento: String,
+    val fechaIncorporacion: String,
+    val salario: Double,
+    val pais: String,
+    val especialidad: String,
+){
 
-) : PersonalDto (id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais), java.io.Serializable
- */
+}
+
+
