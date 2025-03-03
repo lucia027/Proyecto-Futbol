@@ -1,4 +1,4 @@
-package org.example.storage.storage
+/*package org.example.storage.storage
 
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -6,7 +6,6 @@ import nl.adaptivity.xmlutil.serialization.XML
 import org.example.exceptions.exceptions
 import org.example.models.Entrenador
 import org.example.models.Personal
-import org.example.storage.FunctionStorage
 import java.io.File
 
 class PersonalStorageXml<T>: FunctionStorage<Personal> {
@@ -27,3 +26,5 @@ class PersonalStorageXml<T>: FunctionStorage<Personal> {
         TODO("Not yet implemented")
     }
 }
+
+ */

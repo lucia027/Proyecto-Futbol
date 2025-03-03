@@ -1,7 +1,8 @@
-package org.example.mapper
+/*package org.example.mapper
 
 import org.example.Dto.EntrenadorDto
 import org.example.models.Entrenador
+import kotlin.concurrent.thread
 
 
 fun Entrenador.toDto(): EntrenadorDto {
@@ -13,7 +14,8 @@ fun Entrenador.toDto(): EntrenadorDto {
         fechaIncorporacion = this.fechaIncorporacion.toString(),
         salario = this.salario,
         pais = this.pais,
-        especialidad = this.especialidad
+        especialidad = this.especialidad,
+        rol = this.rol
     )
 }
 
@@ -26,7 +28,10 @@ fun EntrenadorDto.toModel(): Entrenador {
         fechaIncorporacion = this.fechaIncorporacion,
         salario = this.salario,
         pais = this.pais,
-        especialidad = this.especialidad
+        especialidad = this.especialidad,
+        rol = this.rol
     )
 }
 
+
+ */
