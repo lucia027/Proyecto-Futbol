@@ -594,7 +594,7 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     val personalList = storage.readFromFile(file, "json")
     personalList.forEach { println(it) }
 
-    println("caca")
+    println("aaa")
 }
 
 
