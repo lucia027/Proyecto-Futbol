@@ -599,9 +599,5 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     personalList.forEach { println(it) }
 
 
-     */
-    println("aaa")
-}
-
 
 
