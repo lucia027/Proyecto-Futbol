@@ -20,5 +20,5 @@ class JugadorDto(
     val goles: Int,
     val partidosJugados: Int
 
-)
+) : java.io.Serializable
 
