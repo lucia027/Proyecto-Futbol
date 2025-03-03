@@ -1,6 +1,13 @@
 package org.example
 
-import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import org.example.models.Personal
+import org.example.storage.PersonalStorageJson
+import java.io.File
+import org.example.cache.CacheLRU
+
+
+/*import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import nl.adaptivity.xmlutil.dom2.Document
 import nl.adaptivity.xmlutil.serialization.XML
@@ -19,13 +26,15 @@ import org.example.storage.storage.PersonalStorageXml
 import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 
+ */
+
 
 val personalCache = CacheLRU<Int, Personal>(5)
 fun generarId(): Int {
     return personalCache.listAll().size + 1
 }
 fun main() {
-    while (true) {
+    /*while (true) {
         println("Menú de Gestión de Personal del Club:")
         println("1. Cargar datos desde fichero según la especificación indicada")
         println("2. Crear miembro del equipo")
@@ -575,3 +584,17 @@ fun consultaEntrenadoresPorEspecialidadYMayorSalario() {}
 fun consultaJugadoresPorDecadaNacimientoYPromedioPartidos() {}
 
 fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
+
+ */
+    // Le indicamos la ruta del archivo
+    val storage = PersonalStorageJson<Personal>()
+    val file = File("data", "personal.json")
+
+    // Le decimos que lea el archivo
+    val personalList = storage.readFromFile(file, "json")
+    personalList.forEach { println(it) }
+
+}
+
+
+
