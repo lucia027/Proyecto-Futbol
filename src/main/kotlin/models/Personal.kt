@@ -14,6 +14,7 @@ abstract class Personal(
         val fechaIncorporacion: String,
         val salario: Double,
         val pais: String,
+        val rol: String
     ) {
 
     companion object{

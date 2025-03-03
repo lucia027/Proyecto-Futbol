@@ -11,9 +11,10 @@ class Entrenador(
     fechaIncorporacion: String,
     salario: Double,
     pais: String,
+    rol : String,
     val especialidad: String = Especializacion.NINGUNO.toString()
 
-) : Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais){ //tipo){
+) : Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol){ //tipo){
 
     override fun toString(): String{
         return("Personal(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais, especializacion=$especialidad)")
