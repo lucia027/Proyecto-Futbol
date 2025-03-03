@@ -8,8 +8,8 @@ class CacheLRU<K, V>(private val capacidad: Int): Cache<K, V> {
         capacidad, 0.75f
     ){
         override fun removeEldestEntry(eldest: MutableMap.MutableEntry<K, V>?): Boolean {
-            logger.debug { "Se ha agotado el espacio en la capacidad, eliminando elemento mas antiguo.." }
-            return size > capacidad
+            logger.debug { "Se ha agotado el espacio en la capacidad, eliminando elemento mas antiguo: $keys" }
+            return size < capacidad
         }
     }
 
@@ -56,5 +56,9 @@ class CacheLRU<K, V>(private val capacidad: Int): Cache<K, V> {
     override fun entries(): Set<Map.Entry<K, V>> {
         logger.debug{ "Obteniendo entradas..." }
         return cache.entries
+    }
+
+    override fun listAll(): List<V> {
+        return cache.values.toList()
     }
 }

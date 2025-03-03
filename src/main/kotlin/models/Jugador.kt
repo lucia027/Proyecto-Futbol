@@ -1,24 +1,30 @@
 package org.example.models
 
+import java.time.LocalDate
+
 class Jugador (
     override val id: Int = NEW_ID,
-    override val nombre: String,
-    override val apellidos: String,
-    override val fechaNacimiento: String,
-    override val fechaIncorporacion: String,
-    override val salario: Double,
-    override val pais: String,
-    val posicion: Posicion,
-    val dorsal: Int,
-    val altura: Double,
-    val peso: Double,
-    val goles: Int,
-    val partidosJugados: Int
+    override var nombre: String,
+    override var apellidos: String,
+    override var fechaNacimiento: String,
+    override var fechaIncorporacion: String,
+    override var salario: Double,
+    override var pais: String,
+    var posicion: Posicion,
+    var dorsal: Int,
+    var altura: Double,
+    var peso: Double,
+    var goles: Int,
+    var partidosJugados: Int
 
 ): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais){
 
     // Tipos para el jugador
     enum class Posicion {
         DEFENSA, CENTROCAMPISTA, DELANTERO, PORTERO
+    }
+
+    fun copyJugador(id: Int): Jugador{
+        return Jugador(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, posicion, dorsal, altura, peso, goles, partidosJugados)
     }
 }

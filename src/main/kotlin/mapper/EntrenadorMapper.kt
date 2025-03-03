@@ -2,7 +2,6 @@ package org.example.mapper
 
 import org.example.Dto.EntrenadorDto
 import org.example.models.Entrenador
-import java.time.LocalDate
 
 
 fun Entrenador.toDto(): EntrenadorDto {
