@@ -22,14 +22,14 @@ class PersonalStorageJson<T> : FunctionStorage<Personal>  {
             }
             val personalList : List<PersonalDto> = json.decodeFromString(file.readText())
 
-            val personal = personalList.filter { it.especialidad == null && it.posicion == null }
             val entrenador = personalList.filter { it.especialidad != null }.map { it.toEntrenador() }
             println()
             val jugador = personalList.filter { it.posicion != null }.map { it.toJugador() }
 
             entrenador.forEach { println(it)}
-            println()
+            println("---------------------------------------------------------------------------------------------------")
             jugador.forEach { println(it)}
+
             return entrenador + jugador
         }
     }

@@ -1,10 +1,7 @@
 package org.example.mapper
-
 import org.example.Dto.PersonalDto
 import org.example.models.Entrenador
 import org.example.models.Jugador
-import org.example.models.Personal
-import java.time.LocalDate
 
 
 fun PersonalDto.toEntrenador(): Entrenador {
@@ -16,7 +13,7 @@ fun PersonalDto.toEntrenador(): Entrenador {
         fechaIncorporacion = this.fechaIncorporacion.toString(),
         salario = this.salario,
         pais = this.pais,
-        especialidad = Entrenador.Especializacion.NINGUNO
+        especialidad = Entrenador.Especializacion.NINGUNO,
 
     )
 }
