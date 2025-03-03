@@ -3,6 +3,7 @@ package org.example.mapper
 import org.example.PersonalDto
 import org.example.models.Entrenador
 import org.example.models.Jugador
+import org.example.models.Personal
 
 fun PersonalDto.toJugador(): Jugador {
     return Jugador(
@@ -33,6 +34,39 @@ fun PersonalDto.toEntrenador(): Entrenador {
             salario = this.salario,
             pais = this.pais,
             rol = this.rol,
-            especialidad = Entrenador.Especializacion.valueOf(especialidad!!)
+            especialidad = this.especialidad
         )
     }
+
+fun PersonalDto.toModel(): Personal {
+    return if (this.rol == "Jugador") {
+        Jugador(
+            id = id,
+            nombre = nombre,
+            apellidos = apellidos,
+            fechaNacimiento = fecha_nacimiento,
+            fechaIncorporacion = fecha_incorporacion,
+            salario = salario,
+            pais = pais,
+            posicion = Jugador.Posicion.valueOf(posicion!!),
+            dorsal = dorsal!!,
+            altura = altura!!,
+            peso = peso!!,
+            goles = goles!!,
+            partidosJugados = this.partidos_jugados!!,
+            rol = this.rol,
+        )
+    } else {
+        Entrenador(
+            id = id,
+            nombre = nombre,
+            apellidos = apellidos,
+            fechaNacimiento = this.fecha_nacimiento,
+            fechaIncorporacion = this.fecha_incorporacion,
+            salario = salario,
+            pais = pais,
+            especialidad = Entrenador.Especializacion.valueOf(especialidad!!).toString(),
+            rol = this.rol
+        )
+    }
+}
