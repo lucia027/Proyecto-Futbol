@@ -9,19 +9,20 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 class Jugador(
-    override val id: Int = NEW_ID,
-    override var nombre: String,
-    override var apellidos: String,
-    override var fechaNacimiento: String,
-    override var fechaIncorporacion: String,
-    override var salario: Double,
-    override var pais: String,
-    var posicion: Posicion,
-    var dorsal: Int,
-    var altura: Double,
-    var peso: Double,
-    var goles: Int,
-    var partidosJugados: Int
+
+    id: Int = NEW_ID,
+    nombre: String,
+    apellidos: String,
+    fechaNacimiento: String,
+    fechaIncorporacion: String,
+    salario: Double,
+    pais: String,
+    val posicion: String,
+    val dorsal: Int,
+    val altura: Double,
+    val peso: Double,
+    val goles: Int,
+    val partidosJugados: Int
 
 ): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais){
 
@@ -36,8 +37,3 @@ class Jugador(
         @SerialName("")
         NINGUNO
     }
-
-    fun copyJugador(id: Int): Jugador{
-        return Jugador(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, posicion, dorsal, altura, peso, goles, partidosJugados)
-    }
-}

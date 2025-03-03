@@ -1,4 +1,4 @@
-/*package org.example.mapper
+package org.example.mapper
 
 import org.example.Dto.EntrenadorDto
 import org.example.models.Entrenador
@@ -13,7 +13,7 @@ fun Entrenador.toDto(): EntrenadorDto {
         fechaIncorporacion = this.fechaIncorporacion.toString(),
         salario = this.salario,
         pais = this.pais,
-        especializacion = this.especializacion
+        especialidad = this.especialidad
     )
 }
 
@@ -26,8 +26,7 @@ fun EntrenadorDto.toModel(): Entrenador {
         fechaIncorporacion = this.fechaIncorporacion,
         salario = this.salario,
         pais = this.pais,
-        especializacion = this.especializacion
+        especialidad = this.especialidad
     )
 }
 
- */

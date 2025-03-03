@@ -179,55 +179,6 @@ fun cargarDatosDesdeXml(fileName: String) {
     }
 }
 
-// Imposible, no utilizar, solo para guiarse.
-/*fun cargarDatosDesdeXml(fileName: String) {
-    val file = File(fileName)
-    if (file.exists()) {
-        val dbFactory = DocumentBuilderFactory.newInstance()
-        val dBuilder = dbFactory.newDocumentBuilder()
-        val doc: org.w3c.dom.Document = dBuilder.parse(file)
-        doc.documentElement.normalize()
-        val nodeList = doc.getElementsByTagName("personal")
-
-        for (i in 0 until nodeList.length) {
-            val node = nodeList.item(i)
-            if (node.nodeType == org.w3c.dom.Node.ELEMENT_NODE) {
-                val element = node as org.w3c.dom.Element
-                val id = element.getAttribute("id").toInt()
-                val nombre = element.getElementsByTagName("nombre").item(0).textContent
-                val apellidos = element.getElementsByTagName("apellidos").item(0).textContent
-                val fechaNacimiento = element.getElementsByTagName("fechaNacimiento").item(0).textContent
-                val fechaIncorporacion = element.getElementsByTagName("fechaIncorporacion").item(0).textContent
-                val salario = element.getElementsByTagName("salario").item(0).textContent.toDouble()
-                val pais = element.getElementsByTagName("pais").item(0).textContent
-                val tipo = element.getElementsByTagName("tipo").item(0).textContent
-                if (tipo == "Entrenador") {
-                    val especializacion = Entrenador.Especializacion.valueOf(element.getElementsByTagName("especializacion").item(0).textContent)
-                    val entrenador = Entrenador(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, especializacion)
-                    personalCache.put(id, entrenador)
-                } else if (tipo == "Jugador") {
-                    val posicion = Jugador.Posicion.valueOf(element.getElementsByTagName("posicion").item(0).textContent)
-                    val dorsal = element.getElementsByTagName("dorsal").item(0).textContent.toInt()
-                    val altura = element.getElementsByTagName("altura").item(0).textContent.toDouble()
-                    val peso = element.getElementsByTagName("peso").item(0).textContent.toDouble()
-                    val goles = element.getElementsByTagName("goles").item(0).textContent.toInt()
-                    val partidosJugados = element.getElementsByTagName("partidosJugados").item(0).textContent.toInt()
-                    val jugador = Jugador(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, posicion, dorsal, altura, peso, goles, partidosJugados)
-                    personalCache.put(id, jugador)
-
-    //Instanciamos la clase para leer el archivo Json
-    val personalJson = PersonalStorageJson<Personal>().readFromFile(file, "json")
-
-
-                }
-            }
-        }
-        println("Datos cargados desde $fileName.")
-    } else {
-        println("Fichero $fileName no encontrado.")
-    }
-}*/
-
 fun crearMiembro() {
     println("Ingrese los datos del nuevo miembro:")
     print("Nombre: ")
@@ -503,8 +454,14 @@ fun realizarConsultas() {
     // Instanciamos la clase para leer el xml
      val personalXml = PersonalStorageXml<Personal>().readFromFile(file2, "xml")
 
+    try {
+        val file2 : File = File("data", "personal.xml")
+        val personalXml = PersonalStorageXml<Personal>().readFromFile(file2, "xml")
 
+    } catch (e : Exception) {
+        println(e)
 
+    }
 
 /*fun consultaListadosPersonal() {
     println("Entrenadores:")
@@ -618,9 +575,3 @@ fun consultaEntrenadoresPorEspecialidadYMayorSalario() {}
 fun consultaJugadoresPorDecadaNacimientoYPromedioPartidos() {}
 
 fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
-
-
-/*
-    val file = File("data", "personal.xml")
-    val personalXml =
- */
