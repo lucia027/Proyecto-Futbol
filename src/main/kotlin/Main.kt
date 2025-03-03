@@ -5,6 +5,10 @@ import org.example.models.Personal
 import org.example.storage.PersonalStorageJson
 import java.io.File
 import org.example.cache.CacheLRU
+import org.example.exceptions.exceptions
+import org.example.repository.PersonalRepository
+import org.example.service.PersonalService
+import org.example.storage.PersonalStorageCsv
 
 
 /*import kotlinx.serialization.encodeToString
@@ -585,7 +589,7 @@ fun consultaJugadoresPorDecadaNacimientoYPromedioPartidos() {}
 
 fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
 
- */
+
    // Le indicamos la ruta del archivo
     val storage = PersonalStorageJson<Personal>()
     val file = File("data", "personal.json")
@@ -594,6 +598,8 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     val personalList = storage.readFromFile(file, "json")
     personalList.forEach { println(it) }
 
+
+     */
     println("aaa")
 }
 
