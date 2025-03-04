@@ -1,6 +1,7 @@
 package org.example.storage
 
-import org.example.PersonalDto
+import org.example.Dto.EntrenadorDto
+import org.example.Dto.JugadorDto
 import org.example.exceptions.exceptions
 import org.example.models.Personal
 import org.lighthousegames.logging.logging
@@ -8,12 +9,13 @@ import java.io.File
 
 class PersonalStorageCsv : PersonalStorage {
 
+    private val personal = Personal
     private val logger = logging()
     init {
         logger.debug { "Iniciando almacenamiento en CSV" }
     }
 
-    override fun readFromFile(file: File): List<PersonalDto> {
+    override fun readFromFile(file: File): List<Any> {
         logger.debug { "Leyendo fichero CSV" }
 
         if (!file.exists() || !file.isFile || !file.canRead() || !file.canRead() || file.length() == 0L || !file.name.endsWith(".csv")) {
@@ -28,7 +30,7 @@ class PersonalStorageCsv : PersonalStorage {
             .map{ fields ->
                 when(fields[7]){
                     "Jugador" -> JugadorDto(
-                        id = fields[0].toInt(),
+                        id = fields[0].toLong(),
                         nombre = fields[1],
                         apellidos = fields[2],
                         fechaNacimiento = fields[3],
@@ -44,7 +46,7 @@ class PersonalStorageCsv : PersonalStorage {
                         partidosJugados = fields[14].toInt()
                     )
                     "Entrenador" -> EntrenadorDto(
-                        id = fields[0].toInt(),
+                        id = fields[0].toLong(),
                         nombre = fields[1],
                         apellidos = fields[2],
                         fechaNacimiento = fields[3],
@@ -68,17 +70,10 @@ class PersonalStorageCsv : PersonalStorage {
         }
         file.writeText("id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol")
         personal.forEach {
-            when(it){
+            when (it) {
                 is JugadorDto -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
                 is EntrenadorDto -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
             }
-        }    }
-
+        }
+    }
 }
-
-
-
-
-
-
-
