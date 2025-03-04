@@ -3,7 +3,6 @@ package org.example
 import org.example.models.Personal
 import org.example.storage.PersonalStorageJson
 import java.io.File
-import org.example.cache.CacheLRU
 import org.example.exceptions.exceptions
 import org.example.models.Jugador
 import org.example.repository.PersonalRepository
@@ -43,6 +42,8 @@ fun generarId(): Int {
 fun main() {
 
     val logger = logging()
+
+
 
    // LEER EL JSON
    val storageJson = PersonalStorageJson()
@@ -88,20 +89,21 @@ fun main() {
     //storage.writeToFile(listaNuevoJugador, file)
 
 
-   /* // LEER EL XML
+    // LEER EL XML
     val fileXML = File("data", "personal.xml")
     val equipoXML = storage.readFromFile(fileXML)
     equipoXML.forEach { println(it) }
     */
 
-    //Leer CSV
+    // Leer CSV
     val storageCSV = PersonalStorageCsv()
     val fileCsv = File("data", "personal.csv")
 
     val personalListCsv = storageCSV.readFromFile(fileCsv)
     personalList.forEach { println(it) }
 
-    //SOBREESCRIBIR EL CSV
+
+   //SOBREESCRIBIR EL CSV
     val nuevoJugador = Jugador(
         id = 999L,
         nombre = "Lucia",
@@ -120,6 +122,6 @@ fun main() {
     )
     val listaNuevoJugador = personalList + nuevoJugador
     logger.debug { "Sobreescribiendo archivo Csv..." }
-    storageCSV.writeToFile(fileCsv, listaNuevoJugador)
-    */
+    storageCSV.writeToFile(listaNuevoJugador, fileCsv)
+
 }
