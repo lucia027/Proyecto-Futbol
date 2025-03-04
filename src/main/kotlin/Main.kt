@@ -9,10 +9,13 @@ import org.example.exceptions.exceptions
 import org.example.models.Jugador
 import org.example.repository.PersonalRepository
 import org.example.service.PersonalService
+import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
+import java.nio.file.Paths
 
 
-/*import kotlinx.serialization.encodeToString
+/*
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import nl.adaptivity.xmlutil.dom2.Document
 import nl.adaptivity.xmlutil.serialization.XML
@@ -30,8 +33,7 @@ import org.example.storage.storage.PersonalStorageXml
 // import org.example.storage.storage.EntrenadorStorageJson
 import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
-
- */
+*/
 
 
 val personalCache = CacheLRU<Int, Personal>(5)
@@ -604,37 +606,44 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
      */
 
 
-    // LEER EL JSON
-    val storage = PersonalStorageJson()
-    val file = File("data", "personal.json")
+//    // LEER EL JSON
+//    val storageJson = PersonalStorageJson()
+//    val fileJson = File("data", "personal.json")
+//
+//    val personalList = storage.readFromFile(fileJson)
+//    personalList.forEach { println(it) }
 
-    val personalList = storage.readFromFile(file)
-    personalList.forEach { println(it) }
 
-    //SOBREESCRIBIR EL JSON
-    /*val nuevoJugador = Jugador(
-        id = 999L,
-        nombre = "Lucia",
-        apellidos = "Fuertes Cruz",
-        fechaNacimiento = "1987-06-24",
-        fechaIncorporacion = "2021-08-01",
-        salario = 500000.0,
-        pais = "Argentina",
-        rol = "Jugador",
-        posicion = Jugador.Posicion.DELANTERO,
-        dorsal = 10,
-        altura = 1.7,
-        peso = 72.0,
-        goles = 700,
-        partidosJugados = 900
-    )
-    val listaNuevoJugador = personalList + nuevoJugador
-    logger.debug { "Sobreescribiendo archivo Json..." }
-    storage.writeToFile(listaNuevoJugador, file)
-     */
+//    //SOBREESCRIBIR EL JSON
+//    val nuevoJugador = Jugador(
+//        id = 999L,
+//        nombre = "Lucia",
+//        apellidos = "Fuertes Cruz",
+//        fechaNacimiento = "1987-06-24",
+//        fechaIncorporacion = "2021-08-01",
+//        salario = 500000.0,
+//        pais = "Argentina",
+//        rol = "Jugador",
+//        posicion = Jugador.Posicion.DELANTERO,
+//        dorsal = 10,
+//        altura = 1.7,
+//        peso = 72.0,
+//        goles = 700,
+//        partidosJugados = 900
+//    )
+//    val listaNuevoJugador = personalList + nuevoJugador
+//    logger.debug { "Sobreescribiendo archivo Json..." }
+//    storage.writeToFile(listaNuevoJugador, file)
 
-    // LEER EL XML
-    val fileXML = File("data", "personal.xml")
-    val equipoXML = storage.readFromFile(fileXML)
-    equipoXML.forEach { println(it) }
+//    //Leer cualquier tipo de archivos
+//    val storage = PersonalStorageControlador()
+//    val rutaArchivo = "data/-archivo-"
+//    val file = File(rutaArchivo)
+//    try {
+//        val controlador = PersonalStorageControlador(file)
+//
+//    }catch(e:Exception){
+//        println("Error al procesar el fcihero")
+//    }
+
 }

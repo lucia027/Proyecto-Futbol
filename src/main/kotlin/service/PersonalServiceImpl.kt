@@ -1,6 +1,7 @@
 package org.example.service
 
 import org.example.cache.CacheLRU
+import org.example.exceptions.exceptions
 import org.example.models.Personal
 import org.example.repository.PersonalRepository
 import org.example.storage.PersonalStorage
@@ -11,10 +12,11 @@ private const val CACHE_SIZE = 6
 
 class PersonalServiceImpl(
 
-    private val storageImpl: PersonalStorage,
+    private val storage: PersonalStorage,
     private val repository: PersonalRepository
 
 ): PersonalService {
+
     private val logger = logging()
     private val cache =
         CacheLRU<Int, Personal>(
@@ -25,14 +27,14 @@ class PersonalServiceImpl(
         logger.debug { "Iniciando servicio de personal" }
     }
 
-    override fun readFromFile(filepath: String): List<Personal> {
+    override fun readFromFile(filePath: String): List<Personal> {
         logger.info { "Leyendo personal del fichero" }
-        return storage.readFromFile(File(filePath))
+        return storage.readFromFile(File(filePath)) as List<Personal>
     }
 
-    override fun writeToFile(filepath: String, personal: List<Personal>) {
+    override fun writeToFile(filePath: String, personal: List<Personal>) {
         logger.info { "Escribiendo personal del fichero" }
-        storage.writeToFile(File(filePath), Personal)
+        storage.writeToFile(File(filePath), personal)
     }
 
     override fun importFromFile(filePath: String) {
@@ -57,7 +59,7 @@ class PersonalServiceImpl(
         logger.info { "Obteniendo personal del fichero con el id: $id" }
         return cache.get(id) ?: run {
             val personal = repository.getById(id)
-                ?: throw exceptions.PersonalIdNotFound(id)
+                ?: throw exceptions.PersonalIdNotFound
             cache.put(id, personal)
             personal
         }
@@ -70,10 +72,17 @@ class PersonalServiceImpl(
     }
 
     override fun update(id: Long, personal: Personal): Personal {
-        TODO("Not yet implemented")
+        logger.info { "Actualizando personal del fichero" }
+        personal.validate()
+        return repository.update(id, personal)
+            ?.also { cache.remove(id) }
+            ?: throw exceptions.PersonalIdNotFound
     }
 
     override fun delete(id: Long): Personal {
-        TODO("Not yet implemented")
+        logger.info { "Borrando personal del fichero" }
+        return repository.delete(id.toInt())
+            ?.also { cache.remove(id.toInt()) }
+            ?: throw exceptions.PersonalIdNotFound(id)
     }
 }
