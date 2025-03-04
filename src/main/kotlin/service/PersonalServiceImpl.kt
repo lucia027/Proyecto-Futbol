@@ -110,7 +110,7 @@ class PersonalServiceImpl (
     private val logger = logging()
 
     override fun readFromFile(filepath: String): List<Personal> {
-
+        TODO()
     }
 
     override fun writeToFile(filepath: String, personal: List<Personal>) {
