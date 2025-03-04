@@ -1,7 +1,7 @@
 package org.example.cache
 import org.lighthousegames.logging.logging
 
-class CacheLRU<K, V>(private val capacidad: Int): Cache<K, V> {
+class CacheImpl<K, V>(private val capacidad: Int): Cache<K, V> {
 
     private val logger = logging()
     private val cache = object : LinkedHashMap<K, V>(
