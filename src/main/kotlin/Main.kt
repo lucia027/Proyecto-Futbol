@@ -1,6 +1,5 @@
 package org.example
 
-import kotlinx.serialization.json.Json
 import org.example.models.Personal
 import org.example.storage.PersonalStorageJson
 import java.io.File
@@ -10,9 +9,9 @@ import org.example.models.Jugador
 import org.example.repository.PersonalRepository
 import org.example.service.PersonalService
 import org.example.storage.PersonalStorageCsv
+import org.example.cache.CacheImpl
 //import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
-import java.nio.file.Paths
 
 
 /*
@@ -37,7 +36,7 @@ import javax.xml.parsers.DocumentBuilderFactory
 */
 
 
-val personalCache = CacheLRU<Int, Personal>(5)
+val personalCache = CacheImpl<Int, Personal>(5)
 fun generarId(): Int {
     return personalCache.listAll().size + 1
 }
@@ -53,9 +52,9 @@ fun main() {
    personalList.forEach { println(it) }
 
 
-    //SOBREESCRIBIR EL JSON
-    /*val nuevoJugador = Jugador(
-        id = 999L,
+   /* //SOBREESCRIBIR EL JSON
+    val nuevoJugador = Jugador(
+        id = 41,
         nombre = "Lucia",
         apellidos = "Fuertes Cruz",
         fechaNacimiento = "1987-06-24",
@@ -67,8 +66,8 @@ fun main() {
         dorsal = 10,
         altura = 1.7,
         peso = 72.0,
-        goles = 700,
-        partidosJugados = 900
+        goles = 7000,
+        partidosJugados = 9000
     )
     val listaNuevoJugador = personalList + nuevoJugador
     logger.debug { "Sobreescribiendo archivo Json..." }
@@ -86,8 +85,8 @@ fun main() {
 //        println("Error al procesar el fcihero")
 //    }
 
-    storage.writeToFile(listaNuevoJugador, file)
-     */
+    //storage.writeToFile(listaNuevoJugador, file)
+
 
    /* // LEER EL XML
     val fileXML = File("data", "personal.xml")
@@ -122,4 +121,5 @@ fun main() {
     val listaNuevoJugador = personalList + nuevoJugador
     logger.debug { "Sobreescribiendo archivo Csv..." }
     storageCSV.writeToFile(fileCsv, listaNuevoJugador)
+    */
 }
