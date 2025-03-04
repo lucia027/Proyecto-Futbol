@@ -1,4 +1,4 @@
-package org.example.storage
+/*package org.example.storage
 
 import org.example.exceptions.exceptions
 import java.io.File
@@ -16,3 +16,5 @@ class PersonalStorageControlador {
     }
 
 }
+
+ */

@@ -1,4 +1,4 @@
-package org.example.service
+/*package org.example.service
 
 import org.example.cache.CacheLRU
 import org.example.exceptions.exceptions
@@ -59,7 +59,7 @@ class PersonalServiceImpl(
         logger.info { "Obteniendo personal del fichero con el id: $id" }
         return cache.get(id) ?: run {
             val personal = repository.getById(id)
-                ?: throw exceptions.PersonalIdNotFound
+                ?: throw exceptions.PersonalIdNotFound("algo")
             cache.put(id, personal)
             personal
         }
@@ -86,3 +86,4 @@ class PersonalServiceImpl(
             ?: throw exceptions.PersonalIdNotFound(id)
     }
 }
+ */
