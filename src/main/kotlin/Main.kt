@@ -635,7 +635,7 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
 //    logger.debug { "Sobreescribiendo archivo Json..." }
 //    storage.writeToFile(listaNuevoJugador, file)
 
-//    //Leer caulquier tipo de archivos
+//    //Leer cualquier tipo de archivos
 //    val storage = PersonalStorageControlador()
 //    val rutaArchivo = "data/-archivo-"
 //    val file = File(rutaArchivo)
