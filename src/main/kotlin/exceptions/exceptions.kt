@@ -9,5 +9,5 @@ package org.example.exceptions
         class PersonalValidatorException(message: String) : exceptions(message)
         class JugadorValidatorException(message: String) : exceptions(message)
         class EntrenadorValidatorException(message: String) : exceptions(message)
-        class PersonalIdNotFound(id: String) : Exception("El id delpersonal no se ha encontrado $id")
+        class PersonalIdNotFound(id: String) : Exception("El id del personal no se ha encontrado $id")
     }

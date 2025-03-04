@@ -1,5 +1,5 @@
-package org.example.repository
+package org.example.repositories
 
 import org.example.models.Personal
 
-interface PersonalRepository: CrudRepository<Personal, Int>
+interface PersonalRepository<T> : CrudRepository<Personal, Long>

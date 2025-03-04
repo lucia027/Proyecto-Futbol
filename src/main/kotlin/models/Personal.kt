@@ -18,7 +18,7 @@ abstract class Personal(
     ) {
 
     companion object{
-        val NEW_ID = 1
+        val NEW_ID = 1L
     }
 
     override fun toString(): String{
