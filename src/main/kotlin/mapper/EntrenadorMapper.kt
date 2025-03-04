@@ -1,19 +1,27 @@
 package org.example.mapper
 
 import org.example.Dto.EntrenadorDto
+import org.example.PersonalDto
 import org.example.models.Entrenador
 
 
-fun Entrenador.toDto(): EntrenadorDto {
-    return EntrenadorDto(
-        id = this.id,
-        nombre = this.nombre,
-        apellidos = this.apellidos,
-        fechaNacimiento = this.fechaNacimiento.toString(),
-        fechaIncorporacion = this.fechaIncorporacion.toString(),
-        salario = this.salario,
-        pais = this.pais,
-        especializacion = this.especializacion
+fun Entrenador.toDto (): PersonalDto {
+    return PersonalDto(
+        id = id,
+        nombre = nombre,
+        apellidos = apellidos,
+        fecha_nacimiento = fechaNacimiento.toString(),
+        fecha_incorporacion = fechaIncorporacion.toString(),
+        salario = salario,
+        pais = pais,
+        especialidad = especialidad.toString(),
+        rol = "Entrenador",
+        posicion = "",
+        dorsal = null,
+        altura = null,
+        peso = null,
+        goles = null,
+        partidos_jugados = null
     )
 }
 
@@ -26,6 +34,8 @@ fun EntrenadorDto.toModel(): Entrenador {
         fechaIncorporacion = this.fechaIncorporacion,
         salario = this.salario,
         pais = this.pais,
-        especializacion = this.especializacion
+        especialidad = this.especialidad,
+        rol = this.rol
     )
 }
+

@@ -1,15 +1,20 @@
 package org.example.models
 
-import java.time.LocalDate
 
-class Jugador (
-    override val id: Int = NEW_ID,
-    override var nombre: String,
-    override var apellidos: String,
-    override var fechaNacimiento: String,
-    override var fechaIncorporacion: String,
-    override var salario: Double,
-    override var pais: String,
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+
+class Jugador(
+
+    id: Long,
+    nombre: String,
+    apellidos: String,
+    fechaNacimiento: String,
+    fechaIncorporacion: String,
+    salario: Double,
+    pais: String,
+    rol: String,
     var posicion: Posicion,
     var dorsal: Int,
     var altura: Double,
@@ -17,14 +22,36 @@ class Jugador (
     var goles: Int,
     var partidosJugados: Int
 
-): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais){
+): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol) {
 
-    // Tipos para el jugador
-    enum class Posicion {
-        DEFENSA, CENTROCAMPISTA, DELANTERO, PORTERO
+    override fun toString(): String {
+        return ("Jugador(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais, posiciom=$posicion, dorsal=$dorsal, altura=$altura, peso=$peso, goles=$goles, partidosJugados=$partidosJugados )")
     }
 
-    fun copyJugador(id: Int): Jugador{
-        return Jugador(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, posicion, dorsal, altura, peso, goles, partidosJugados)
+    override fun copy(
+        id: Long,
+        nombre: String,
+        apellidos: String,
+        fechaNacimiento: String,
+        fechaIncorporacion: String,
+        salario: Double,
+        pais: String,
+        rol: String,
+    ): Personal {
+        posicion = this.posicion
+        dorsal = this.dorsal
+        altura = this.altura
+        peso = this.peso
+        goles = this.goles
+        partidosJugados = this.partidosJugados
+        return Jugador(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol, posicion, dorsal, altura, peso, goles, partidosJugados)
+    }
+
+    @Serializable
+    enum class Posicion {
+        @SerialName("posicion")
+        DEFENSA, CENTROCAMPISTA, DELANTERO, PORTERO,
+        @SerialName("")
+        NINGUNO
     }
 }

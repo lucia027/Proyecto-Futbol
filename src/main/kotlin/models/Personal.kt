@@ -1,23 +1,47 @@
 package org.example.models
 
-import java.time.LocalDate
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 // Clase personal con sus parámetros
-open class Personal(
-    open val id: Int = NEW_ID,
-    open var nombre: String,
-    open var apellidos: String,
-    open var fechaNacimiento: String,
-    open var fechaIncorporacion: String,
-    open var salario: Double,
-    open var pais: String
 
+@Serializable
+abstract class Personal(
+    val id: Long,
+    val nombre: String,
+    val apellidos: String,
+    val fechaNacimiento: String,
+    val fechaIncorporacion: String,
+    val salario: Double,
+    val pais: String,
+    val rol: String
     ) {
+
     companion object{
         val NEW_ID = 1
     }
 
-    fun copyPersonal(id: Int): Personal{
-        return Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais)
+    override fun toString(): String{
+        return("Personal(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais)")
+    }
+
+    abstract fun copy(
+        id: Long = this.id,
+        nombre: String = this.nombre,
+        apellidos: String = this.apellidos,
+        fechaNacimiento: String = this.fechaNacimiento,
+        fechaIncorporacion: String = this.fechaNacimiento,
+        salario: Double = this.salario,
+        pais: String = this.pais,
+        rol: String = this.rol
+    ): Personal
+
+
+    @Serializable
+    enum class Tipo {
+        @SerialName("tipo")
+        Jugador, Entrenador,
+        @SerialName("")
+        NINGUNO
     }
 }
