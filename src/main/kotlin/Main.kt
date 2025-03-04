@@ -9,7 +9,7 @@ import org.example.exceptions.exceptions
 import org.example.models.Jugador
 import org.example.repository.PersonalRepository
 import org.example.service.PersonalService
-import org.example.storage.PersonalStorageControlador
+//import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
 import java.nio.file.Paths
 
@@ -606,34 +606,34 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
      */
 
 
-//    // LEER EL JSON
-//    val storageJson = PersonalStorageJson()
-//    val fileJson = File("data", "personal.json")
-//
-//    val personalList = storage.readFromFile(fileJson)
-//    personalList.forEach { println(it) }
+   // LEER EL JSON
+   val storageJson = PersonalStorageJson()
+   val fileJson = File("data", "personal.json")
+
+   val personalList = storageJson.readFromFile(fileJson)
+   personalList.forEach { println(it) }
 
 
-//    //SOBREESCRIBIR EL JSON
-//    val nuevoJugador = Jugador(
-//        id = 999L,
-//        nombre = "Lucia",
-//        apellidos = "Fuertes Cruz",
-//        fechaNacimiento = "1987-06-24",
-//        fechaIncorporacion = "2021-08-01",
-//        salario = 500000.0,
-//        pais = "Argentina",
-//        rol = "Jugador",
-//        posicion = Jugador.Posicion.DELANTERO,
-//        dorsal = 10,
-//        altura = 1.7,
-//        peso = 72.0,
-//        goles = 700,
-//        partidosJugados = 900
-//    )
-//    val listaNuevoJugador = personalList + nuevoJugador
-//    logger.debug { "Sobreescribiendo archivo Json..." }
-//    storage.writeToFile(listaNuevoJugador, file)
+    //SOBREESCRIBIR EL JSON
+    val nuevoJugador = Jugador(
+        id = 999L,
+        nombre = "Lucia",
+        apellidos = "Fuertes Cruz",
+        fechaNacimiento = "1987-06-24",
+        fechaIncorporacion = "2021-08-01",
+        salario = 500000.0,
+        pais = "Argentina",
+        rol = "Jugador",
+        posicion = Jugador.Posicion.DELANTERO,
+        dorsal = 10,
+        altura = 1.7,
+        peso = 72.0,
+        goles = 700,
+        partidosJugados = 900
+    )
+    val listaNuevoJugador = personalList + nuevoJugador
+    logger.debug { "Sobreescribiendo archivo Json..." }
+    storageJson.writeToFile(listaNuevoJugador, fileJson)
 
 //    //Leer cualquier tipo de archivos
 //    val storage = PersonalStorageControlador()

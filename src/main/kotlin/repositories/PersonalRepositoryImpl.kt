@@ -1,4 +1,4 @@
-package org.example.repository
+/*package org.example.repository
 
 import org.example.models.Personal
 import org.lighthousegames.logging.logging
@@ -41,3 +41,4 @@ class PersonalRepositoryImpl : PersonalRepository<Personal> {
         return personal.remove(id)
     }
 }
+ */
