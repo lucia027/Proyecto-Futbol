@@ -3,6 +3,12 @@ package org.example
 import org.example.models.Personal
 import org.example.storage.PersonalStorageJson
 import java.io.File
+import org.example.cache.CacheLRU
+import org.example.exceptions.exceptions
+import org.example.models.Jugador
+import org.example.repository.PersonalRepository
+import org.example.service.PersonalService
+import org.example.storage.PersonalStorageCsv
 import org.example.cache.CacheImpl
 //import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
@@ -87,5 +93,33 @@ fun main() {
     val equipoXML = storage.readFromFile(fileXML)
     equipoXML.forEach { println(it) }
     */
+
+    //Leer CSV
+    val storageCSV = PersonalStorageCsv()
+    val fileCsv = File("data", "personal.csv")
+
+    val personalListCsv = storageCSV.readFromFile(fileCsv)
+    personalList.forEach { println(it) }
+
+    //SOBREESCRIBIR EL CSV
+    val nuevoJugador = Jugador(
+        id = 999L,
+        nombre = "Lucia",
+        apellidos = "Fuertes Cruz",
+        fechaNacimiento = "1987-06-24",
+        fechaIncorporacion = "2021-08-01",
+        salario = 500000.0,
+        pais = "Argentina",
+        rol = "Jugador",
+        posicion = Jugador.Posicion.DELANTERO,
+        dorsal = 10,
+        altura = 1.7,
+        peso = 72.0,
+        goles = 700,
+        partidosJugados = 900
+    )
+    val listaNuevoJugador = personalList + nuevoJugador
+    logger.debug { "Sobreescribiendo archivo Csv..." }
+    storageCSV.writeToFile(fileCsv, listaNuevoJugador)
     */
 }
