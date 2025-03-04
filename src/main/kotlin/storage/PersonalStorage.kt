@@ -5,5 +5,5 @@ import java.io.File
 
 interface PersonalStorage {
     fun readFromFile(file: File): List<Any>
-    fun writeToFile(file: File, productos: List<Personal>)
+    fun writeToFile(file: File, personal: List<Personal>)
 }
