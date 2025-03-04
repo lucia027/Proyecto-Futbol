@@ -1,17 +1,11 @@
 package org.example
 
-import kotlinx.serialization.json.Json
 import org.example.models.Personal
 import org.example.storage.PersonalStorageJson
 import java.io.File
 import org.example.cache.CacheLRU
-import org.example.exceptions.exceptions
-import org.example.models.Jugador
-import org.example.repository.PersonalRepository
-import org.example.service.PersonalService
 //import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
-import java.nio.file.Paths
 
 
 /*
@@ -42,8 +36,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 * La caché tiene un tamaño máximo de 5 elementos.
 * */
 val personalCache = CacheLRU<Int, Personal>(5)
-fun generarId(): Int {
-    return personalCache.listAll().size + 1
+fun generarId(): Long {
+    return personalCache.listAll().size + 1L
 }
 fun main() {
 
@@ -86,8 +80,8 @@ fun main() {
 //    try {
 //        val controlador = PersonalStorageControlador(file)
 //
-//    }catch(e:Exception){
-//        println("Error al procesar el fcihero")
+//    } catch(e:Exception){
+//        println("Error al procesar el fichero")
 //    }
 
     storage.writeToFile(listaNuevoJugador, file)
