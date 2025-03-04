@@ -1,15 +1,18 @@
-/*package org.example.storage
+package org.example.storage
 
 import org.example.Dto.EntrenadorDto
 import org.example.Dto.JugadorDto
+import org.example.PersonalDto
 import org.example.exceptions.exceptions
+import org.example.mapper.toModel
+import org.example.models.Entrenador
+import org.example.models.Jugador
 import org.example.models.Personal
 import org.lighthousegames.logging.logging
 import java.io.File
 
 class PersonalStorageCsv : PersonalStorage {
 
-    private val personal = Personal
     private val logger = logging()
     init {
         logger.debug { "Iniciando almacenamiento en CSV" }
@@ -38,13 +41,13 @@ class PersonalStorageCsv : PersonalStorage {
                         salario = fields[5].toDouble(),
                         pais = fields[6],
                         rol = fields[7],
-                        posicion = fields[9],
+                        posicion = Jugador.Posicion.valueOf(fields[9]),
                         dorsal = fields[10].toInt(),
                         altura = fields[11].toDouble(),
                         peso = fields[12].toDouble(),
                         goles = fields[13].toInt(),
                         partidosJugados = fields[14].toInt()
-                    )
+                    ).toModel()
                     "Entrenador" -> EntrenadorDto(
                         id = fields[0].toLong(),
                         nombre = fields[1],
@@ -54,15 +57,15 @@ class PersonalStorageCsv : PersonalStorage {
                         salario = fields[5].toDouble(),
                         pais = fields[6],
                         rol = fields[7],
-                        especialidad = fields[8]
-                    )
+                        especialidad = Entrenador.Especializacion.valueOf(fields[8])
+                    ).toModel()
                     else -> throw exceptions.PersonalStorageCsv("No se ha encontrado el nombre del rol: ${fields[7]} ")
                 }
             }
         return lista
     }
 
-    override fun writeToFile(file: File, productos: List<Personal>) {
+    override fun writeToFile(file: File, personal: List<Personal>) {
         logger.debug { "Escribiendo fichero CSV" }
         if (!file.parentFile.exists() || !file.parentFile.isDirectory || !file.name.endsWith(".csv")) {
             logger.error { "El directorio padre del fichero no se encuentra o no existe" }
@@ -71,11 +74,12 @@ class PersonalStorageCsv : PersonalStorage {
         file.writeText("id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol")
         personal.forEach {
             when (it) {
-                is JugadorDto -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
-                is EntrenadorDto -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
+                is Jugador -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
+                is Entrenador -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
             }
         }
     }
 }
 
- */
+
+
