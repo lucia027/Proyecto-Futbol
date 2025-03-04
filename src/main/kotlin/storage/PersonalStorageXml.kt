@@ -1,4 +1,4 @@
-package org.example.storage.storage
+/*package org.example.storage.storage
 
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -34,4 +34,5 @@ class PersonalStorageXml: PersonalStorageFile {
     }
 
 }
+ */
 

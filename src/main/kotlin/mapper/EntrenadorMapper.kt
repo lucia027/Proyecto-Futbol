@@ -34,7 +34,7 @@ fun EntrenadorDto.toModel(): Entrenador {
         fechaIncorporacion = this.fechaIncorporacion,
         salario = this.salario,
         pais = this.pais,
-        especialidad = this.especialidad.toString(),
+        especialidad = this.especialidad,
         rol = this.rol
     )
 }

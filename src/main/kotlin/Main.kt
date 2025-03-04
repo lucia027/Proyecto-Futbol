@@ -9,10 +9,13 @@ import org.example.exceptions.exceptions
 import org.example.models.Jugador
 import org.example.repository.PersonalRepository
 import org.example.service.PersonalService
+//import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
+import java.nio.file.Paths
 
 
-/*import kotlinx.serialization.encodeToString
+/*
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import nl.adaptivity.xmlutil.dom2.Document
 import nl.adaptivity.xmlutil.serialization.XML
@@ -30,8 +33,7 @@ import org.example.storage.storage.PersonalStorageXml
 // import org.example.storage.storage.EntrenadorStorageJson
 import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
-
- */
+*/
 
 
 val personalCache = CacheLRU<Int, Personal>(5)
@@ -604,12 +606,12 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
      */
 
 
-    // LEER EL JSON
-    val storage = PersonalStorageJson()
-    val file = File("data", "personal.json")
+   // LEER EL JSON
+   val storageJson = PersonalStorageJson()
+   val fileJson = File("data", "personal.json")
 
-    val personalList = storage.readFromFile(file)
-    personalList.forEach { println(it) }
+   val personalList = storageJson.readFromFile(fileJson)
+   personalList.forEach { println(it) }
 
 
     //SOBREESCRIBIR EL JSON
@@ -631,17 +633,27 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     )
     val listaNuevoJugador = personalList + nuevoJugador
     logger.debug { "Sobreescribiendo archivo Json..." }
+
+    storageJson.writeToFile(listaNuevoJugador, fileJson)
+
+//    //Leer cualquier tipo de archivos
+//    val storage = PersonalStorageControlador()
+//    val rutaArchivo = "data/-archivo-"
+//    val file = File(rutaArchivo)
+//    try {
+//        val controlador = PersonalStorageControlador(file)
+//
+//    }catch(e:Exception){
+//        println("Error al procesar el fcihero")
+//    }
+
     storage.writeToFile(listaNuevoJugador, file)
      */
 
-    // LEER EL XML
+   /* // LEER EL XML
     val fileXML = File("data", "personal.xml")
     val equipoXML = storage.readFromFile(fileXML)
     equipoXML.forEach { println(it) }
-
-
-
-
-
+    */
 
 }
