@@ -23,7 +23,7 @@ class PersonalStorageJson : PersonalStorageFile {
     init {
         logger.debug { "inicializando PersonalStorageJson" }
     }
-
+    // Lee el archivo json y lo transforma a una cadena
     override fun readFromFile(file: File): List<Personal> {
         println()
         logger.debug { "Leyendo JSON" }
@@ -45,6 +45,7 @@ class PersonalStorageJson : PersonalStorageFile {
         }
     }
 
+    // Escribe en el archivo json
     override fun writeToFile(personal: List<Personal>, file: File) {
         if (!file.parentFile.exists() || !file.parentFile.isDirectory || !file.canWrite()) {
             throw exceptions.PersonalStorageException("El fichero json no se puede sobreescribir o no existe en su directorio padre")
@@ -56,7 +57,7 @@ class PersonalStorageJson : PersonalStorageFile {
                     is Entrenador -> { it.toDto() }
                     else -> null
                     }
-                }.filterNotNull()
+                }
 
             val jsonString = json.encodeToString(listaPersonalDto)
             file.writeText(jsonString)

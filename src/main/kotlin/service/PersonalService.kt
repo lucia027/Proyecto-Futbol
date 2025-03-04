@@ -2,6 +2,7 @@ package org.example.service
 
 import org.example.models.Personal
 
+
 interface PersonalService {
     fun readFromFile(filepath: String): List<Personal>
     fun writeToFile(filepath: String, personal: List<Personal>)

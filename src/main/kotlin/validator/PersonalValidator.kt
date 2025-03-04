@@ -1,6 +1,4 @@
 package org.example.validator
-
-
 import org.example.exceptions.exceptions
 import org.example.models.Entrenador
 import org.example.models.Personal
