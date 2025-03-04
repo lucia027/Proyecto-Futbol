@@ -35,7 +35,12 @@ import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 */
 
-
+/*
+* Caché LRU (Least Recently Used) para almacenar objetos de tipo Personal.
+*
+* @property personalCache Es una instancia de CacheLRU que utiliza enteros como claves y objetos de tipo Personal como valores.
+* La caché tiene un tamaño máximo de 5 elementos.
+* */
 val personalCache = CacheLRU<Int, Personal>(5)
 fun generarId(): Int {
     return personalCache.listAll().size + 1
