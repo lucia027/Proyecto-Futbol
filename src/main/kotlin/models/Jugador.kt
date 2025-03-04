@@ -4,6 +4,16 @@ package org.example.models
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+// Clase jugador con sus parametros
+
+/**
+ * @param posicion --> posicion del jugador
+ * @param dorsal --> numero en la camiseta del jugador
+ * @param altura --> altura del jugador
+ * @param peso --> lo que pesa un jugador
+ * @param goles --> goles que ha marcado un jugador
+ * @param partidosJugados --> partidos totales en los que ha participado un jugador
+ */
 
 class Jugador(
     id: Long,
@@ -22,6 +32,7 @@ class Jugador(
     var partidosJugados: Int
 ): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol) {
 
+    // Sobreescribimos la cadena que se muestra al imprimir el modelo
     override fun toString(): String {
         return ("Jugador(id=$id, nombre=$nombre, apellidos=$apellidos, fechaNacimiento=$fechaNacimiento, fechaIncorporacion=$fechaIncorporacion, salario=$salario, pais=$pais, posiciom=$posicion, dorsal=$dorsal, altura=$altura, peso=$peso, goles=$goles, partidosJugados=$partidosJugados )")
     }
