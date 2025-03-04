@@ -615,7 +615,7 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
 
 
     //SOBREESCRIBIR EL JSON
-    val nuevoJugador = Jugador(
+    /*val nuevoJugador = Jugador(
         id = 999L,
         nombre = "Lucia",
         apellidos = "Fuertes Cruz",
@@ -633,6 +633,7 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
     )
     val listaNuevoJugador = personalList + nuevoJugador
     logger.debug { "Sobreescribiendo archivo Json..." }
+
     storageJson.writeToFile(listaNuevoJugador, fileJson)
 
 //    //Leer cualquier tipo de archivos
@@ -645,5 +646,14 @@ fun consultaSalarioPromedioPorPaisYSalarioExtremos() {}
 //    }catch(e:Exception){
 //        println("Error al procesar el fcihero")
 //    }
+
+    storage.writeToFile(listaNuevoJugador, file)
+     */
+
+   /* // LEER EL XML
+    val fileXML = File("data", "personal.xml")
+    val equipoXML = storage.readFromFile(fileXML)
+    equipoXML.forEach { println(it) }
+    */
 
 }

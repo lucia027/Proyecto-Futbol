@@ -36,5 +36,4 @@ data class PersonalDto (
     var goles: Int?,
     @SerialName("partidos_jugados")
     var partidos_jugados: Int?
-
 ) : java.io.Serializable
