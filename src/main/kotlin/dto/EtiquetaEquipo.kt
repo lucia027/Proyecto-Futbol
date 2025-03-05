@@ -1,4 +1,4 @@
-package org.example.dto
+/*package org.example.dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -8,3 +8,4 @@ import kotlinx.serialization.Serializable
 data class EtiquetaEquipo (
     val equipo : List<PersonalXmlDto>,
 ) : java.io.Serializable
+ */

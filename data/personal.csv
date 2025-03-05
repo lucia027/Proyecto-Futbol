@@ -1,21 +1,22 @@
-id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol21, Carlos, Santana, 1985-01-15, 2002-03-01, 33000.0, Brasil, Jugador
-22, Miguel, Rodriguez, 1982-11-30, 2001-07-15, 34000.0, España, Jugador
-23, Luca, Bianchi, 1987-06-20, 2003-09-10, 32000.0, Italia, Jugador
-24, Hans, Keller, 1980-04-18, 2000-02-01, 36000.0, Alemania, Entrenador
-25, Juan, Perez, 1986-09-25, 2003-04-20, 29000.0, México, Jugador
-26, Nicolas, Gomez, 1984-03-05, 2001-06-11, 31000.0, Argentina, Jugador
-27, Takeshi, Yamamoto, 1983-07-30, 2001-05-20, 28000.0, Japón, Jugador
-28, Samuel, Johnson, 1981-11-11, 2000-05-25, 37000.0, Estados Unidos, Entrenador
-29, Pierre, Dupont, 1985-02-10, 2002-08-15, 30000.0, Francia, Jugador
-30, Igor, Petrov, 1982-04-04, 2001-09-10, 35000.0, Rusia, Jugador
-31, Luisa, Martinez, 1987-01-21, 2004-03-15, 31000.0, España, Jugador
-32, Anita, Lopez, 1986-05-12, 2003-07-07, 29000.0, Chile, Jugador
-33, Erik, Svensson, 1983-09-09, 2001-10-12, 34000.0, Suecia, Jugador
-34, Alicia, Fernandez, 1984-07-17, 2002-05-05, 33000.0, España, Jugador
-35, Diego, Cruz, 1982-03-03, 2001-01-01, 32000.0, Uruguay, Jugador
-36, Sofia, Gonzalez, 1985-10-10, 2002-11-11, 31000.0, Argentina, Jugador
-37, Hiroshi, Tanaka, 1984-06-06, 2002-02-20, 30000.0, Japón, Jugador
-38, Marco, Rossi, 1983-12-12, 2001-04-04, 34000.0, Italia, Jugador
-39, Elena, Garcia, 1986-08-08, 2003-01-01, 32000.0, España, Jugador
-40, Pedro, Silva, 1984-11-11, 2002-06-06, 31000.0, Portugal, Jugador
-999, Lucia, Fuertes Cruz, 1987-06-24, 2021-08-01, 500000.0, Argentina, Jugador
+id,nombre,apellidos,fecha_nacimiento,fecha_incorporacion,salario,pais,rol,especialidad,posicion,dorsal,altura,peso,goles,partidos_jugados
+1,Roberto,Hongo,1960-07-17,2000-01-01,60000.0,Brasil,Entrenador,ENTRENADOR_PRINCIPAL,,,,,,
+2,Oliver,Atom,1983-04-10,2001-05-15,35000.0,España,Jugador,,DELANTERO,10,1.75,65.0,70,150
+3,Benji,Price,1983-11-07,2001-05-15,34000.0,Alemania,Jugador,,PORTERO,1,1.83,78.0,0,200
+4,Freddy,Marshall,1965-09-22,2005-04-10,55000.0,España,Entrenador,ENTRENADOR_PORTEROS,,,,,,
+5,Tom,Baker,1984-03-20,2001-05-15,32000.0,Inglaterra,Jugador,,CENTROCAMPISTA,8,1.72,63.0,30,140
+6,Bruce,Harper,1983-08-15,2001-05-15,30000.0,España,Jugador,,DEFENSA,4,1.78,70.0,5,180
+7,Jefferson,Robles,1968-12-12,2003-11-11,58000.0,México,Entrenador,ENTRENADOR_ASISTENTE,,,,,,
+8,Phillip,Callahan,1983-06-06,2001-05-15,31000.0,Italia,Jugador,,DEFENSA,5,1.80,72.0,10,160
+9,Johnny,Mason,1984-01-25,2001-05-15,31000.0,España,Jugador,,CENTROCAMPISTA,6,1.74,68.0,15,130
+10,Leo,Aragones,1970-05-30,2002-09-01,57000.0,Argentina,Entrenador,ENTRENADOR_PRINCIPAL,,,,,,
+11,Paul,Diamond,1983-10-18,2001-05-15,29000.0,España,Jugador,,DELANTERO,9,1.76,67.0,40,145
+12,Ed,Warner,1983-02-02,2001-05-15,32000.0,España,Jugador,,PORTERO,22,1.85,80.0,0,180
+13,Danny,Mello,1984-09-09,2001-05-15,31000.0,España,Jugador,,DELANTERO,11,1.77,69.0,25,135
+14,Ted,Carter,1983-07-07,2001-05-15,30000.0,España,Jugador,,CENTROCAMPISTA,7,1.73,66.0,20,125
+15,Jack,Morris,1984-11-11,2001-05-15,33000.0,España,Jugador,,DEFENSA,3,1.79,71.0,8,155
+16,Ralph,Peterson,1983-05-05,2001-05-15,32000.0,España,Jugador,,PORTERO,13,1.84,79.0,0,170
+17,Charlie,Custer,1984-08-08,2001-05-15,29500.0,España,Jugador,,DELANTERO,14,1.78,68.0,22,140
+18,David,Evans,1983-12-12,2001-05-15,28500.0,España,Jugador,,CENTROCAMPISTA,15,1.75,67.0,18,115
+19,Patrick,Everett,1984-06-06,2001-05-15,32000.0,España,Jugador,,DEFENSA,2,1.81,73.0,6,150
+20,Richard,Textex,1983-03-03,2001-05-15,27500.0,España,Jugador,,PORTERO,16,1.86,82.0,0,160
+
