@@ -3,19 +3,16 @@ package org.example
 import org.example.models.Personal
 import org.example.storage.PersonalStorageJson
 import java.io.File
-<<<<<<< HEAD
+
 import org.example.cache.CacheLRU
-<<<<<<< HEAD
-=======
-=======
->>>>>>> upstream/dev
+
 import org.example.exceptions.exceptions
 import org.example.models.Jugador
 import org.example.repository.PersonalRepository
 import org.example.service.PersonalService
 import org.example.storage.PersonalStorageCsv
 import org.example.cache.CacheImpl
->>>>>>> upstream/dev
+import org.example.storage.PersonalStorageBin
 //import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
 
@@ -41,23 +38,6 @@ import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 */
 
-<<<<<<< HEAD
-/*
-* Caché LRU (Least Recently Used) para almacenar objetos de tipo Personal.
-*
-* @property personalCache Es una instancia de CacheLRU que utiliza enteros como claves y objetos de tipo Personal como valores.
-* La caché tiene un tamaño máximo de 5 elementos.
-* */
-val personalCache = CacheLRU<Int, Personal>(5)
-fun generarId(): Long {
-    return personalCache.listAll().size + 1L
-=======
-
-val personalCache = CacheImpl<Int, Personal>(5)
-fun generarId(): Int {
-    return personalCache.listAll().size + 1
->>>>>>> upstream/dev
-}
 fun main() {
 
     val logger = logging()
@@ -147,5 +127,14 @@ fun main() {
     logger.debug { "Sobreescribiendo archivo Csv..." }
     storageCSV.writeToFile(listaNuevoJugador, fileCsv)
      */
+
+    // Leer Binario
+    val storageBin = PersonalStorageBin()
+    val fileBin = File("data", "personal.bin")
+
+    val personalListBin = storageBin.readFromFile(fileBin)
+    personalList.forEach { println(it) }
+
+
 
 }
