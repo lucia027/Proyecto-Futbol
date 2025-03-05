@@ -9,6 +9,7 @@ import org.example.repository.PersonalRepository
 import org.example.service.PersonalService
 import org.example.storage.PersonalStorageCsv
 import org.example.cache.CacheImpl
+import org.example.storage.PersonalStorageBin
 //import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
 
@@ -128,5 +129,14 @@ fun main() {
     logger.debug { "Sobreescribiendo archivo Csv..." }
     storageCSV.writeToFile(listaNuevoJugador, fileCsv)
      */
+
+    // Leer Binario
+    val storageBin = PersonalStorageBin()
+    val fileBin = File("data", "personal.bin")
+
+    val personalListBin = storageBin.readFromFile(fileBin)
+    personalList.forEach { println(it) }
+
+
 
 }
