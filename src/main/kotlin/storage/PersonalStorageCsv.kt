@@ -11,14 +11,16 @@ import org.example.models.Personal
 import org.lighthousegames.logging.logging
 import java.io.File
 
-class PersonalStorageCsv : PersonalStorage {
+class PersonalStorageCsv : PersonalStorageFile {
 
+    //Implementacion del logger
     private val logger = logging()
     init {
         logger.debug { "Iniciando almacenamiento en CSV" }
     }
 
-    override fun readFromFile(file: File): List<Any> {
+    //Lee el fichero y lo transforma a una lista del tipo PersonalDto
+    override fun readFromFile(file: File): List<PersonalDto> {
         logger.debug { "Leyendo fichero CSV" }
 
         if (!file.exists() || !file.isFile || !file.canRead() || !file.canRead() || file.length() == 0L || !file.name.endsWith(".csv")) {
@@ -30,52 +32,40 @@ class PersonalStorageCsv : PersonalStorage {
             .drop(1)
             .map { it.split(",") }
             .map { it.map { it.trim() } }
-            .map{ fields ->
-                when(fields[7]){
-                    "Jugador" -> JugadorDto(
-                        id = fields[0].toLong(),
-                        nombre = fields[1],
-                        apellidos = fields[2],
-                        fechaNacimiento = fields[3],
-                        fechaIncorporacion = fields[4],
-                        salario = fields[5].toDouble(),
-                        pais = fields[6],
-                        rol = fields[7],
-                        posicion = Jugador.Posicion.valueOf(fields[9]),
-                        dorsal = fields[10].toInt(),
-                        altura = fields[11].toDouble(),
-                        peso = fields[12].toDouble(),
-                        goles = fields[13].toInt(),
-                        partidosJugados = fields[14].toInt()
-                    ).toModel()
-                    "Entrenador" -> EntrenadorDto(
-                        id = fields[0].toLong(),
-                        nombre = fields[1],
-                        apellidos = fields[2],
-                        fechaNacimiento = fields[3],
-                        fechaIncorporacion = fields[4],
-                        salario = fields[5].toDouble(),
-                        pais = fields[6],
-                        rol = fields[7],
-                        especialidad = Entrenador.Especializacion.valueOf(fields[8])
-                    ).toModel()
-                    else -> throw exceptions.PersonalStorageCsv("No se ha encontrado el nombre del rol: ${fields[7]} ")
-                }
+            .map{
+                PersonalDto(
+                    id = it[0].toLong(),
+                    nombre = it[1],
+                    apellidos = it[2],
+                    fecha_nacimiento = it[3],
+                    fecha_incorporacion = it[4],
+                    salario = it[5].toDouble(),
+                    pais = it[6],
+                    rol = it[7],
+                    especialidad = it[8],
+                    posicion = it[9],
+                    dorsal = it[10].toIntOrNull(),
+                    altura = it[11].toDoubleOrNull(),
+                    peso = it[12].toDoubleOrNull(),
+                    goles = it[13].toIntOrNull(),
+                    partidos_jugados = it[14].toIntOrNull(),
+                )
             }
         return lista
     }
 
-    override fun writeToFile(file: File, personal: List<Personal>) {
+
+    //Añadde un elemento nuevo al archivo csv
+    override fun writeToFile(personal: List<Personal>, file: File) {
         logger.debug { "Escribiendo fichero CSV" }
         if (!file.parentFile.exists() || !file.parentFile.isDirectory || !file.name.endsWith(".csv")) {
             logger.error { "El directorio padre del fichero no se encuentra o no existe" }
             throw exceptions.PersonalStorageCsv("El directorio padre no existe")
         }
-        file.writeText("id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol")
         personal.forEach {
             when (it) {
-                is Jugador -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
-                is Entrenador -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}\n")
+                is Jugador -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}, ${it.posicion}, ${it.dorsal}, ${it.altura}, ${it.peso}, ${it.goles}, ${it.partidosJugados} /n")
+                is Entrenador -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}, ${it.especialidad} /n")
             }
         }
     }
