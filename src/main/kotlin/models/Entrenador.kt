@@ -37,7 +37,6 @@ class Entrenador(
         pais: String,
         rol: String,
     ): Personal {
-        especialidad = this.especialidad
         return Entrenador(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol, especialidad)
     }
 

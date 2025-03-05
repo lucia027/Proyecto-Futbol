@@ -3,12 +3,14 @@ package org.example
 import org.example.models.Personal
 import org.example.storage.PersonalStorageJson
 import java.io.File
+import org.example.cache.CacheLRU
 import org.example.exceptions.exceptions
 import org.example.models.Jugador
 import org.example.repository.PersonalRepository
 import org.example.service.PersonalService
 import org.example.storage.PersonalStorageCsv
 import org.example.cache.CacheImpl
+import org.example.storage.PersonalStorageBin
 //import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
 
@@ -34,11 +36,6 @@ import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 */
 
-
-val personalCache = CacheImpl<Int, Personal>(5)
-fun generarId(): Int {
-    return personalCache.listAll().size + 1
-}
 fun main() {
 
     val logger = logging()
@@ -84,8 +81,8 @@ fun main() {
 //    try {
 //        val controlador = PersonalStorageControlador(file)
 //
-//    }catch(e:Exception){
-//        println("Error al procesar el fcihero")
+//    } catch(e:Exception){
+//        println("Error al procesar el fichero")
 //    }
 
     //storage.writeToFile(listaNuevoJugador, file)
@@ -128,5 +125,14 @@ fun main() {
     logger.debug { "Sobreescribiendo archivo Csv..." }
     storageCSV.writeToFile(listaNuevoJugador, fileCsv)
      */
+
+    // Leer Binario
+    val storageBin = PersonalStorageBin()
+    val fileBin = File("data", "personal.bin")
+
+    val personalListBin = storageBin.readFromFile(fileBin)
+    personalList.forEach { println(it) }
+
+
 
 }

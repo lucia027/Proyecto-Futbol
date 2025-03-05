@@ -29,7 +29,7 @@ abstract class Personal(
     ) {
 
     companion object{
-        val NEW_ID = 1
+        val NEW_ID = 1L
     }
 
     /* Creo que esto sobra
