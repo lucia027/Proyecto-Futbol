@@ -8,7 +8,7 @@ class CacheImpl<K, V>(private val capacidad: Int): Cache<K, V> {
         capacidad, 0.75f
     ){
         override fun removeEldestEntry(eldest: MutableMap.MutableEntry<K, V>?): Boolean {
-            logger.debug { "Se ha agotado el espacio en la capacidad, eliminando elemento mas antiguo: $keys" }
+            logger.debug { "Se ha agotado el espacio en la capacidad, eliminando elemento mas antiguo." }
             return size < capacidad
         }
     }

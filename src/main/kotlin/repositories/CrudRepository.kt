@@ -1,4 +1,4 @@
-package org.example.repository
+package org.example.repositories
 
 interface CrudRepository<T, ID> {
     fun getAll(): List<T>
