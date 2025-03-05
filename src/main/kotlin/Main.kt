@@ -53,8 +53,9 @@ fun main() {
    personalList.forEach { println(it) }
 
 
-   /* //SOBREESCRIBIR EL JSON
-    val nuevoJugador = Jugador(
+   //SOBREESCRIBIR EL JSON
+    /*
+    val nuevoJugadorJson = Jugador(
         id = 41,
         nombre = "Lucia",
         apellidos = "Fuertes Cruz",
@@ -70,10 +71,11 @@ fun main() {
         goles = 7000,
         partidosJugados = 9000
     )
-    val listaNuevoJugador = personalList + nuevoJugador
+    val listaNuevoJugadorJson = personalList + nuevoJugadorJson
     logger.debug { "Sobreescribiendo archivo Json..." }
 
-    storageJson.writeToFile(listaNuevoJugador, fileJson)
+    storageJson.writeToFile(listaNuevoJugadorJson, fileJson)
+     */
 
 //    //Leer cualquier tipo de archivos
 //    val storage = PersonalStorageControlador()
@@ -90,6 +92,7 @@ fun main() {
 
 
     // LEER EL XML
+    /*
     val fileXML = File("data", "personal.xml")
     val equipoXML = storage.readFromFile(fileXML)
     equipoXML.forEach { println(it) }
@@ -104,6 +107,7 @@ fun main() {
 
 
    //SOBREESCRIBIR EL CSV
+    /*
     val nuevoJugador = Jugador(
         id = 999L,
         nombre = "Lucia",
@@ -123,5 +127,6 @@ fun main() {
     val listaNuevoJugador = personalList + nuevoJugador
     logger.debug { "Sobreescribiendo archivo Csv..." }
     storageCSV.writeToFile(listaNuevoJugador, fileCsv)
+     */
 
 }

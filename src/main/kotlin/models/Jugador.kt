@@ -61,8 +61,6 @@ class Jugador(
     @Serializable
     enum class Posicion {
         @SerialName("posicion")
-        DEFENSA, CENTROCAMPISTA, DELANTERO, PORTERO,
-        @SerialName("")
-        NINGUNO
+        DEFENSA, CENTROCAMPISTA, DELANTERO, PORTERO, NINGUNO
     }
 }
