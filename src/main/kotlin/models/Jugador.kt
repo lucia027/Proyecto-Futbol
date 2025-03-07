@@ -16,7 +16,6 @@ import kotlinx.serialization.Serializable
  */
 
 class Jugador(
-
     id: Long,
     nombre: String,
     apellidos: String,
@@ -31,7 +30,6 @@ class Jugador(
     var peso: Double,
     var goles: Int,
     var partidosJugados: Int
-
 ): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol) {
 
     // Sobreescribimos la cadena que se muestra al imprimir el modelo
@@ -49,12 +47,6 @@ class Jugador(
         pais: String,
         rol: String,
     ): Personal {
-        posicion = this.posicion
-        dorsal = this.dorsal
-        altura = this.altura
-        peso = this.peso
-        goles = this.goles
-        partidosJugados = this.partidosJugados
         return Jugador(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol, posicion, dorsal, altura, peso, goles, partidosJugados)
     }
 

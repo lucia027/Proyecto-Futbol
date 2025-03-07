@@ -12,7 +12,7 @@ package org.example.service
 import org.example.cache.CacheLRU
 import org.example.exceptions.exceptions
 import org.example.models.Personal
-import org.example.repository.PersonalRepository
+import org.example.repositories.PersonalRepository
 import org.example.storage.PersonalStorage
 import org.lighthousegames.logging.logging
 import java.io.File
