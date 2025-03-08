@@ -8,7 +8,7 @@ import java.io.File
 
 // Clase para trabajar con distintos tipos de formato
 class PersonalStorageImpl (
-    // private val storageCsv : PersonalStorageCsv = PersonalStorageCsv(), --> // Por hacer (Lucia)
+    private val storageCsv : PersonalStorageCsv = PersonalStorageCsv(),
     // private val storageXml : PersonalStorageXml = PersonalStorageXml(), --> // Por hacer (Pablo Z)
     private val storageJson : PersonalStorageJson = PersonalStorageJson(),
    // private val storageBin : PersonalStorageBin = PersonalStorageBin --> // Por hacer (Lucia)
@@ -17,10 +17,10 @@ class PersonalStorageImpl (
     private val logger = logging()
 
     //Lee un formato en base a la opcion que se elija
-    override fun readFromFile(file: File, format: FileFormat): List<Personal> {
+    override fun readFile(file: File, format: FileFormat): List<Personal> {
         logger.debug { "Leyendo el fichero..." }
         return when(format) {
-            //FileFormat.CSV -> storageCsv.readFromFile(file) // --> Por hacer (Lucía)
+            FileFormat.CSV -> storageCsv.readFile(file) // --> Por hacer (Lucía)
             // FileFormat.XML -> storageCsv.readFromFile(file) // --> Por hacer (Pablo Z)
             FileFormat.JSON -> storageJson.readFile(file)
             //FileFormat.BIN -> storageCsv.readFromFile(file) // --> Por hacer (Lucia)
@@ -29,7 +29,7 @@ class PersonalStorageImpl (
     }
 
     //Escribe en un formato en base a la opcion que se elija
-    override fun writeToFile(file: File, format: FileFormat, personal: List<Personal>) {
+    override fun writeFile(file: File, format: FileFormat, personal: List<Personal>) {
         logger.debug { "Sobreescribiendo el fichero..." }
         return when(format) {
             //FileFormat.CSV -> storageCsv.readFromFile(file) // --> Por hacer (Lucía)
