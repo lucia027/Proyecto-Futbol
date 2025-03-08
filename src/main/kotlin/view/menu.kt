@@ -61,7 +61,7 @@ fun cargarDatos(personalRepository: PersonalRepositoryImpl) {
     }
 
     try {
-        val personalList = storage.readFromFile(file).filterIsInstance<Personal>()
+        val personalList = storage.readFile(file).filterIsInstance<Personal>()
         personalList.forEach { personalRepository.save(it) }
         println("Datos cargados con éxito desde $filePath")
     } catch (e: Exception) {
@@ -248,7 +248,7 @@ fun copiarDatos(personalRepository: PersonalRepositoryImpl) {
 
     try {
         val listaPersonal = personalRepository.getAll()
-        storage.writeToFile(listaPersonal, file)
+        storage.writeFile(listaPersonal, file)
         println("Datos copiados con éxito a $filePath.")
     } catch (e: Exception) {
         println("Error al copiar los datos: ${e.message}")
