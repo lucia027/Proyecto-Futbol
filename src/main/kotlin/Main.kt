@@ -209,4 +209,40 @@ fun main() {
     // 17. Media de goles por partido de cada jugador.
     println("Media de goles por partido de cada jugador")
     personal.filterIsInstance<Jugador>().groupBy { it.goles }
+
+    //18. Listado de jugadores que tienen una altura superior a la media del equipo.
+    val jugadoresAltura = personal.filterIsInstance<Jugador>().map { it.altura }.average()
+    println("La altura promedio de los jugadores es: $jugadoresAltura")
+
+    //19. Entrenadores que se incorporaron al club en los últimos 5 años.
+    val entrenadores5 = personal.filterIsInstance<Entrenador>().filter { it.fechaIncorporacion >= 2015.toString() }
+    println("Los entrenadores que se han incorporado al club en los ultimos 5 años: $entrenadores5")
+
+    //20. Jugadores que han anotado más goles que el promedio de su posición.
+    val jugadorGolesPromedio = personal.filterIsInstance<Jugador>().map { it.goles }.average()
+    val jugadorGolesMas = personal.filterIsInstance<Jugador>().filter { it.goles > jugadorGolesPromedio }.groupBy { it.posicion }
+    println("Los jugadores que han anotado mas goles que el promedio de su posicion: $jugadorGolesMas")
+
+    //21. Por posición, máximo de goles, mínimo de goles y media.
+    val jugadorPosicion = personal.filterIsInstance<Jugador>().groupBy { it.posicion }
+    val maxGoles = personal.filterIsInstance<Jugador>().maxBy { it.goles }
+    val minGoles = personal.filterIsInstance<Jugador>().minBy { it.goles }
+    println("Agrupacion de jugadores segun posicion: $jugadorPosicion, maximo de goles anotado por un jugador: $maxGoles, minimo de goles anotados por un jugador: $minGoles, media de goles anotados entre todos los jugadores: $jugadorGolesPromedio")
+
+    //22. Estimación del coste total de la plantilla.
+    val costeTotal = personal.sumBy { it.salario.toInt() }
+    println("Estimacion total del coste de la plantilla: $costeTotal")
+
+    //23. Total del salario pagado, agrupados por año de incorporación.
+    val salarioAgrupado = personal.groupBy { it.fechaIncorporacion }.mapValues { it.value.map { it.salario }.sumOf { it } }
+    println("Total del salario agrupado por año de incorporacion: $salarioAgrupado")
+
+    //24. Jugadores agrupados por país y, dentro de cada grupo, el jugador con más partidos jugados.
+    val paisPartidos = personal.filterIsInstance<Jugador>().groupBy { it.pais }.mapValues { it.value.map{ it.partidosJugados }.maxBy { it }}
+    println("Cantidad maxima de partidos jugados por un jugador agrupados por pais: $paisPartidos")
+
+    //27. Jugadores agrupados por década de nacimiento, y dentro de cada grupo, el promedio de partidos jugados.
+
+
+    //28. Salario promedio de los jugadores agrupados por su país de origen, y dentro de cada grupo, el jugador con el salario más bajo y alto
 }
