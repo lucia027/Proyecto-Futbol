@@ -48,9 +48,8 @@ fun main() {
     val fileJson = File("data", "personal.json")
     val personalList = storageJson.readFromFile(fileJson)
     personalList.forEach { println(it) }
-
-
-    //SOBREESCRIBIR EL JSON
+    
+   //SOBREESCRIBIR EL JSON
     /*
     val nuevoJugadorJson = Jugador(
         id = 41,
