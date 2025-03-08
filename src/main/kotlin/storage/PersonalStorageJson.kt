@@ -24,7 +24,7 @@ class PersonalStorageJson : PersonalStorageFile {
         logger.debug { "inicializando PersonalStorageJson" }
     }
     // Lee el archivo json y lo transforma a una cadena
-    override fun readFromFile(file: File): List<Personal> {
+    override fun readFile(file: File): List<Personal> {
         println()
         logger.debug { "Leyendo JSON" }
 
@@ -46,7 +46,7 @@ class PersonalStorageJson : PersonalStorageFile {
     }
 
     // Escribe en el archivo json
-    override fun writeToFile(personal: List<Personal>, file: File) {
+    override fun writeFile(personal: List<Personal>, file: File) {
         if (!file.parentFile.exists() || !file.parentFile.isDirectory || !file.canWrite()) {
             throw exceptions.PersonalStorageException("El fichero json no se puede sobreescribir o no existe en su directorio padre")
         } else {
@@ -64,8 +64,3 @@ class PersonalStorageJson : PersonalStorageFile {
             }
         }
     }
-
-
-
-
-

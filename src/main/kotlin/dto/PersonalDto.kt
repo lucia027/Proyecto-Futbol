@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class PersonalDto (
+data class  PersonalDto (
     @SerialName("id")
     var id: Long,
     @SerialName("nombre")
