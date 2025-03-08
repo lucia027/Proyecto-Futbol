@@ -20,7 +20,7 @@ class PersonalStorageCsv : PersonalStorageFile {
     }
 
     //Lee el fichero y lo transforma a una lista del tipo PersonalDto
-    override fun readFromFile(file: File): List<PersonalDto> {
+    override fun readFile(file: File): List<PersonalDto> {
         logger.debug { "Leyendo fichero CSV" }
 
         if (!file.exists() || !file.isFile || !file.canRead() || !file.canRead() || file.length() == 0L || !file.name.endsWith(".csv")) {
@@ -56,7 +56,7 @@ class PersonalStorageCsv : PersonalStorageFile {
 
 
     //Añadde un elemento nuevo al archivo csv
-    override fun writeToFile(personal: List<Personal>, file: File) {
+    override fun writeFile(personal: List<Personal>, file: File) {
         logger.debug { "Escribiendo fichero CSV" }
         if (!file.parentFile.exists() || !file.parentFile.isDirectory || !file.name.endsWith(".csv")) {
             logger.error { "El directorio padre del fichero no se encuentra o no existe" }

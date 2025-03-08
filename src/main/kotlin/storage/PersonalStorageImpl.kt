@@ -22,7 +22,7 @@ class PersonalStorageImpl (
         return when(format) {
             //FileFormat.CSV -> storageCsv.readFromFile(file) // --> Por hacer (Lucía)
             // FileFormat.XML -> storageCsv.readFromFile(file) // --> Por hacer (Pablo Z)
-            FileFormat.JSON -> storageJson.readFromFile(file)
+            FileFormat.JSON -> storageJson.readFile(file)
             //FileFormat.BIN -> storageCsv.readFromFile(file) // --> Por hacer (Lucia)
             else -> throw exceptions.PersonalStorageFormat("El formato no es compatible")
         }
@@ -34,7 +34,7 @@ class PersonalStorageImpl (
         return when(format) {
             //FileFormat.CSV -> storageCsv.readFromFile(file) // --> Por hacer (Lucía)
             // FileFormat.XML -> storageCsv.readFromFile(file) // --> Por hacer (Pablo Z)
-            FileFormat.JSON -> storageJson.writeToFile(personal, file)
+            FileFormat.JSON -> storageJson.writeFile(personal, file)
             //FileFormat.BIN -> storageCsv.readFromFile(file) // --> Por hacer (Lucia)
             else -> throw exceptions.PersonalStorageFormat("El formato no es compatible")
         }
