@@ -3,9 +3,7 @@ package org.example
 import org.example.models.Personal
 import org.example.storage.PersonalStorageJson
 import java.io.File
-
 import org.example.cache.CacheLRU
-
 import org.example.exceptions.exceptions
 import org.example.models.Jugador
 import org.example.repository.PersonalRepository
@@ -33,27 +31,24 @@ import nl.adaptivity.xmlutil.serialization.XML
 import org.example.models.Entrenador
 import org.example.models.Jugador
 import org.example.models.Personal
-import org.example.storage.storage.PersonalStorageXml
-//import org.example.storage.storage.PersonalStorageXml
-// import org.example.storage.storage.EntrenadorStorageJson
+import org.example.repositories.PersonalRepositoryImpl
+import org.example.storage.PersonalStorageCsv
+import org.example.storage.PersonalStorageFile
+import org.example.storage.PersonalStorageJson
+import org.lighthousegames.logging.logging
 import java.io.File
-import javax.xml.parsers.DocumentBuilderFactory
-*/
+
 
 fun main() {
 
     val logger = logging()
 
-
-
-   // LEER EL JSON
-   val storageJson = PersonalStorageJson()
-   val fileJson = File("data", "personal.json")
-
-   val personalList = storageJson.readFile(fileJson)
-   personalList.forEach { println(it) }
-
-
+    // LEER EL JSON
+    val storageJson = PersonalStorageJson()
+    val fileJson = File("data", "personal.json")
+    val personalList = storageJson.readFromFile(fileJson)
+    personalList.forEach { println(it) }
+    
    //SOBREESCRIBIR EL JSON
     /*
     val nuevoJugadorJson = Jugador(
@@ -78,16 +73,15 @@ fun main() {
     storageJson.writeToFile(listaNuevoJugadorJson, fileJson)
      */
 
-//    //Leer cualquier tipo de archivos
-//    val storage = PersonalStorageControlador()
-//    val rutaArchivo = "data/-archivo-"
-//    val file = File(rutaArchivo)
-//    try {
-//        val controlador = PersonalStorageControlador(file)
-//
-//    } catch(e:Exception){
-//        println("Error al procesar el fichero")
-//    }
+    //Leer cualquier tipo de archivos
+    /*val storage = PersonalStorageControlador()
+    val rutaArchivo = "data/-archivo-"
+    val file = File(rutaArchivo)
+    try {
+        val controlador = PersonalStorageControlador(file)
+
+    } catch(e:Exception){
+        println("Error al procesar el fichero")*/
 
     //storage.writeToFile(listaNuevoJugador, file)
 
@@ -107,9 +101,8 @@ fun main() {
     personalList.forEach { println(it) }
 
 
-   //SOBREESCRIBIR EL CSV
-    /*
-    val nuevoJugador = Jugador(
+    //SOBREESCRIBIR EL CSV
+    /*val nuevoJugador = Jugador(
         id = 999L,
         nombre = "Lucia",
         apellidos = "Fuertes Cruz",
@@ -127,9 +120,7 @@ fun main() {
     )
     val listaNuevoJugador = personalList + nuevoJugador
     logger.debug { "Sobreescribiendo archivo Csv..." }
-    storageCSV.writeToFile(listaNuevoJugador, fileCsv)
-     */
-
+    storageCSV.writeToFile(listaNuevoJugador, fileCsv)*/
 
     // Leer Bin
     val storageBin = PersonalStorageBin()
@@ -159,6 +150,4 @@ fun main() {
     val listaNuevoJugador = personalList + nuevoJugador
     logger.debug { "Sobreescribiendo archivo Bin..." }
     storageBin.writeFile(listaNuevoJugador, fileBin)
-
-
 }
