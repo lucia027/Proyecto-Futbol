@@ -1,22 +1,24 @@
 package org.example
 
+import PersonalServiceImpl
 import org.example.models.Personal
 import org.example.storage.PersonalStorageJson
 import java.io.File
-
-import org.example.cache.CacheLRU
-
 import org.example.exceptions.exceptions
 import org.example.models.Jugador
-import org.example.repository.PersonalRepository
 import org.example.service.PersonalService
 import org.example.storage.PersonalStorageCsv
 import org.example.cache.CacheImpl
-import org.example.storage.PersonalStorageBin
+import org.example.config.Config
+import org.example.models.Entrenador
+import org.example.storage.FileFormat
 //import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
 import java.nio.file.Files
 import java.nio.file.Path
+import kotlin.io.path.Path
+import kotlin.io.path.pathString
+
 
 
 /*
@@ -46,12 +48,14 @@ fun main() {
 
 
 
+    /*
    // LEER EL JSON
    val storageJson = PersonalStorageJson()
    val fileJson = File("data", "personal.json")
 
    val personalList = storageJson.readFile(fileJson)
    personalList.forEach { println(it) }
+     */
 
 
    //SOBREESCRIBIR EL JSON
@@ -99,12 +103,14 @@ fun main() {
     equipoXML.forEach { println(it) }
     */
 
+    /*
     // Leer CSV
     val storageCSV = PersonalStorageCsv()
     val fileCsv = File("data", "personal.csv")
 
     val personalListCsv = storageCSV.readFile(fileCsv)
     personalList.forEach { println(it) }
+     */
 
 
    //SOBREESCRIBIR EL CSV
@@ -131,6 +137,7 @@ fun main() {
      */
 
 
+/*
     // Leer Bin
     val storageBin = PersonalStorageBin()
     val fileBin = File("data", "personal.bin")
@@ -160,5 +167,46 @@ fun main() {
     logger.debug { "Sobreescribiendo archivo Bin..." }
     storageBin.writeFile(listaNuevoJugador, fileBin)
 
+   */
 
+    val service = PersonalServiceImpl()
+    val personalImport = Path.of(Config.configProperties.dataDir, "personal.csv")
+    service.importFile(
+        personalImport.pathString, FileFormat.CSV)
+
+    // Obtenemos todo el personal
+    println()
+    val personal = service.getAll()
+    personal.forEach { println(it) }
+    println()
+
+    // 11. Jugadores agrupados por el año de su incorporacion al club
+    println("personal agrupado por el año de su incorporacion al club")
+    personal.filterIsInstance<Jugador>().groupBy { it.fechaIncorporacion }.forEach { println(it) }
+    println()
+
+    // 12. Entrenadores agrupados por especialidad
+    println("Entrenadores agrupados por especialidad")
+    personal.filterIsInstance<Entrenador>().groupBy { it.especialidad }.forEach { println(it) }
+
+    // 13. Jugador mas joven
+    println("Jugador mas joven")
+    personal.filterIsInstance<Jugador>().groupBy { it.fechaNacimiento }.also { println(it) }
+
+    // 14. Promedio de peso de los jugadores por posición.
+    println("Promedio de peso de los jugadores por posicion")
+    personal.filterIsInstance<Jugador>().map { it.peso }
+
+
+    // 15. Listado de todos los jugadores que tienen un dorsal par.
+    println("Jugadores con dorsal par")
+    personal.filterIsInstance<Jugador>().filter { it.dorsal %2 == 0 }.forEach { println(it) }
+
+    // 16. Jugadores que han jugado menos de 5 partidos.
+    println("Jugadores que han jugado menos de 5 partidos")
+    personal.filterIsInstance<Jugador>().filter { it.partidosJugados < 5 }.also { println(it) }
+
+    // 17. Media de goles por partido de cada jugador.
+    println("Media de goles por partido de cada jugador")
+    personal.filterIsInstance<Jugador>().groupBy { it.goles }
 }
