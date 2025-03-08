@@ -19,17 +19,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 abstract class Personal(
     val id: Long,
-    val nombre: String,
-    val apellidos: String,
-    val fechaNacimiento: String,
-    val fechaIncorporacion: String,
-    val salario: Double,
-    val pais: String,
+    var nombre: String,
+    var apellidos: String,
+    var fechaNacimiento: String,
+    var fechaIncorporacion: String,
+    var salario: Double,
+    var pais: String,
     val rol: String
     ) {
 
     companion object{
-        val NEW_ID = 1
+        val NEW_ID = 1L
     }
 
     /* Creo que esto sobra

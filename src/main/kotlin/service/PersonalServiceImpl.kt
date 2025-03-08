@@ -1,10 +1,14 @@
 import org.example.cache.Cache
 import org.example.cache.CacheImpl
 import org.example.models.Personal
+import org.example.repositories.PersonalRepository
+import org.example.repositories.PersonalRepositoryImpl
 import org.example.service.PersonalService
+import org.example.storage.FileFormat
 import org.example.storage.PersonalStorage
 import org.example.storage.PersonalStorageImpl
 import org.lighthousegames.logging.logging
+import java.io.File
 
 /* VERSION DE LUCÍA
 package org.example.service
@@ -12,7 +16,7 @@ package org.example.service
 import org.example.cache.CacheLRU
 import org.example.exceptions.exceptions
 import org.example.models.Personal
-import org.example.repository.PersonalRepository
+import org.example.repositories.PersonalRepository
 import org.example.storage.PersonalStorage
 import org.lighthousegames.logging.logging
 import java.io.File
@@ -104,29 +108,33 @@ private const val CACHE_SIZE = 6
 class PersonalServiceImpl (
     private val cache : Cache<String, Personal> = CacheImpl(CACHE_SIZE),
     private val storage: PersonalStorage = PersonalStorageImpl(),
-   // private val repository : PersonalRepository = PersonalRepositoryImpl --> Por retocar (Pablo DLF)
+    private val repository : PersonalRepository<Personal> = PersonalRepositoryImpl()
 ) : PersonalService {
 
     private val logger = logging()
-
-    override fun readFromFile(filepath: String): List<Personal> {
-        TODO()
+    override fun readFile(filepath: String, format: FileFormat): List<Personal> {
+        logger.info { "Leyendo personal del fichero" }
+        return storage.readFile(File(filepath), format)
     }
 
-    override fun writeToFile(filepath: String, personal: List<Personal>) {
-
-    }
-
-    override fun importFromFile(filePath: String) {
+    override fun writeFile(filepath: String,format: FileFormat ,personal: List<Personal>) {
         TODO("Not yet implemented")
     }
 
-    override fun exportToFile(filePath: String) {
+    override fun importFile(filePath: String, format: FileFormat) {
+        logger.info { "Importando personal del fichero" }
+        val personal = readFile(filePath, format)
+        personal.forEach {
+            repository.save(it)
+        }
+    }
+
+    override fun exportFile(filePath: String) {
         TODO("Not yet implemented")
     }
 
     override fun getAll(): List<Personal> {
-        TODO("Not yet implemented")
+        return repository.getAll()
     }
 
     override fun getById(id: Int): Personal {
