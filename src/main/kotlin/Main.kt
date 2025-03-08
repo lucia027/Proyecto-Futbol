@@ -20,6 +20,7 @@ import kotlin.io.path.Path
 import kotlin.io.path.pathString
 
 
+
 /*
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -136,7 +137,8 @@ fun main() {
      */
 
 
-  /*  // Leer Bin
+/*
+    // Leer Bin
     val storageBin = PersonalStorageBin()
     val fileBin = File("data", "personal.bin")
 
@@ -207,7 +209,4 @@ fun main() {
     // 17. Media de goles por partido de cada jugador.
     println("Media de goles por partido de cada jugador")
     personal.filterIsInstance<Jugador>().groupBy { it.goles }
-
-
-
 }
