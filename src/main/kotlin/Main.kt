@@ -12,6 +12,8 @@ import org.example.cache.CacheImpl
 import org.example.storage.PersonalStorageBin
 //import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
+import java.nio.file.Files
+import java.nio.file.Path
 
 
 /*
@@ -50,7 +52,7 @@ fun main() {
    val storageJson = PersonalStorageJson()
    val fileJson = File("data", "personal.json")
 
-   val personalList = storageJson.readFromFile(fileJson)
+   val personalList = storageJson.readFile(fileJson)
    personalList.forEach { println(it) }
 
 
@@ -103,7 +105,7 @@ fun main() {
     val storageCSV = PersonalStorageCsv()
     val fileCsv = File("data", "personal.csv")
 
-    val personalListCsv = storageCSV.readFromFile(fileCsv)
+    val personalListCsv = storageCSV.readFile(fileCsv)
     personalList.forEach { println(it) }
 
 
@@ -130,11 +132,35 @@ fun main() {
     storageCSV.writeToFile(listaNuevoJugador, fileCsv)
      */
 
-    // Leer Binario
+
+    // Leer Bin
     val storageBin = PersonalStorageBin()
     val fileBin = File("data", "personal.bin")
 
-    val personalListBin = storageBin.readFromFile(fileBin)
+    val personalListBin = storageBin.readFile(fileBin)
     personalList.forEach { println(it) }
+
+
+    //SOBREESCRIBIR EL BIN
+    val nuevoJugador = Jugador(
+        id = 999L,
+        nombre = "Lucia",
+        apellidos = "Fuertes Cruz",
+        fechaNacimiento = "1987-06-24",
+        fechaIncorporacion = "2021-08-01",
+        salario = 500000.0,
+        pais = "Argentina",
+        rol = "Jugador",
+        posicion = Jugador.Posicion.DELANTERO,
+        dorsal = 10,
+        altura = 1.7,
+        peso = 72.0,
+        goles = 700,
+        partidosJugados = 900
+    )
+    val listaNuevoJugador = personalList + nuevoJugador
+    logger.debug { "Sobreescribiendo archivo Bin..." }
+    storageBin.writeFile(listaNuevoJugador, fileBin)
+
 
 }
