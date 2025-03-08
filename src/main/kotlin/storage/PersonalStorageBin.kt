@@ -1,5 +1,5 @@
 package org.example.storage
-
+/*
 import org.example.Dto.EntrenadorDto
 import org.example.Dto.JugadorDto
 import org.example.PersonalDto
@@ -60,3 +60,4 @@ class PersonalStorageBin : PersonalStorageFile {
         TODO("Not yet implemented")
     }
 }
+ */
