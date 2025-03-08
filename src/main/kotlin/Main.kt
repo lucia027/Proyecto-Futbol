@@ -133,6 +133,4 @@ fun main() {
     val personalListBin = storageBin.readFromFile(fileBin)
     personalList.forEach { println(it) }
 
-
-
 }
