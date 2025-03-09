@@ -22,11 +22,14 @@ class PersonalStorageCsv : PersonalStorageFile {
     override fun readFile(file: File): List<Personal> {
         logger.debug { "Leyendo fichero CSV" }
 
+        //Filtra errores de lectura del archivo
         if (!file.exists() || !file.isFile || !file.canRead() || !file.canRead() || file.length() == 0L || !file.name.endsWith(".csv")) {
             logger.error { "El fichero no existe o no se puede leer: $file" }
             throw exceptions.PersonalStorageException("El fichero no existe o no se puede leer")
         }
 
+        //Crea una lista del tipo Personal Dto con todos sus datos, saltandose la cabecera, separando por la comas,
+        //elimina los espacios en blanco del string y por ultimo la convierte a model.
         val lista = file.readLines()
             .drop(1)
             .map { it.split(",") }
@@ -53,12 +56,19 @@ class PersonalStorageCsv : PersonalStorageFile {
         return lista
     }
 
+    //Sobreescribe la lista de personal añadiendo entradas.
     override fun writeFile(personal: List<Personal>, file: File) {
+
+        //Logger
         logger.debug { "Escribiendo fichero CSV" }
+
+        //Filtra errores de lectura del archivo
         if (!file.parentFile.exists() || !file.parentFile.isDirectory || !file.name.endsWith(".csv")) {
             logger.error { "El directorio padre del fichero no se encuentra o no existe" }
             throw exceptions.PersonalStorageCsv("El directorio padre no existe")
         }
+
+        //Sobreescribe con los datos proporcionados la lista del tipo personal dependiendo de si es jugador o entrenador
         personal.forEach {
             when (it) {
                 is Jugador -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}, ${it.posicion}, ${it.dorsal}, ${it.altura}, ${it.peso}, ${it.goles}, ${it.partidosJugados} /n")

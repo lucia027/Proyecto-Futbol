@@ -5,6 +5,7 @@ import org.example.models.Entrenador
 import org.example.models.Jugador
 import org.example.models.Personal
 
+//Funcion de extension para convertir un PersonalDto a Jugador
 fun PersonalDto.toJugador(): Jugador {
     return Jugador(
         id = this.id,
@@ -24,6 +25,7 @@ fun PersonalDto.toJugador(): Jugador {
     )
 }
 
+//Funcion de extension para convertir un PersonalDto a Entrenador
 fun PersonalDto.toEntrenador(): Entrenador {
         return Entrenador(
             id = this.id,
@@ -38,6 +40,7 @@ fun PersonalDto.toEntrenador(): Entrenador {
         )
     }
 
+//Funcion de extension que convierte un PersonalDto a Personla, eligiendo despues entre Jugaodr y Entrenador
 fun PersonalDto.toModel(): Personal {
     return if (this.rol == "Jugador") {
         Jugador(
