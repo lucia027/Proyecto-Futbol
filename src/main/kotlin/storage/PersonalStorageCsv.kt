@@ -1,19 +1,15 @@
 package org.example.storage
 
-import org.example.Dto.EntrenadorDto
-import org.example.Dto.JugadorDto
-import org.example.PersonalDto
+import org.example.Dto.PersonalDto
 import org.example.exceptions.exceptions
 import org.example.mapper.toModel
-import org.example.models.Entrenador
-import org.example.models.Jugador
 import org.example.models.Personal
 import org.lighthousegames.logging.logging
 import java.io.File
 
 class PersonalStorageCsv : PersonalStorageFile {
 
-    //Implementacion del logger
+    //Implementación del logger
     private val logger = logging()
     init {
         logger.debug { "Iniciando almacenamiento en CSV" }
