@@ -9,7 +9,7 @@ class JugadorValidator {
 
     val logger = logging()
 
-    fun validatePersonal(jugador: Jugador) {
+    fun validateJugador(jugador: Jugador) {
 
         logger.debug { "Validando jugadores" }
 
@@ -50,7 +50,10 @@ class JugadorValidator {
             throw exceptions.JugadorValidatorException("d")
         }
         if (jugador.dorsal !in  1..25 ) {
-            throw exceptions.JugadorValidatorException("d")
+            throw exceptions.JugadorValidatorException("El dorsal debe estar entre 1 y 25")
+        }
+        if (jugador.dorsal == null) {
+            throw exceptions.JugadorValidatorException("El dorsal no puede ser nulo")
         }
         if (jugador.altura !in 0.0..2.5) {
             throw exceptions.JugadorValidatorException("altura")

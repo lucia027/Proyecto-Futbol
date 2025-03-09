@@ -28,13 +28,13 @@ class Jugador(
     apellidos: String,
     fechaNacimiento: String,
     fechaIncorporacion: String,
-    salario: Double,
+    salario: Double?,
     pais: String,
     rol: String,
     var posicion: Posicion,
-    var dorsal: Int,
-    var altura: Double,
-    var peso: Double,
+    var dorsal: Int?,
+    var altura: Double?,
+    var peso: Double?,
     var goles: Int,
     var partidosJugados: Int
 ): Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol) {

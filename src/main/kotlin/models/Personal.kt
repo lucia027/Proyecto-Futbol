@@ -23,7 +23,7 @@ abstract class Personal(
     var apellidos: String,
     var fechaNacimiento: String,
     var fechaIncorporacion: String,
-    var salario: Double,
+    var salario: Double?,
     var pais: String,
     val rol: String
     ) {
