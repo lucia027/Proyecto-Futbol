@@ -14,8 +14,8 @@ class ConfigTest {
 
     @AfterAll
     fun cleanup() {
-        val dataDir = Path.of(Config.configProperties.dataDir)
-        val backupDir = Path.of(Config.configProperties.backupDir)
+        val dataDir = Path.of(Config.confgProperties.dataDir)
+        val backupDir = Path.of(Config.confgProperties.backupDir)
 
         Files.deleteIfExists(dataDir)
         Files.deleteIfExists(backupDir)

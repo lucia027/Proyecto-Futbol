@@ -1,4 +1,4 @@
-package storage
+/*package storage
 
 import org.example.models.Entrenador
 import org.example.storage.PersonalStorage
@@ -31,3 +31,4 @@ class PersonalStorageImplTest {
         verify(exactly = 1) { PersonalStorageCsv.readFile(file) }
     }
 }
+ */

@@ -2,7 +2,6 @@ package repository
 
 import org.example.models.Entrenador
 import org.example.models.Jugador
-import org.example.models.Personal
 import org.example.repositories.PersonalRepositoryImpl
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -91,7 +90,7 @@ class PersonalRepositoryImplTest {
     }
 
     @Test
-    @DisplayName("Devuelve null cuando no eciste el personal")
+    @DisplayName("Devuelve null cuando no existe el personal")
     fun nullPersonal(){
         val result = personalRepository.delete(200)
         assertNull(result)

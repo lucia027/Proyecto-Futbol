@@ -44,7 +44,7 @@ abstract class Personal(
         apellidos: String = this.apellidos,
         fechaNacimiento: String = this.fechaNacimiento,
         fechaIncorporacion: String = this.fechaNacimiento,
-        salario: Double = this.salario,
+        salario: Double = this.salario!!,
         pais: String = this.pais,
         rol: String = this.rol
     ): Personal

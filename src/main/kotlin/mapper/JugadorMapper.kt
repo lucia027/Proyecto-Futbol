@@ -13,7 +13,7 @@ fun Jugador.toDto(): PersonalDto {
         apellidos = apellidos,
         fecha_nacimiento = fechaNacimiento,
         fecha_incorporacion = fechaIncorporacion,
-        salario = salario,
+        salario = salario!!,
         pais = pais,
         posicion = posicion.toString(),
         dorsal = dorsal,

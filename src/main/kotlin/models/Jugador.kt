@@ -24,7 +24,7 @@ class Jugador(
     salario: Double?,
     pais: String,
     rol: String,
-    var posicion: Posicion,
+    var posicion: Posicion?,
     var dorsal: Int?,
     var altura: Double?,
     var peso: Double?,
