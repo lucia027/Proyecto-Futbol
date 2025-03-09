@@ -8,6 +8,6 @@ import java.io.File
 // Se implementara en los Storage de cada formato
 
 interface PersonalStorageFile {
-    fun readFile(file : File) : List<Any>
+    fun readFile(file : File) : List<Personal>
     fun writeFile (personal: List<Personal>, file: File)
 }
