@@ -17,7 +17,7 @@ class CacheImpl<K, V>(private val capacidad: Int): Cache<K, V> {
         logger.debug{ "Creando la cache con capacidad: $capacidad" }
     }
 
-    override fun get(key: K): V? {
+    override fun get(key: Long): V? {
         logger.debug{ "Buscando el elemento con la clave: $key" }
         return cache[key]
     }
@@ -28,7 +28,7 @@ class CacheImpl<K, V>(private val capacidad: Int): Cache<K, V> {
         return value
     }
 
-    override fun remove(key: K): V? {
+    override fun remove(key: Long): V? {
         logger.debug{ "Eliminando el elemento con la clave: $key" }
         return cache.remove(key)
     }

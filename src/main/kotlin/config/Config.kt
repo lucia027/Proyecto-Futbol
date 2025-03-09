@@ -9,7 +9,7 @@ import kotlin.io.path.pathString
 object Config {
     private val logger = logging()
 
-    val configProperties: ConfigProperties by lazy {
+    val confgProperties: ConfigProperties by lazy {
         loadConfig()
     }
     private fun loadConfig(): ConfigProperties {

@@ -35,7 +35,7 @@ class PersonalValidator {
         if (personal.fechaIncorporacion <= "1960-01-01") {
             throw exceptions.PersonalValidatorException("fecha")
         }
-        if (personal.salario.isNaN()) {
+        if (personal.salario!!.isNaN()) {
             throw exceptions.PersonalValidatorException("caca")
         }
         if (personal.pais.isBlank()) {
