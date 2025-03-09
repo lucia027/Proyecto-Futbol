@@ -1,5 +1,6 @@
 package org.example.cache
 
+//Interfaz con las funciones base de la cache LRU
 interface Cache<K, V> {
     fun get(key: K): V?
     fun put(key: K, value: V): V?
