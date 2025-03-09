@@ -2,7 +2,7 @@ package org.example.mapper
 
 
 import org.example.Dto.JugadorDto
-import org.example.PersonalDto
+import org.example.Dto.PersonalDto
 import org.example.models.Jugador
 import org.example.models.Personal
 
