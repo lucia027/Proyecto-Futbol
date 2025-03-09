@@ -2,7 +2,7 @@ package org.example.mapper
 
 
 import org.example.Dto.JugadorDto
-import org.example.PersonalDto
+import org.example.Dto.PersonalDto
 import org.example.models.Jugador
 import org.example.models.Personal
 
@@ -13,7 +13,7 @@ fun Jugador.toDto(): PersonalDto {
         apellidos = apellidos,
         fecha_nacimiento = fechaNacimiento,
         fecha_incorporacion = fechaIncorporacion,
-        salario = salario,
+        salario = salario!!,
         pais = pais,
         posicion = posicion.toString(),
         dorsal = dorsal,
