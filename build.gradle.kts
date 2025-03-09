@@ -26,6 +26,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     // Serializable XML
     implementation("io.github.pdvrieze.xmlutil:serialization-jvm:0.90.3")
+    //MockK
+    testImplementation("io.mockk:mockk:1.13.16")
 }
 
 tasks.test {

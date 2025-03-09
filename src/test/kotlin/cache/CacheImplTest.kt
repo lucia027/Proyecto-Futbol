@@ -24,16 +24,14 @@ class CacheImplTest {
         lruCache.put("key4", "value4")
         lruCache.put("key5", "value5")
 
-        assertNotNull(lruCache.get("key3"))
-
         lruCache.put("key6", "value6")
 
-        assertNull(lruCache.get("key3"))
         assertNull(lruCache.get("key1"))
-        assertNull(lruCache.get("key2"))
-        assertNull(lruCache.get("key4"))
-        assertNull(lruCache.get("key5"))
-        assertNull(lruCache.get("key6"))
+        assertNotNull(lruCache.get("key2"))
+        assertNotNull(lruCache.get("key3"))
+        assertNotNull(lruCache.get("key4"))
+        assertNotNull(lruCache.get("key5"))
+        assertNotNull(lruCache.get("key6"))
     }
 
     @Test
