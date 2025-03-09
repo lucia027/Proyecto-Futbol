@@ -12,6 +12,7 @@ import org.example.cache.CacheImpl
 import org.example.config.Config
 import org.example.models.Entrenador
 import org.example.storage.FileFormat
+import org.example.view.imprimirMenu
 //import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
 import java.nio.file.Files
@@ -169,11 +170,13 @@ fun main() {
 
    */
 
+    imprimirMenu()
+
     val service = PersonalServiceImpl()
     val personalImport = Path.of(Config.configProperties.dataDir, "personal.csv")
     service.importFile(
         personalImport.pathString, FileFormat.CSV)
-
+/*
     // Obtenemos todo el personal
     println()
     val personal = service.getAll()
@@ -266,4 +269,5 @@ fun main() {
 
 
     //28. Salario promedio de los jugadores agrupados por su país de origen, y dentro de cada grupo, el jugador con el salario más bajo y alto
+*/
 }
