@@ -2,8 +2,6 @@ package storage
 
 import org.example.exceptions.exceptions
 import org.example.models.Entrenador
-import org.example.models.Jugador
-import org.example.models.Personal
 import org.example.storage.PersonalStorageCsv
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
@@ -22,7 +20,7 @@ class PersonalStorageCsvTest {
         val file = File(tempDir, "personal.csv")
         file.writeText(
             "id,nombre,apellidos,fecha_nacimiento,fecha_incorporacion,salario,pais,rol,especialidad\n" +
-            "1,Maria,Hongo,1960-07-17,2000-01-01,60000.0,Brasil,Entrenador,ENTRENADOR_PRINCIPAL,,,,,,\n"
+            "1,Maria,Hongo,1960-07-17,2000-01-01,60000.0,Brasil,Entrenador,ENTRENADOR_PRINCIPAL\n"
         )
 
         val personal = storage.readFile(file)
@@ -32,7 +30,7 @@ class PersonalStorageCsvTest {
             { assertEquals(1, personal.size) },
             {
                 assertEquals(
-                    Entrenador(1, "Maria", "Hongo", "1960-07-17", "2000-01-01", 60000.0, "Brasil", "Entrenador", Entrenador.Especializacion.ENTRENADOR_ASISTENTE),
+                    Entrenador(1, "Maria", "Hongo", "1960-07-17", "2000-01-01", 60000.0, "Brasil", "Entrenador", Entrenador.Especializacion.ENTRENADOR_PRINCIPAL),
                     personal[0],
                 )
             }
@@ -58,7 +56,7 @@ class PersonalStorageCsvTest {
         storage.writeFile(personal, file)
 
         val expectedContent = ("id,nombre,apellidos,fecha_nacimiento,fecha_incorporacion,salario,pais,rol,especialidad\n" +
-                                        "1,Maria,Hongo,1960-07-17,2000-01-01,60000.0,Brasil,Entrenador,ENTRENADOR_PRINCIPAL,,,,,,\n")
+                                        "1,Maria,Hongo,1960-07-17,2000-01-01,60000.0,Brasil,Entrenador,ENTRENADOR_PRINCIPAL\n")
 
         assertEquals(expectedContent, file.readText())
     }

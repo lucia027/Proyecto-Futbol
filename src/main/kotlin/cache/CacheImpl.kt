@@ -5,11 +5,11 @@ class CacheImpl<K, V>(private val capacidad: Int): Cache<K, V> {
 
     private val logger = logging()
     private val cache = object : LinkedHashMap<K, V>(
-        capacidad, 0.75f
+        capacidad, 0.75f, true
     ){
         override fun removeEldestEntry(eldest: MutableMap.MutableEntry<K, V>?): Boolean {
             logger.debug { "Se ha agotado el espacio en la capacidad, eliminando elemento mas antiguo." }
-            return size < capacidad
+            return size > capacidad
         }
     }
 
@@ -17,7 +17,7 @@ class CacheImpl<K, V>(private val capacidad: Int): Cache<K, V> {
         logger.debug{ "Creando la cache con capacidad: $capacidad" }
     }
 
-    override fun get(key: Long): V? {
+    override fun get(key: K): V? {
         logger.debug{ "Buscando el elemento con la clave: $key" }
         return cache[key]
     }
@@ -28,7 +28,7 @@ class CacheImpl<K, V>(private val capacidad: Int): Cache<K, V> {
         return value
     }
 
-    override fun remove(key: Long): V? {
+    override fun remove(key: K): V? {
         logger.debug{ "Eliminando el elemento con la clave: $key" }
         return cache.remove(key)
     }

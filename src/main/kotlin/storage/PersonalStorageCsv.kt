@@ -2,7 +2,10 @@ package org.example.storage
 
 import org.example.Dto.PersonalDto
 import org.example.exceptions.exceptions
+import org.example.mapper.toDto
 import org.example.mapper.toModel
+import org.example.models.Entrenador
+import org.example.models.Jugador
 import org.example.models.Personal
 import org.lighthousegames.logging.logging
 import java.io.File
@@ -55,6 +58,12 @@ class PersonalStorageCsv : PersonalStorageFile {
         if (!file.parentFile.exists() || !file.parentFile.isDirectory || !file.name.endsWith(".csv")) {
             logger.error { "El directorio padre del fichero no se encuentra o no existe" }
             throw exceptions.PersonalStorageCsv("El directorio padre no existe")
+        }
+        personal.forEach {
+            when (it) {
+                is Jugador -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}, ${it.posicion}, ${it.dorsal}, ${it.altura}, ${it.peso}, ${it.goles}, ${it.partidosJugados} /n")
+                is Entrenador -> file.appendText("${it.id}, ${it.nombre}, ${it.apellidos}, ${it.fechaNacimiento}, ${it.fechaIncorporacion}, ${it.salario}, ${it.pais}, ${it.rol}, ${it.especialidad} /n")
+            }
         }
     }
 }
