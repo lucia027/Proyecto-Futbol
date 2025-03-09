@@ -1,10 +1,16 @@
 package org.example.storage
+
+
 /*
 import org.example.Dto.EntrenadorDto
 import org.example.Dto.JugadorDto
+
 import org.example.PersonalDto
 import org.example.exceptions.exceptions
+import org.example.mapper.toDto
 import org.example.mapper.toModel
+import org.example.models.Entrenador
+import org.example.models.Jugador
 import org.example.models.Personal
 import org.lighthousegames.logging.logging
 import java.io.File
@@ -17,7 +23,7 @@ class PersonalStorageBin : PersonalStorageFile {
         logger.debug { "Iniciando almacenamiento en Binario" }
     }
 
-    override fun readFromFile(file: File): List<Any> {
+    override fun readFile(file: File): List<Personal> {
         logger.debug { "Leyendo fichero Binario" }
 
         if (!file.exists() || !file.isFile || !file.canRead() || file.length() == 0L || !file.name.endsWith(".bin")) {
@@ -56,8 +62,41 @@ class PersonalStorageBin : PersonalStorageFile {
     }
 
 
-    override fun writeToFile(personal: List<Personal>, file: File) {
-        TODO("Not yet implemented")
+    override fun writeFile(personal: List<Personal>, file: File) {
+        logger.debug { "Escribiendo fichero CSV" }
+        if (!file.parentFile.exists() || !file.parentFile.isDirectory || !file.name.endsWith(".bin")) {
+            logger.error { "El directorio padre del fichero no se encuentra o no existe" }
+            throw exceptions.PersonalStorageCsv("El directorio padre no existe")
+        }
+
+        val personalDto : List<PersonalDto> = personal.map {
+            when (it) {
+                is Jugador -> {it.toDto()}
+                is Entrenador -> {it.toDto()}
+                else -> null
+            } as PersonalDto
+        }
+
+        RandomAccessFile(file, "rw").use { raf ->
+            raf.setLength(0)
+            for (personal in personalDto){
+                raf.writeLong(personal.id)
+                raf.writeUTF(personal.nombre)
+                raf.writeUTF(personal.apellidos)
+                raf.writeUTF(personal.fecha_nacimiento)
+                raf.writeUTF(personal.fecha_incorporacion)
+                raf.writeDouble(personal.salario)
+                raf.writeUTF(personal.pais)
+                raf.writeUTF(personal.rol)
+                raf.writeUTF(personal.especialidad)
+                raf.writeUTF(personal.posicion)
+                raf.writeInt(personal.dorsal!!)
+                raf.writeDouble(personal.altura!!)
+                raf.writeDouble(personal.peso!!)
+                raf.writeInt(personal.goles!!)
+                raf.writeInt(personal.partidos_jugados!!)
+            }
+        }
     }
 }
  */

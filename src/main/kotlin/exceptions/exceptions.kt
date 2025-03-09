@@ -15,7 +15,7 @@ package org.example.exceptions
         class EntrenadorValidatorException(message: String) : exceptions(message)
 
         // Excepcion personalizada para ¿?
-        class PersonalIdNotFound(id: String) : Exception("El id delpersonal no se ha encontrado $id")
+        class PersonalIdNotFound(id: String) : Exception("El id del personal no se ha encontrado $id")
         // Excepcion personalizada para el formato de fichero
         class PersonalStorageFormat(message: String) : exceptions(message)
     }
