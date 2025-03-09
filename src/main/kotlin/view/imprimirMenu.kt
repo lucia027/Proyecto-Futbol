@@ -218,7 +218,7 @@ fun actualizarMiembro(personalRepository: PersonalRepositoryImpl) {
             print("Nuevo País (${miembro.pais}): ")
             miembro.pais = readln().ifEmpty { miembro.pais }
             print("Nueva Posición (DELANTERO, CENTROCAMPISTA, DEFENSA, PORTERO) (${miembro.posicion}): ")
-            miembro.posicion = readln().ifEmpty { miembro.posicion.name }.let { Jugador.Posicion.valueOf(it.uppercase()) }
+            miembro.posicion = readln().ifEmpty { miembro.posicion!!.name }.let { Jugador.Posicion.valueOf(it.uppercase()) }
             print("Nuevo Dorsal (${miembro.dorsal}): ")
             miembro.dorsal = readln().toIntOrNull() ?: miembro.dorsal
             print("Nueva Altura (${miembro.altura}): ")
@@ -246,7 +246,7 @@ fun actualizarMiembro(personalRepository: PersonalRepositoryImpl) {
             print("Nuevo País (${miembro.pais}): ")
             miembro.pais = readln().ifEmpty { miembro.pais }
             print("Nueva Especialidad (ENTRENADOR_PRINCIPAL, ENTRENADOR_ASISTENTE, ENTRENADOR_PORTEROS) (${miembro.especialidad}): ")
-            miembro.especialidad = readln().ifEmpty { miembro.especialidad.name }.let { Entrenador.Especializacion.valueOf(it.uppercase()) }
+            miembro.especialidad = readln().ifEmpty { miembro.especialidad!!.name }.let { Entrenador.Especializacion.valueOf(it.uppercase()) }
             personalRepository.update(id, miembro)
             println("Entrenador actualizado con éxito.")
         }
@@ -392,7 +392,7 @@ fun consultaListadosPersonal(personalRepository: PersonalRepositoryImpl) {
 }
 
 fun consultaDelanteroMasAlto(personalRepository: PersonalRepositoryImpl) {
-    val delanteroMasAlto = personalRepository.getAll().filterIsInstance<Jugador>().filter { it.posicion == Jugador.Posicion.DELANTERO }.maxByOrNull { it.altura }
+    val delanteroMasAlto = personalRepository.getAll().filterIsInstance<Jugador>().filter { it.posicion == Jugador.Posicion.DELANTERO }.maxByOrNull { it.altura!! }
     println("El delantero más alto es: $delanteroMasAlto")
 }
 
@@ -416,13 +416,13 @@ fun consultaJugadoresPorPais(personalRepository: PersonalRepositoryImpl) {
 }
 
 fun consultaEntrenadorMayorSalario(personalRepository: PersonalRepositoryImpl) {
-    val entrenadorMayorSalario = personalRepository.getAll().filterIsInstance<Entrenador>().maxByOrNull { it.salario }
+    val entrenadorMayorSalario = personalRepository.getAll().filterIsInstance<Entrenador>().maxByOrNull { it.salario!! }
     println("El entrenador con el mayor salario es: $entrenadorMayorSalario")
 }
 
 fun consultaPromedioAlturaPorPosicion(personalRepository: PersonalRepositoryImpl) {
     val jugadores = personalRepository.getAll().filterIsInstance<Jugador>()
-    val promedioAlturaPorPosicion = jugadores.groupBy { it.posicion }.mapValues { it.value.map { jugador -> jugador.altura }.average() }
+    val promedioAlturaPorPosicion = jugadores.groupBy { it.posicion }.mapValues { it.value.map { jugador -> jugador.altura!! }.average() }
     promedioAlturaPorPosicion.forEach { (posicion, promedioAltura) ->
         println("Posición: $posicion, Promedio de altura: $promedioAltura")
     }
@@ -436,8 +436,8 @@ fun consultaJugadoresMasDe10Goles(personalRepository: PersonalRepositoryImpl) {
 
 fun consultaJugadoresSalarioMayorPromedio(personalRepository: PersonalRepositoryImpl) {
     val jugadores = personalRepository.getAll().filterIsInstance<Jugador>()
-    val salarioPromedio = jugadores.map { it.salario }.average()
-    val jugadoresSalarioMayorPromedio = jugadores.filter { it.salario > salarioPromedio }
+    val salarioPromedio = jugadores.map { it.salario!! }.average()
+    val jugadoresSalarioMayorPromedio = jugadores.filter { it.salario!! > salarioPromedio }
     println("Jugadores con un salario mayor al promedio:")
     jugadoresSalarioMayorPromedio.forEach { println(it) }
 }
@@ -464,7 +464,7 @@ fun consultaPromedioPesoPorPosicion(personalRepository: PersonalRepositoryImpl) 
 }
 
 fun consultaJugadoresDorsalPar(personalRepository: PersonalRepositoryImpl) {
-    personalRepository.getAll().filterIsInstance<Jugador>().filter { it.dorsal %2 == 0 }.forEach { println(it) }
+    personalRepository.getAll().filterIsInstance<Jugador>().filter { it.dorsal!! %2 == 0 }.forEach { println(it) }
 }
 
 fun consultaJugadoresMenosDe5Partidos(personalRepository: PersonalRepositoryImpl) {
@@ -476,7 +476,7 @@ fun consultaMediaGolesPorPartido(personalRepository: PersonalRepositoryImpl) {
 }
 
 fun consultaJugadoresAlturaSuperiorMedia(personalRepository: PersonalRepositoryImpl) {
-    val jugadoresAltura = personalRepository.getAll().filterIsInstance<Jugador>().map { it.altura }.average()
+    val jugadoresAltura = personalRepository.getAll().filterIsInstance<Jugador>().map { it.altura!! }.average()
     println("La altura promedio de los jugadores es: $jugadoresAltura")
 }
 
@@ -499,12 +499,12 @@ fun consultaJugadoresMasGolesQuePromedioPosicion(personalRepository: PersonalRep
 }*/
 
 fun consultaEstimacionCosteTotalPlantilla(personalRepository: PersonalRepositoryImpl) {
-    val costeTotal = personalRepository.getAll().sumOf { it.salario.toInt() }
+    val costeTotal = personalRepository.getAll().sumOf { it.salario!!.toInt() }
     println("Estimación total del coste de la plantilla: $costeTotal")
 }
 // En esta consulta hay un error, quien lo haya hecho y sepa porqué, que lo arregle plis
 fun consultaSalarioTotalPorAnioIncorporacion(personalRepository: PersonalRepositoryImpl) {
-    val salarioAgrupado = personalRepository.getAll().groupBy { it.fechaIncorporacion }.mapValues { it.value.map { it.salario }.sumOf { it } }
+    val salarioAgrupado = personalRepository.getAll().groupBy { it.fechaIncorporacion }.mapValues { it.value.map { it.salario!! }.sumOf { it } }
     println("Total del salario agrupado por año de incorporation: $salarioAgrupado")
 }
 
