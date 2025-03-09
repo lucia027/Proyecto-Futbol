@@ -25,7 +25,8 @@ class PersonalServiceImpl (
     }
 
     override fun writeFile(filepath: String,format: FileFormat ,personal: List<Personal>) {
-        TODO("Not yet implemented")
+        logger.info { "Sobreescribiendo personal del fichero" }
+        return storage.writeFile(File(filepath), format, personal)
     }
 
     override fun importFile(filePath: String, format: FileFormat) {
@@ -36,28 +37,33 @@ class PersonalServiceImpl (
         }
     }
 
-    override fun exportFile(filePath: String) {
-        TODO("Not yet implemented")
+    override fun exportFile(filePath: String , fileFormat: FileFormat) {
+        writeFile(filePath, fileFormat, repository.getAll())
     }
 
     override fun getAll(): List<Personal> {
         return repository.getAll()
     }
 
-    override fun getById(id: Int): Personal {
-        TODO("Not yet implemented")
+    override fun getById(id: Long): Personal {
+        logger.info { "Obteniendo personal: $id" }
+        return cache.get(id)!!
+
     }
 
     override fun save(personal: Personal): Personal {
-        TODO("Not yet implemented")
+        logger.info { "Guardando personal: $personal" }
+        return repository.save(personal)
     }
 
     override fun update(id: Long, personal: Personal): Personal {
-        TODO("Not yet implemented")
+        logger.info { "actualizando personal: $personal" }
+        return repository.update(id, personal)!! ?.also { cache.remove(id) }!!
     }
 
     override fun delete(id: Long): Personal {
-        TODO("Not yet implemented")
+        logger.info { "borrando personal: $id" }
+        return repository.delete(id)!!
     }
 
 }
