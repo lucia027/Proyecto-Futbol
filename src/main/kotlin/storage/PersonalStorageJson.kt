@@ -2,8 +2,7 @@ package org.example.storage
 
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonConfiguration
-import org.example.PersonalDto
+import org.example.Dto.PersonalDto
 import org.example.models.Personal
 import java.io.File
 import org.example.exceptions.exceptions
