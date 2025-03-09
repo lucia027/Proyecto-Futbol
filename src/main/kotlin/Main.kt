@@ -206,7 +206,7 @@ fun main() {
 
     // 15. Listado de todos los jugadores que tienen un dorsal par. -- hecha
     println("15. Jugadores con dorsal par")
-    personal.filterIsInstance<Jugador>().filter { it.dorsal %2 == 0 }.forEach { println(it) }
+    personal.filterIsInstance<Jugador>().filter { it.dorsal % 2 == 0 }.forEach { println(it) }
     println()
 
     // 16. Jugadores que han jugado menos de 5 partidos. -- hecha
@@ -254,7 +254,7 @@ fun main() {
     println("Agrupacion de jugadores segun posicion: $jugadorPosicion, maximo de goles anotado por un jugador: $maxGoles, minimo de goles anotados por un jugador: $minGoles, media de goles anotados entre todos los jugadores: $jugadorGolesPromedio")
 
     //22. Estimación del coste total de la plantilla.
-    val costeTotal = personal.sumBy { it.salario.toInt() }
+    val costeTotal = personal.sumBy { it.salario?.toInt() }
     println("Estimacion total del coste de la plantilla: $costeTotal")
 
     //23. Total del salario pagado, agrupados por año de incorporación.
