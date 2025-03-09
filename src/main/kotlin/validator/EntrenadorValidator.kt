@@ -42,6 +42,9 @@ class EntrenadorValidator {
         if (entrenador.pais.isBlank()) {
             throw exceptions.EntrenadorValidatorException("pais cannot be blank")
         }
+        if (entrenador.especialidad == null) {
+            throw exceptions.EntrenadorValidatorException("especialidad no puede ser nula")
+        }
         if (entrenador.rol.isBlank()) {
             throw exceptions.EntrenadorValidatorException("rol cannot be blank")
         }

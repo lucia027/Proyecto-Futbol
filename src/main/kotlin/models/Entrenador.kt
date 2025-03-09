@@ -18,7 +18,7 @@ class Entrenador(
     salario: Double,
     pais: String,
     rol: String,
-    var especialidad: Especializacion
+    var especialidad: Especializacion?
 
 ) : Personal(id, nombre, apellidos, fechaNacimiento, fechaIncorporacion, salario, pais, rol){ //tipo){
 
