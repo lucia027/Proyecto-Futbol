@@ -173,7 +173,7 @@ fun main() {
     imprimirMenu()
 
     val service = PersonalServiceImpl()
-    val personalImport = Path.of(Config.configProperties.dataDir, "personal.csv")
+    val personalImport = Path.of(Config.confgProperties.dataDir, "personal.csv")
     service.importFile(
         personalImport.pathString, FileFormat.CSV)
 /*
