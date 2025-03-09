@@ -12,6 +12,7 @@ import org.example.cache.CacheImpl
 import org.example.config.Config
 import org.example.models.Entrenador
 import org.example.storage.FileFormat
+import org.example.view.imprimirMenu
 //import org.example.storage.PersonalStorageControlador
 import org.lighthousegames.logging.logging
 import java.nio.file.Files
@@ -169,11 +170,13 @@ fun main() {
 
    */
 
+    imprimirMenu()
+
     val service = PersonalServiceImpl()
     val personalImport = Path.of(Config.configProperties.dataDir, "personal.csv")
     service.importFile(
         personalImport.pathString, FileFormat.CSV)
-
+/*
     // Obtenemos todo el personal
     println()
     val personal = service.getAll()
@@ -203,7 +206,7 @@ fun main() {
 
     // 15. Listado de todos los jugadores que tienen un dorsal par. -- hecha
     println("15. Jugadores con dorsal par")
-    personal.filterIsInstance<Jugador>().filter { it.dorsal %2 == 0 }.forEach { println(it) }
+    personal.filterIsInstance<Jugador>().filter { it.dorsal % 2 == 0 }.forEach { println(it) }
     println()
 
     // 16. Jugadores que han jugado menos de 5 partidos. -- hecha
@@ -251,7 +254,7 @@ fun main() {
     println("Agrupacion de jugadores segun posicion: $jugadorPosicion, maximo de goles anotado por un jugador: $maxGoles, minimo de goles anotados por un jugador: $minGoles, media de goles anotados entre todos los jugadores: $jugadorGolesPromedio")
 
     //22. Estimación del coste total de la plantilla.
-    val costeTotal = personal.sumBy { it.salario.toInt() }
+    val costeTotal = personal.sumBy { it.salario?.toInt() }
     println("Estimacion total del coste de la plantilla: $costeTotal")
 
     //23. Total del salario pagado, agrupados por año de incorporación.
@@ -266,4 +269,5 @@ fun main() {
 
 
     //28. Salario promedio de los jugadores agrupados por su país de origen, y dentro de cada grupo, el jugador con el salario más bajo y alto
+*/
 }
