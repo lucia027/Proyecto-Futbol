@@ -12,7 +12,7 @@ fun Entrenador.toDto (): PersonalDto {
         apellidos = apellidos,
         fecha_nacimiento = fechaNacimiento.toString(),
         fecha_incorporacion = fechaIncorporacion.toString(),
-        salario = salario,
+        salario = salario!!,
         pais = pais,
         especialidad = especialidad.toString(),
         rol = "Entrenador",
