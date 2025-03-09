@@ -9,11 +9,16 @@ import org.example.storage.PersonalStorageFile
 import org.example.storage.PersonalStorageJson
 import java.io.File
 
+/**
+ * Este archivo contiene funciones para gestionar el menú de operaciones de personal del club.
+ * Incluye funciones para cargar datos, crear, actualizar, eliminar miembros, copiar datos y realizar consultas.
+ */
+
 fun imprimirMenu() {
     val personalRepository = PersonalRepositoryImpl()
 
     while (true) {
-        println("Menú de Gestión de Personal del Club:")
+        println("*** Menú de Gestión de Personal del Club: ***")
         println("1. Cargar datos desde fichero según la especificación indicada")
         println("2. Crear miembro del equipo")
         println("3. Actualizar miembro de equipo")
@@ -36,6 +41,11 @@ fun imprimirMenu() {
     }
 }
 
+/**
+ * Carga datos desde un archivo y los guarda en el repositorio.
+ *
+ * @param personalRepository el repositorio donde se guardarán los datos.
+ */
 fun cargarDatos(personalRepository: PersonalRepositoryImpl) {
     println("Selecciona un formato de archivo para cargar de los siguientes: \n1. CSV \n2. JSON \n3. XML \n4. BIN")
     val formato = readln().toIntOrNull() ?: 0
@@ -69,6 +79,11 @@ fun cargarDatos(personalRepository: PersonalRepositoryImpl) {
     }
 }
 
+/**
+ * Actualiza los archivos de datos con el contenido del repositorio.
+ *
+ * @param personalRepository el repositorio que contiene los datos actualizados.
+ */
 fun actualizarArchivos(personalRepository: PersonalRepositoryImpl) {
     val formatos = listOf(
         "data/personal.csv" to PersonalStorageCsv(),
@@ -88,6 +103,11 @@ fun actualizarArchivos(personalRepository: PersonalRepositoryImpl) {
     }
 }
 
+/**
+ * Crea un nuevo miembro del equipo y lo guarda en el repositorio.
+ *
+ * @param personalRepository el repositorio donde se guardará el nuevo miembro.
+ */
 fun crearMiembro(personalRepository: PersonalRepositoryImpl) {
     println("Selecciona el rol del miembro que vas a crear (jugador/entrenador):")
     val rol = readln().lowercase()
@@ -173,6 +193,11 @@ fun crearMiembro(personalRepository: PersonalRepositoryImpl) {
     actualizarArchivos(personalRepository)
 }
 
+/**
+ * Actualiza los datos de un miembro existente en el repositorio.
+ *
+ * @param personalRepository el repositorio que contiene el miembro a actualizar.
+ */
 fun actualizarMiembro(personalRepository: PersonalRepositoryImpl) {
     print("Ingresa el ID del miembro a actualizar: ")
     val id = readln().toLong()
@@ -231,6 +256,11 @@ fun actualizarMiembro(personalRepository: PersonalRepositoryImpl) {
     }
 }
 
+/**
+ * Elimina un miembro del repositorio y actualiza los archivos.
+ *
+ * @param personalRepository el repositorio que contiene el miembro a eliminar.
+ */
 fun eliminarMiembro(personalRepository: PersonalRepositoryImpl) {
     print("Ingresa el ID del miembro a eliminar: ")
     val id = readln().toLong()
@@ -243,6 +273,11 @@ fun eliminarMiembro(personalRepository: PersonalRepositoryImpl) {
     }
 }
 
+/**
+ * Copia los datos del repositorio a un archivo en el formato especificado.
+ *
+ * @param personalRepository el repositorio que contiene los datos a copiar.
+ */
 fun copiarDatos(personalRepository: PersonalRepositoryImpl) {
     println("Selecciona el formato del archivo para copiar: \n1. CSV \n2. JSON \n3. XML \n4. BIN")
     val formato = readln().toIntOrNull() ?: 0
@@ -277,6 +312,11 @@ fun copiarDatos(personalRepository: PersonalRepositoryImpl) {
     }
 }
 
+/**
+ * Realiza una consulta específica sobre los datos del repositorio.
+ *
+ * @param personalRepository el repositorio que contiene los datos a consultar.
+ */
 fun realizarConsultas(personalRepository: PersonalRepositoryImpl) {
     println("Seleccione la consulta a realizar:")
     println("1. Listados de personal agrupados por entrenadores y jugadores")

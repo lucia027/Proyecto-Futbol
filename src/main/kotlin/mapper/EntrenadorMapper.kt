@@ -1,7 +1,7 @@
 package org.example.mapper
 
 import org.example.Dto.EntrenadorDto
-import org.example.PersonalDto
+import org.example.Dto.PersonalDto
 import org.example.models.Entrenador
 
 
