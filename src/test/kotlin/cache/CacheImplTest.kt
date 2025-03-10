@@ -6,15 +6,19 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
+//CLase que implementa los test de la cache
 class CacheImplTest {
 
+    //Inia la variable antes de ser usada, esta variable es la instancia de CacheImpl sonde las claves y los valores son string
     private lateinit var lruCache: CacheImpl<String, String>
 
+    //Ejecuta antes de cada prueba la funcion setup, donde creamos un objeto que sea la cache y establecemos su capacidad
     @BeforeEach
     fun setUp() {
         lruCache = CacheImpl(5)
     }
 
+    //Test que evalua el comportamiento de la cache llenandola al maximo y comporbando que al insertar un nuevo elemento sigue el orden correcto de borrado e inserccion
     @Test
     @DisplayName("Comportamiento Cache")
     fun cacheLru(){
@@ -34,6 +38,7 @@ class CacheImplTest {
         assertNotNull(lruCache.get("key6"))
     }
 
+    //Test que crea elementos en la cache para leugo borrarlos y comporbar si existen
     @Test
     @DisplayName("Limpieza Cache")
     fun limpiezaCache() {
@@ -49,6 +54,7 @@ class CacheImplTest {
         assertNull(lruCache.get("key3"))
     }
 
+    //teste que comprueba el tamaño de la cache, primero insertando solo tres resgitroos, y luego sobrepasando su tamaño añadiedno mas registros
     @Test
     @DisplayName("Tamaño cache")
     fun sizeCache() {
@@ -65,6 +71,7 @@ class CacheImplTest {
         assertEquals(5, lruCache.size())
     }
 
+    //Test que comprueba si los resgitros insertados tienen las claves correspondientes
     @Test
     @DisplayName("Funcionamiento keys")
     fun keys(){
@@ -77,6 +84,7 @@ class CacheImplTest {
         )
     }
 
+    //Test que comprueba si los resgistros insertados tienen los valores correspondientes
     @Test
     @DisplayName("Funcionamiento values")
     fun values(){
@@ -89,6 +97,7 @@ class CacheImplTest {
         )
     }
 
+    //test que comprueba con los resgitros insertados si los valores estan bien asociados a su clave
     @Test
     @DisplayName("Funcionamiento entradas")
     fun entries(){
