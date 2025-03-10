@@ -131,7 +131,7 @@ class EntrenadorValidatorTest {
             apellidos = "Pérez",
             fechaNacimiento = "1970-01-01",
             fechaIncorporacion = "1970-01-01",
-            salario = 0.0,
+            salario = null,
             pais = "España",
             especialidad = Entrenador.Especializacion.ENTRENADOR_ASISTENTE,
             rol = "entrenador"

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName
 import kotlin.test.Test
 
 class JugadorMapperTest {
-/*
+
     @Test
     @DisplayName("Test Dto to Model")
     fun JugadorDtoToModel() {
@@ -32,7 +32,7 @@ class JugadorMapperTest {
         )
 
         // Act: Convertimos el JugadorDto a un Jugador usando el método toModel.
-        val jugador = jugadorDto.toModel()
+        val jugador = jugadorDto.toModel() as Jugador
 
         // Assert: Verificamos que los valores del JugadorDto se hayan mapeado correctamente en el Jugador.
         assertEquals(jugadorDto.id, jugador.id)
@@ -51,7 +51,7 @@ class JugadorMapperTest {
         assertEquals(jugadorDto.rol, jugador.rol)
     }
 
- */
+
 
     @Test
     @DisplayName("Test Model to Dto")
