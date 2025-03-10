@@ -26,10 +26,22 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     // Serializable XML
     implementation("io.github.pdvrieze.xmlutil:serialization-jvm:0.90.3")
+    //MockK
+    testImplementation("io.mockk:mockk:1.13.16")
 }
 
 tasks.test {
     useJUnitPlatform()
+}
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "MainKt"
+    }
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    archiveFileName.set("Proyecto-Futbol.jar")
 }
 kotlin {
     jvmToolchain(21)
