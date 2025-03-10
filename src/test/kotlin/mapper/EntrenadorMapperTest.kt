@@ -7,8 +7,10 @@ import org.example.models.Entrenador
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import toDto
+import toModel
 
-    class EntrenadorMapperTest {
+class EntrenadorMapperTest {
 
         @Test
         @DisplayName("Test Producto to Dto")
