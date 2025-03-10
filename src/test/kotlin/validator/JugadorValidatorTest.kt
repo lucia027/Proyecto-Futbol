@@ -126,7 +126,7 @@ class JugadorValidatorTest {
         val exception = assertThrows<exceptions.JugadorValidatorException> {
             JugadorValidator().validateJugador(jugador)
         }
-        assertEquals("El salario no puede ser NaN", exception.message)
+        assertEquals("El salario no puede ser nulo", exception.message)
     }
 
     @Test

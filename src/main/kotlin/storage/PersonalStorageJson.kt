@@ -12,6 +12,7 @@ import org.example.mapper.toJugador
 import org.example.models.Entrenador
 import org.example.models.Jugador
 import org.lighthousegames.logging.logging
+import toDto
 
 
 class PersonalStorageJson : PersonalStorageFile {
