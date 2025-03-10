@@ -4,7 +4,7 @@ import org.example.Dto.EntrenadorDto
 import org.example.Dto.PersonalDto
 import org.example.models.Entrenador
 
-
+//Funcion de extension para convertir un Entrenador a PersonalDto
 fun Entrenador.toDto (): PersonalDto {
     return PersonalDto(
         id = id,
@@ -25,6 +25,7 @@ fun Entrenador.toDto (): PersonalDto {
     )
 }
 
+//Fucnion de extencion que convierte el EntrenadorDto a Entrenador
 fun EntrenadorDto.toModel(): Entrenador {
     return Entrenador(
         id = this.id,
