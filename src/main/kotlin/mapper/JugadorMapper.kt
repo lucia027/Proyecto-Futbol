@@ -1,10 +1,14 @@
 package org.example.mapper
 
-
 import org.example.Dto.JugadorDto
 import org.example.Dto.PersonalDto
 import org.example.models.Jugador
 import org.example.models.Personal
+
+/**
+ * Al convertir un Jugador a PersonalDto, se completan todos los campos relevantes para jugadores
+ * El campo especialidad se deja vacío porque no se aplica al jugador sino al entrenador
+ */
 
 fun Jugador.toDto(): PersonalDto {
     return PersonalDto(
@@ -22,7 +26,7 @@ fun Jugador.toDto(): PersonalDto {
         goles = goles,
         partidos_jugados = partidosJugados,
         rol = rol,
-        especialidad = "",
+        especialidad = "", // No se aplica a jugadores
     )
 }
 
@@ -44,5 +48,3 @@ fun JugadorDto.toModel(): Personal {
         rol = this.rol
     )
 }
-
-

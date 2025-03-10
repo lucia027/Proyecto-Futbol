@@ -18,4 +18,4 @@ id,nombre,apellidos,fecha_nacimiento,fecha_incorporacion,salario,pais,rol,especi
 17,Charlie,Custer,1984-08-08,2001-05-15,29500.0,España,Jugador,,DELANTERO,14,1.78,68.0,22,140
 18,David,Evans,1983-12-12,2001-05-15,28500.0,España,Jugador,,CENTROCAMPISTA,15,1.75,67.0,18,115
 19,Patrick,Everett,1984-06-06,2001-05-15,32000.0,España,Jugador,,DEFENSA,2,1.81,73.0,6,150
-20,Richard,Textex,1983-03-03,2001-05-15,27500.0,España,Jugador,,PORTERO,16,1.86,82.0,0,160
+20,Richard,Textex,1983-03-03,2001-05-15,27500.0,España,Jugador,,PORTERO,16,1.86,82.0,0,1601, pepe, pepe, pepe, pepe, 12.0, 12, entrenador, ENTRENADOR_PORTEROS /n
