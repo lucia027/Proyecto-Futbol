@@ -63,7 +63,7 @@ import org.junit.jupiter.api.Test
             )
 
             // Act: Convertimos el EntrenadorDto a un objeto Entrenador usando el método toModel.
-            val entrenador = entrenadorDto.toModel()
+            val entrenador = entrenadorDto.toModel() as Entrenador
 
             // Assert: Verificamos que los valores del EntrenadorDto se hayan mapeado correctamente en el Entrenador.
             assertEquals(entrenadorDto.id, entrenador.id)
@@ -73,7 +73,7 @@ import org.junit.jupiter.api.Test
             assertEquals(entrenadorDto.fechaIncorporacion, entrenador.fechaIncorporacion)
             assertEquals(entrenadorDto.salario, entrenador.salario)
             assertEquals(entrenadorDto.pais, entrenador.pais)
-            assertEquals(entrenadorDto.especialidad, entrenador.especialidad.toString()) // Asumimos que 'especialidad' es un enum en el modelo
+            assertEquals(entrenadorDto.especialidad, entrenador.especialidad) // Asumimos que 'especialidad' es un enum en el modelo
             assertEquals(entrenadorDto.rol, entrenador.rol)
         }
 

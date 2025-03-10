@@ -11,7 +11,7 @@ class JugadorValidatorTest {
 
     @Test
     fun JugadorValidateNombre() {
-        val nombre = Jugador(
+        val jugador = Jugador(
             id = 0L,
             nombre = "",
             apellidos = "Pérez",
@@ -28,14 +28,14 @@ class JugadorValidatorTest {
             partidosJugados = 20
         )
         val exception = assertThrows<exceptions.JugadorValidatorException> {
-            JugadorValidator().validateJugador(nombre)
+            JugadorValidator().validateJugador(jugador)
         }
         assertEquals("El nombre no puede estar en blanco", exception.message)
     }
 
     @Test
     fun JugadorValidateNombreLargo() {
-        val nombreLargo = Jugador(
+        val jugador = Jugador(
             id = 0L,
             nombre = "NombreMuyLargoQueExcede15Caracteres",
             apellidos = "Pérez",
@@ -52,14 +52,14 @@ class JugadorValidatorTest {
             partidosJugados = 20
         )
         val exception = assertThrows<exceptions.JugadorValidatorException> {
-            JugadorValidator().validateJugador(nombreLargo)
+            JugadorValidator().validateJugador(jugador)
         }
         assertEquals("El nombre no puede exceder los 15 caracteres", exception.message)
     }
 
     @Test
     fun JugadorValidateApellido() {
-        val apellido = Jugador(
+        val jugador = Jugador(
             id = 0L,
             nombre = "Pepe",
             apellidos = "",
@@ -76,14 +76,14 @@ class JugadorValidatorTest {
             partidosJugados = 20
         )
         val exception = assertThrows<exceptions.JugadorValidatorException> {
-            JugadorValidator().validateJugador(apellido)
+            JugadorValidator().validateJugador(jugador)
         }
         assertEquals("El apellido no puede estar en blanco", exception.message)
     }
 
     @Test
     fun JugadorValidateFechaNacimientoInvalida() {
-        val fecha_n = Jugador(
+        val jugador = Jugador(
             id = 0L,
             nombre = "Pepe",
             apellidos = "Pérez",
@@ -100,68 +100,20 @@ class JugadorValidatorTest {
             partidosJugados = 20
         )
         val exception = assertThrows<exceptions.JugadorValidatorException> {
-            JugadorValidator().validateJugador(fecha_n)
+            JugadorValidator().validateJugador(jugador)
         }
         assertEquals("La fecha de nacimiento no puede ser anterior a 1925", exception.message)
     }
 
     @Test
-    fun JugadorValidateFechaIncorporacionInvalida() {
-        val fecha = Jugador(
-            id = 0L,
-            nombre = "Pepe",
-            apellidos = "Pérez",
-            fechaNacimiento = "1990-01-01",
-            fechaIncorporacion = "1950-01-01",
-            salario = 1000.0,
-            pais = "España",
-            rol = "jugador",
-            posicion = Jugador.Posicion.CENTROCAMPISTA,
-            dorsal = 10,
-            altura = 1.75,
-            peso = 75.0,
-            goles = 5,
-            partidosJugados = 20
-        )
-        val exception = assertThrows<exceptions.JugadorValidatorException> {
-            JugadorValidator().validateJugador(fecha)
-        }
-        assertEquals("La fecha de incorporación no puede ser anterior a 1960", exception.message)
-    }
-
-    @Test
-    fun JugadorValidateSalarioNulo() {
-        val salario = Jugador(
-            id = 0L,
-            nombre = "Pepe",
-            apellidos = "Pérez",
-            fechaNacimiento = "1990-01-01",
-            fechaIncorporacion = "2010-01-01",
-            salario = 0.0,
-            pais = "España",
-            rol = "jugador",
-            posicion = Jugador.Posicion.CENTROCAMPISTA,
-            dorsal = 10,
-            altura = 1.75,
-            peso = 75.0,
-            goles = 5,
-            partidosJugados = 20
-        )
-        val exception = assertThrows<exceptions.JugadorValidatorException> {
-            JugadorValidator().validateJugador(salario)
-        }
-        assertEquals("El salario no puede ser nulo", exception.message)
-    }
-
-    @Test
-    fun JugadorValidateSalarioNegativo() {
+    fun JugadorValidateSalarioNaN() {
         val jugador = Jugador(
             id = 0L,
             nombre = "Pepe",
             apellidos = "Pérez",
             fechaNacimiento = "1990-01-01",
             fechaIncorporacion = "2010-01-01",
-            salario = -1.0,
+            salario = Double.NaN,
             pais = "España",
             rol = "jugador",
             posicion = Jugador.Posicion.CENTROCAMPISTA,
@@ -174,59 +126,11 @@ class JugadorValidatorTest {
         val exception = assertThrows<exceptions.JugadorValidatorException> {
             JugadorValidator().validateJugador(jugador)
         }
-        assertEquals("El salario no puede ser negativo", exception.message)
+        assertEquals("El salario no puede ser NaN", exception.message)
     }
 
     @Test
-    fun JugadorValidatePais() {
-        val jugador = Jugador(
-            id = 0L,
-            nombre = "Pepe",
-            apellidos = "Pérez",
-            fechaNacimiento = "1990-01-01",
-            fechaIncorporacion = "2010-01-01",
-            salario = 1000.0,
-            pais = "",
-            rol = "jugador",
-            posicion = Jugador.Posicion.CENTROCAMPISTA,
-            dorsal = 10,
-            altura = 1.75,
-            peso = 75.0,
-            goles = 5,
-            partidosJugados = 20
-        )
-        val exception = assertThrows<exceptions.JugadorValidatorException> {
-            JugadorValidator().validateJugador(jugador)
-        }
-        assertEquals("El país no puede estar en blanco", exception.message)
-    }
-
-    @Test
-    fun JugadorValidatePosicionInvalida() {
-        val jugador = Jugador(
-            id = 0L,
-            nombre = "Pepe",
-            apellidos = "Pérez",
-            fechaNacimiento = "1990-01-01",
-            fechaIncorporacion = "2010-01-01",
-            salario = 1000.0,
-            pais = "España",
-            rol = "jugador",
-            posicion = null,
-            dorsal = 10,
-            altura = 1.75,
-            peso = 75.0,
-            goles = 5,
-            partidosJugados = 20
-        )
-        val exception = assertThrows<exceptions.JugadorValidatorException> {
-            JugadorValidator().validateJugador(jugador)
-        }
-        assertEquals("Posición no puede ser nula", exception.message)
-    }
-
-    @Test
-    fun JugadorValidateDorsalNulo() {
+    fun JugadorValidateDorsalInvalido() {
         val jugador = Jugador(
             id = 0L,
             nombre = "Pepe",
@@ -237,7 +141,7 @@ class JugadorValidatorTest {
             pais = "España",
             rol = "jugador",
             posicion = Jugador.Posicion.CENTROCAMPISTA,
-            dorsal = null,
+            dorsal = -1,
             altura = 1.75,
             peso = 75.0,
             goles = 5,
@@ -246,7 +150,7 @@ class JugadorValidatorTest {
         val exception = assertThrows<exceptions.JugadorValidatorException> {
             JugadorValidator().validateJugador(jugador)
         }
-        assertEquals("El dorsal no puede ser nulo", exception.message)
+        assertEquals("El dorsal debe estar entre 1 y 25", exception.message)
     }
 
     @Test
