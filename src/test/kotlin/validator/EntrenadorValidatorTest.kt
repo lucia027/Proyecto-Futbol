@@ -177,7 +177,7 @@ class EntrenadorValidatorTest {
         val exception = assertThrows<exceptions.EntrenadorValidatorException> {
             EntrenadorValidator().validateEntrenador(entrenador)
         }
-        assertEquals("la casilla pais no puede estar en blanco", exception.message)
+        assertEquals("La casilla país no puede estar en blanco", exception.message)
     }
 
     @Test
@@ -196,6 +196,6 @@ class EntrenadorValidatorTest {
         val exception = assertThrows<exceptions.EntrenadorValidatorException> {
             EntrenadorValidator().validateEntrenador(entrenador)
         }
-        assertEquals("la especialidad no puede ser nula", exception.message)
+        assertEquals("La especialidad no puede ser nula", exception.message)
     }
 }

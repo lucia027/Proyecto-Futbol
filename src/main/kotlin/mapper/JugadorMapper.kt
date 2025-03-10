@@ -1,12 +1,15 @@
 package org.example.mapper
 
-
 import org.example.Dto.JugadorDto
 import org.example.Dto.PersonalDto
 import org.example.models.Jugador
 import org.example.models.Personal
 
-//Funcion de extension para convertir un Jugador a PersonalDto
+/**
+ * Al convertir un Jugador a PersonalDto, se completan todos los campos relevantes para jugadores
+ * El campo especialidad se deja vacío porque no se aplica al jugador sino al entrenador
+ */
+
 fun Jugador.toDto(): PersonalDto {
     return PersonalDto(
         id = id,
@@ -23,11 +26,10 @@ fun Jugador.toDto(): PersonalDto {
         goles = goles,
         partidos_jugados = partidosJugados,
         rol = rol,
-        especialidad = "",
+        especialidad = "", // No se aplica a jugadores
     )
 }
 
-//Funcion de extencion que convierte el JugadorDto a Jugador
 fun JugadorDto.toModel(): Personal {
     return Jugador(
         id = this.id,
@@ -46,5 +48,3 @@ fun JugadorDto.toModel(): Personal {
         rol = this.rol
     )
 }
-
-

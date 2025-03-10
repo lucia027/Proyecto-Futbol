@@ -10,76 +10,62 @@ import org.example.storage.PersonalStorageImpl
 import org.lighthousegames.logging.logging
 import java.io.File
 
-//Define el tamaño de la cache
+// Tamaño máximo del caché
 private const val CACHE_SIZE = 6
 
-//Implementacion de la interfaz PersonalService desarrollando sus funciones.
-class PersonalServiceImpl (
-
-    //Define el tamaño de la cache, el storage, y el repository a utilizar.
-    private val cache : Cache<String, Personal> = CacheImpl(CACHE_SIZE),
-    private val storage: PersonalStorage = PersonalStorageImpl(),
-    private val repository : PersonalRepository<Personal> = PersonalRepositoryImpl()
+class PersonalServiceImpl(
+    private val cache: Cache<String, Personal> = CacheImpl(CACHE_SIZE), // Caché para objetos Personal
+    private val storage: PersonalStorage = PersonalStorageImpl(), // Gestión de archivos
+    private val repository: PersonalRepository<Personal> = PersonalRepositoryImpl() // Repositorio para CRUD
 ) : PersonalService {
 
-    //Logger
-    private val logger = logging()
+    private val logger = logging() // Logger para registrar acciones
 
-    //Lee el arhivo en el formato indicado
     override fun readFile(filepath: String, format: FileFormat): List<Personal> {
         logger.info { "Leyendo personal del fichero" }
-        return storage.readFile(File(filepath), format)
+        return storage.readFile(File(filepath), format) // Lee un archivo y devuelve la lista de Personal
     }
 
-    //Escribe una lista de objetos de personal en el sitio indicado y con el formato indicado
-    override fun writeFile(filepath: String,format: FileFormat ,personal: List<Personal>) {
+    override fun writeFile(filepath: String, format: FileFormat, personal: List<Personal>) {
         logger.info { "Sobreescribiendo personal del fichero" }
-        return storage.writeFile(File(filepath), format, personal)
+        return storage.writeFile(File(filepath), format, personal) // Escribe la lista de Personal en un archivo
     }
 
-    //Carga los datos de un archivo en una memoria temporal
     override fun importFile(filePath: String, format: FileFormat) {
         logger.info { "Importando personal del fichero" }
-        val personal = readFile(filePath, format)
+        val personal = readFile(filePath, format) // Lee el archivo
         personal.forEach {
-            repository.save(it)
+            repository.save(it) // Guarda cada objeto Personal en el repositorio
         }
     }
 
-    //Exporta los que se encuentra de personal a un archivo
-    override fun exportFile(filePath: String , fileFormat: FileFormat) {
-        writeFile(filePath, fileFormat, repository.getAll())
+    override fun exportFile(filePath: String, fileFormat: FileFormat) {
+        writeFile(filePath, fileFormat, repository.getAll()) // Exporta todos los objetos Personal a un archivo
     }
 
-    //Muesta todos los registros
     override fun getAll(): List<Personal> {
-        return repository.getAll()
+        return repository.getAll() // Devuelve todos los objetos Personal del repositorio
     }
 
-    //Busca un registo basandose en el id proporcionado
     override fun getById(id: Long): Personal {
         logger.info { "Obteniendo personal: $id" }
-        return cache.get(id.toString())!!
-
+        return cache.get(id.toString())!! // Recupera un objeto Personal del caché usando su ID
     }
 
-    //Guarda una nueva entidad de personal
     override fun save(personal: Personal): Personal {
         logger.info { "Guardando personal: $personal" }
-        return repository.save(personal)
+        return repository.save(personal) // Guarda un objeto Personal en el repositorio
     }
 
-    //Actualiza el registro en el respoitorio
     override fun update(id: Long, personal: Personal): Personal {
-        logger.info { "actualizando personal: $personal" }
-        return repository.update(id, personal) ?.also { cache.remove(id.toString()) }!!
+        logger.info { "Actualizando personal: $personal" }
+        return repository.update(id, personal)?.also {
+            cache.remove(id.toString()) // Elimina el objeto Personal actualizado del caché
+        }!!
     }
 
-    //Elimina una entidad en base al id obtenido
     override fun delete(id: Long): Personal {
-        logger.info { "borrando personal: $id" }
-        return repository.delete(id)!!
+        logger.info { "Borrando personal: $id" }
+        return repository.delete(id)!! // Elimina un objeto Personal del repositorio
     }
-
 }
-

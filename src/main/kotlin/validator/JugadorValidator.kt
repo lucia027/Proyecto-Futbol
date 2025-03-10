@@ -41,6 +41,8 @@ class JugadorValidator {
         if (jugador.fechaIncorporacion.isBlank()) {
             throw exceptions.JugadorValidatorException("La fecha de incorporación no puede estar en blanco")
         }
+
+        // Validación de fecha de incorporacion
         if (jugador.fechaIncorporacion <= "1960-01-01") {
             throw exceptions.JugadorValidatorException("La fecha de incorporación no puede ser anterior a 1960")
         }
@@ -49,6 +51,8 @@ class JugadorValidator {
         if (jugador.salario!!.isNaN()) {
             throw exceptions.JugadorValidatorException("El salario no puede ser nulo")
         }
+
+        // Validación de salario negativo
         if (jugador.salario!! < 0) {
             throw exceptions.JugadorValidatorException("El salario no puede ser negativo")
         }
@@ -72,6 +76,8 @@ class JugadorValidator {
         if (jugador.dorsal == null) {
             throw exceptions.JugadorValidatorException("El dorsal no puede ser nulo")
         }
+
+        // Validación de dorsal entre 1 y 25
         if (jugador.dorsal !in 1..25) {
             throw exceptions.JugadorValidatorException("El dorsal debe estar entre 1 y 25")
         }
@@ -80,6 +86,8 @@ class JugadorValidator {
         if (jugador.altura!!.isNaN()) {
             throw exceptions.JugadorValidatorException("La altura no puede ser nula")
         }
+
+        // validación de altura entre 0.0 y 2.5 m
         if (jugador.altura!! !in 0.0..2.5) {
             throw exceptions.JugadorValidatorException("La altura debe estar entre 0.0 y 2.5 metros")
         }
@@ -88,6 +96,8 @@ class JugadorValidator {
         if (jugador.peso!!.isNaN()) {
             throw exceptions.JugadorValidatorException("El peso no puede ser nulo")
         }
+
+        // Validación de peso entre 1.00 y 90.00
         if (jugador.peso!! !in 1.00..90.00) {
             throw exceptions.JugadorValidatorException("El peso debe estar entre 1.00 y 90.00 kg")
         }
