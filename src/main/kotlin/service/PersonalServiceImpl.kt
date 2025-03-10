@@ -58,7 +58,7 @@ class PersonalServiceImpl (
 
     override fun update(id: Long, personal: Personal): Personal {
         logger.info { "actualizando personal: $personal" }
-        return repository.update(id, personal)!! ?.also { cache.remove(id.toString()) }!!
+        return repository.update(id, personal) ?.also { cache.remove(id.toString()) }!!
     }
 
     override fun delete(id: Long): Personal {
