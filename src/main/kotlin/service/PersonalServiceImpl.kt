@@ -72,7 +72,7 @@ class PersonalServiceImpl (
     //Actualiza el registro en el respoitorio
     override fun update(id: Long, personal: Personal): Personal {
         logger.info { "actualizando personal: $personal" }
-        return repository.update(id, personal)!! ?.also { cache.remove(id.toString()) }!!
+        return repository.update(id, personal) ?.also { cache.remove(id.toString()) }!!
     }
 
     //Elimina una entidad en base al id obtenido
